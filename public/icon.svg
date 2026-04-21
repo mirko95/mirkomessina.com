@@ -1,0 +1,24 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mm-gradient" x1="31" y1="27" x2="152" y2="157" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69E2FF" />
+      <stop offset="1" stop-color="#7CFFCB" />
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="40" fill="#0B0F1A" />
+  <path
+    d="M36 130V50L61 91L86 50V130"
+    stroke="url(#mm-gradient)"
+    stroke-width="13"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M94 130V50L119 91L144 50V130"
+    stroke="url(#mm-gradient)"
+    stroke-width="13"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="128" cy="132" r="8" fill="#69E2FF" />
+</svg>
