@@ -49,11 +49,11 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between gap-3 h-16 lg:h-20">
           {/* Logo */}
           <a
             href={localizedPath(locale, "/")}
-            className="whitespace-nowrap text-xl font-semibold tracking-tight text-foreground hover:text-primary transition-colors"
+            className="whitespace-nowrap text-lg sm:text-xl font-semibold tracking-tight text-foreground hover:text-primary transition-colors shrink-0"
           >
             {siteConfig.firstName.toLowerCase()}
             <span className="text-primary">.</span>
@@ -106,14 +106,37 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={copy.navbar.ariaLabel}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <div className="flex items-center rounded-full border border-border/60 bg-card/80 p-1">
+              {localeLinks.map((item) => (
+                <Link
+                  key={item.locale}
+                  href={localeSwitchHref(item.locale)}
+                  className={`rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-[0.18em] transition-colors ${
+                    locale === item.locale
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  aria-label={
+                    locale === "it"
+                      ? `Passa a ${item.label}`
+                      : locale === "de"
+                        ? `Wechsle zu ${item.label}`
+                        : `Switch to ${item.label}`
+                  }
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+            <button
+              className="text-foreground p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={copy.navbar.ariaLabel}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -129,21 +152,6 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
                   {link.label}
                 </button>
               ))}
-              <div className="flex items-center gap-2 px-4 pt-2">
-                {localeLinks.map((item) => (
-                  <Link
-                    key={item.locale}
-                    href={localeSwitchHref(item.locale)}
-                    className={`rounded-full border px-3 py-1.5 text-xs font-semibold tracking-wide transition-colors ${
-                      locale === item.locale
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-card text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
               <div className="px-4 pt-2">
                 <Button
                   onClick={() => scrollToSection("#contact")}
