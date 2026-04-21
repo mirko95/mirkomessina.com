@@ -23,7 +23,7 @@ export function HeroSection({ locale = "en" }: { locale?: Locale }) {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
+    <section className="relative flex items-start justify-center overflow-hidden py-20 lg:py-24">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
       
@@ -35,9 +35,9 @@ export function HeroSection({ locale = "en" }: { locale?: Locale }) {
       <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <div className="text-center lg:text-left space-y-6 lg:space-y-8 pt-2 lg:pt-8">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -100,7 +100,7 @@ export function HeroSection({ locale = "en" }: { locale?: Locale }) {
           </div>
 
           {/* Right Content - Abstract Tech Visual */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end pt-0 lg:pt-2">
             <div className="relative w-full max-w-lg">
               {/* Main visual container */}
               <div className="relative">

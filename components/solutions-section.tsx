@@ -125,18 +125,13 @@ export function SolutionsSection({ locale = "en" }: { locale?: Locale }) {
           {copy.solutions.items.map((solution, index) => {
             const Icon = icons[index] ?? Globe
             return (
-              <div
-                key={index}
-                className="group relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 overflow-hidden hover:border-primary/30 transition-all duration-500"
-              >
+              <div key={index} className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 overflow-hidden">
                 <div className="p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {solution.title}
-                    </h3>
+                    <h3 className="text-xl font-semibold text-foreground">{solution.title}</h3>
                   </div>
 
                   <p className="text-muted-foreground mb-6 text-pretty leading-relaxed">
@@ -169,13 +164,13 @@ export function SolutionsSection({ locale = "en" }: { locale?: Locale }) {
                   </div>
 
                   <Button
-                    variant="ghost"
-                    className="w-full border border-border/50 hover:border-primary/30 hover:bg-primary/5 group/btn"
+                    variant="default"
+                    className="group w-full border border-primary/30 shadow-sm shadow-primary/10"
                     asChild
                   >
                     <a href="#contact">
                       <span>{solution.cta}</span>
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </a>
                   </Button>
                 </div>

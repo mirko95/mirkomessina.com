@@ -1,6 +1,6 @@
 "use client"
 
-import { Globe, Cpu, Workflow, Wrench, ArrowUpRight } from "lucide-react"
+import { Globe, Cpu, Workflow, Wrench } from "lucide-react"
 import { getHomeCopy } from "@/lib/site-copy"
 import type { Locale } from "@/lib/i18n"
 
@@ -28,20 +28,14 @@ export function ServicesSection({ locale = "en" }: { locale?: Locale }) {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {copy.services.items.map((service, index) => (
-            <div
-              key={index}
-              className="group relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-8 hover:border-primary/30 transition-all duration-500 hover:bg-card/80"
-            >
+            <div key={index} className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-8 transition-colors duration-300">
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                 {index === 0 ? <Globe className="w-6 h-6 text-primary" /> : index === 1 ? <Cpu className="w-6 h-6 text-primary" /> : index === 2 ? <Workflow className="w-6 h-6 text-primary" /> : <Wrench className="w-6 h-6 text-primary" />}
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold mb-4 text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                {service.title}
-                <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-              </h3>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">{service.title}</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed text-pretty">
                 {service.description}
               </p>

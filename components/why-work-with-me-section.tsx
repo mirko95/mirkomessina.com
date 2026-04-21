@@ -35,12 +35,9 @@ export function WhyWorkWithMeSection({ locale = "en" }: { locale?: Locale }) {
           {copy.whyMe.items.map((strength, index) => {
             const Icon = icons[index] ?? Paintbrush
             return (
-            <div
-              key={index}
-              className="group text-center lg:text-left"
-            >
+            <div key={index} className="text-center lg:text-left">
               {/* Icon */}
-              <div className="w-14 h-14 rounded-2xl bg-card border border-border/50 flex items-center justify-center mb-6 mx-auto lg:mx-0 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-card border border-border/50 flex items-center justify-center mb-6 mx-auto lg:mx-0">
                 <Icon className="w-7 h-7 text-primary" />
               </div>
 

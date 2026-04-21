@@ -10,13 +10,11 @@ import {
   Bot,
   Building2,
   ExternalLink,
-  Compass,
   Globe2,
   Layers3,
   MessagesSquare,
   Workflow,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { getExampleSites } from "@/lib/examples"
 import { getExampleIndexCopy } from "@/lib/site-copy"
 import { localizedPath, type Locale } from "@/lib/i18n"
@@ -494,7 +492,7 @@ function ExamplePreview() {
 }
 
 const ExampleCard = forwardRef<
-  HTMLElement,
+  HTMLAnchorElement,
   {
     site: ExampleSiteItem
     copy: ExampleCopy
@@ -503,9 +501,13 @@ const ExampleCard = forwardRef<
   }
 >(function ExampleCard({ site, copy, locale, mobile = false }, ref) {
   return (
-    <article
+    <Link
       ref={ref}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 ${
+      href={localizedPath(locale, `/${site.slug}`)}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`${copy.openLabel}: ${site.name}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/50 bg-card/60 text-foreground backdrop-blur-sm transition-colors duration-300 hover:border-primary/30 ${
         mobile ? "w-[88vw] max-w-[24rem] shrink-0 snap-center" : ""
       }`}
     >
@@ -545,7 +547,7 @@ const ExampleCard = forwardRef<
         </div>
 
         <div
-          className={`rounded-2xl border border-border/40 bg-background/60 p-4 overflow-hidden ${
+          className={`group/frame rounded-2xl border border-border/40 bg-background/60 p-4 overflow-hidden ${
             mobile ? "mb-6 h-[260px]" : "mb-8 min-h-[380px]"
           }`}
         >
@@ -570,14 +572,12 @@ const ExampleCard = forwardRef<
           </div>
         </div>
 
-        <Button className="mt-auto w-full bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-          <Link href={localizedPath(locale, `/${site.slug}`)} target="_blank" rel="noreferrer">
-            {copy.openLabel}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
+        <div className="mt-auto flex w-full items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+          {copy.openLabel}
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </div>
       </div>
-    </article>
+    </Link>
   )
 })
 
@@ -665,20 +665,6 @@ export function ExamplesSection({ locale = "en" }: { locale?: Locale }) {
             <p className="text-pretty text-lg text-muted-foreground">{copy.description}</p>
           </div>
 
-          <Button
-            variant="outline"
-            asChild
-            className="border-border hover:border-primary/40 hover:bg-primary/5"
-          >
-            <Link href={localizedPath(locale, "/examples")}>
-              {locale === "it"
-                ? "Vedi tutti gli esempi"
-                : locale === "de"
-                  ? "Alle Beispiele ansehen"
-                  : "View all examples"}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
         </div>
 
         <div className="md:hidden">
@@ -730,10 +716,6 @@ export function ExamplesSection({ locale = "en" }: { locale?: Locale }) {
           ))}
         </div>
 
-        <div className="mt-12 hidden items-center gap-3 text-sm text-muted-foreground md:flex">
-          <Compass className="h-4 w-4 text-primary" />
-          <span>{copy.note}</span>
-        </div>
       </div>
     </section>
   )

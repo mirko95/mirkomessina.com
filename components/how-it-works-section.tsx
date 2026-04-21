@@ -30,14 +30,14 @@ export function HowItWorksSection({ locale = "en" }: { locale?: Locale }) {
             const Icon = icons[index] ?? Code2
 
             return (
-              <div key={index} className="relative group">
+              <div key={index} className="relative">
                 {index < copy.process.steps.length - 1 && (
                   <div className="hidden lg:block absolute top-10 left-[calc(50%+32px)] w-[calc(100%-64px)] h-px bg-gradient-to-r from-border via-primary/30 to-border" />
                 )}
 
                 <div className="flex flex-col items-center text-center">
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 rounded-2xl bg-card border border-border/50 flex items-center justify-center group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-300">
+                    <div className="relative w-20 h-20 rounded-2xl bg-card border border-border/50 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-primary" />
                     </div>
 
