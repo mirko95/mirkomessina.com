@@ -31,7 +31,7 @@ export function localizedPath(locale: Locale, path: string) {
     throw new Error(`localizedPath expects an absolute path, received ${path}`)
   }
 
-  if (locale === "en") {
+  if (locale === "en" && path === "/") {
     return path
   }
 
