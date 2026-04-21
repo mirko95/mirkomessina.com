@@ -1,12 +1,20 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Code2, Cpu, Layers } from "lucide-react"
+import { ArrowRight, Code2, Cpu, Layers, Github, Linkedin, Mail } from "lucide-react"
+import { siteConfig } from "@/lib/site"
 import { getHomeCopy } from "@/lib/site-copy"
 import type { Locale } from "@/lib/i18n"
 
 export function HeroSection({ locale = "en" }: { locale?: Locale }) {
   const copy = getHomeCopy(locale)
+  const socialLinks = [
+    { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn" },
+    { icon: Github, href: siteConfig.social.github, label: "GitHub" },
+    { icon: Mail, href: `mailto:${siteConfig.email}`, label: "Email" },
+  ].filter((social) => social.href)
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
@@ -69,6 +77,26 @@ export function HeroSection({ locale = "en" }: { locale?: Locale }) {
                 {copy.hero.secondaryCta}
               </Button>
             </div>
+
+            {socialLinks.length > 0 && (
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+                <p className="text-sm text-muted-foreground">Find me on</p>
+                <div className="flex items-center gap-3">
+                  {socialLinks.map((social) => (
+                    <Link
+                      key={social.label}
+                      href={social.href}
+                      target={social.href.startsWith("mailto") ? undefined : "_blank"}
+                      rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                      aria-label={social.label}
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-card/60 text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
+                    >
+                      <social.icon className="h-5 w-5" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Content - Abstract Tech Visual */}
