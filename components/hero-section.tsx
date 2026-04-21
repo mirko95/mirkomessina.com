@@ -100,7 +100,7 @@ export function HeroSection({ locale = "en" }: { locale?: Locale }) {
           </div>
 
           {/* Right Content - Abstract Tech Visual */}
-          <div className="relative flex justify-center lg:justify-end pt-0 lg:pt-2">
+          <div className="relative flex justify-center lg:justify-end pt-6 lg:pt-20 lg:-translate-y-2">
             <div className="relative w-full max-w-lg">
               {/* Main visual container */}
               <div className="relative">
