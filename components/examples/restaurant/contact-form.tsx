@@ -45,30 +45,8 @@ export function ContactForm({ locale = "en" }: { locale?: Locale }) {
   const onSubmit = async (values: ContactFormValues) => {
     try {
       setSubmitError(null)
-
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          subject: `Reservation request for ${values.guests} guests`,
-          message: values.message,
-          date: values.date,
-          guests: values.guests,
-          type: "reservation",
-          honeypot: "",
-        }),
-      })
-
-      const payload = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null
-
-      if (!response.ok || !payload?.ok) {
-        throw new Error(payload?.error || (locale === "it" ? "Qualcosa e` andato storto." : locale === "de" ? "Etwas ist schiefgelaufen." : "Something went wrong."))
-      }
-
+      // Simulate a reservation request without sending any real mail.
+      await new Promise((resolve) => setTimeout(resolve, 900))
       setSubmitted(true)
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : locale === "it" ? "Qualcosa e` andato storto." : locale === "de" ? "Etwas ist schiefgelaufen." : "Something went wrong.")
@@ -81,7 +59,7 @@ export function ContactForm({ locale = "en" }: { locale?: Locale }) {
         <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-700">{locale === "de" ? "Anfrage gesendet" : locale === "it" ? "Richiesta inviata" : "Request sent"}</p>
         <h3 className="mt-3 text-2xl font-semibold text-stone-950">{locale === "de" ? "Deine Reservierungsanfrage wurde gesendet" : locale === "it" ? "La tua richiesta di prenotazione e` stata inviata" : "Your reservation request was sent"}</h3>
         <p className="mt-3 text-sm leading-7 text-stone-600">
-          {locale === "de" ? "Ich habe die Details in meinem Gmail-Postfach erhalten und antworte so schnell wie moeglich." : locale === "it" ? "Ho ricevuto i dettagli nella mia casella Gmail e rispondero` il prima possibile." : "I received the details in my Gmail inbox and will reply as soon as possible."}
+          {locale === "de" ? "Das ist eine Demo-Anfrage. Es wurde keine echte E-Mail versendet." : locale === "it" ? "Questa e` una richiesta demo. Non e` stata inviata alcuna email reale." : "This is a demo request. No real email was sent."}
         </p>
       </div>
     )
