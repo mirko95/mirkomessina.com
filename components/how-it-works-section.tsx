@@ -10,7 +10,7 @@ export function HowItWorksSection({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <section id="process" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.03),transparent_45%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.03),transparent_46%)]" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">

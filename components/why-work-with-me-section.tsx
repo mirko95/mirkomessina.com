@@ -11,7 +11,7 @@ export function WhyWorkWithMeSection({ locale = "en" }: { locale?: Locale }) {
   return (
     <section id="why-me" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.04),transparent_44%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.03),transparent_46%)]" />
       
       {/* Decorative line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-border to-border/50" />

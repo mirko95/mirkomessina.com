@@ -651,7 +651,7 @@ export function ExamplesSection({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <section id="examples" className="relative overflow-hidden py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.035),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.03),transparent_40%)]" />
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
         <div className="mb-16 flex flex-col gap-6 lg:mb-20 lg:flex-row lg:items-end lg:justify-between">
