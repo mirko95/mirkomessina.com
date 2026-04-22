@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n"
+import { normalizeGermanData } from "@/lib/german"
 
 export type SeoLandingPageConfig = {
   slug: string
@@ -423,11 +424,13 @@ export function getSeoLandingPageCopy(locale: Locale, slug: string) {
 
   if (!base) return undefined
 
-  return {
+  const result = {
     ...base,
     ...localized,
     benefits: localized?.benefits ?? base.benefits,
     steps: localized?.steps ?? base.steps,
   }
+
+  return locale === "de" ? normalizeGermanData(result) : result
 }
 

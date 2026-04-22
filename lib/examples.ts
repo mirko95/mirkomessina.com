@@ -1,5 +1,6 @@
 import { Globe, Building2, BarChart3, Bot, Workflow, Clock3 } from "lucide-react"
 import type { Locale } from "@/lib/i18n"
+import { normalizeGermanData } from "@/lib/german"
 
 export type ExampleSite = {
   slug: string
@@ -551,10 +552,11 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
 
 export function getExampleSites(locale: Locale) {
   const localeCopy = exampleCopy[locale]
-  return exampleSites.map((site) => ({
+  const resolved = exampleSites.map((site) => ({
     ...site,
     ...(localeCopy[site.slug] ?? {}),
   }))
+  return locale === "de" ? normalizeGermanData(resolved) : resolved
 }
 
 export function getLocalizedExampleSite(locale: Locale, slug: string) {
