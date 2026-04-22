@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { headers } from "next/headers"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { siteConfig } from '@/lib/site'
 import { getOrganizationJsonLd, getSiteUrl } from '@/lib/seo'
 import { CookieConsent } from '@/components/cookie-consent'
@@ -88,6 +89,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
         />
         {children}
+        <SpeedInsights />
         <CookieConsent />
       </body>
     </html>
