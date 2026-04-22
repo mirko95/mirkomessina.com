@@ -31,18 +31,18 @@ export function ServicesSection({ locale = "en" }: { locale?: Locale }) {
               {copy.services.items.map((service, index) => (
                 <article
                   key={index}
-                  className="grid gap-4 px-6 py-6 lg:grid-cols-[220px_1fr] lg:gap-8 lg:px-8 lg:py-7"
+                  className="grid gap-4 px-6 py-6 lg:grid-cols-[120px_1fr] lg:gap-5 lg:px-8 lg:py-7 lg:items-center"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <div className="flex items-start gap-4 lg:items-center">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                       {index === 0 ? (
-                        <Globe className="h-6 w-6 text-primary" />
+                        <Globe className="h-7 w-7 text-primary" />
                       ) : index === 1 ? (
-                        <Cpu className="h-6 w-6 text-primary" />
+                        <Cpu className="h-7 w-7 text-primary" />
                       ) : index === 2 ? (
-                        <Workflow className="h-6 w-6 text-primary" />
+                        <Workflow className="h-7 w-7 text-primary" />
                       ) : (
-                        <Wrench className="h-6 w-6 text-primary" />
+                        <Wrench className="h-7 w-7 text-primary" />
                       )}
                     </div>
                     <div className="lg:hidden">

@@ -1,0 +1,41 @@
+{
+    "piny.project_settings": {
+        "open-pages": [
+            "pinyfakepage.html"
+        ],
+        "component-settings": {
+            "components/examples/restaurant/about-page.tsx:::Temp": {
+                "route": "/aetheriq"
+            }
+        },
+        "app-routes": {
+            "routes": [
+                "/",
+                "/about",
+                "/about-page",
+                "/aetheriq",
+                "/contact",
+                "/contact-page",
+                "/examples",
+                "/extract-ui-from-website",
+                "/faq",
+                "/faq-page",
+                "/flowforge",
+                "/harbor-kitchen",
+                "/html-to-design",
+                "/impressum",
+                "/insightboard",
+                "/modelwatch",
+                "/privacy-policy",
+                "/process",
+                "/process-page",
+                "/replypilot",
+                "/services",
+                "/services-page",
+                "/website-analyzer-ai",
+                "/website-to-figma"
+            ],
+            "current_route": "/aetheriq"
+        }
+    }
+}
