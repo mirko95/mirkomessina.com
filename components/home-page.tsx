@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
+import { StrategySection } from "@/components/strategy-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
@@ -17,6 +18,7 @@ export function HomePage({ locale = "en" }: { locale?: Locale }) {
       <main className="relative">
         <HeroSection locale={locale} />
         <ServicesSection locale={locale} />
+        <StrategySection locale={locale} />
         <HowItWorksSection locale={locale} />
         <FinalCtaSection locale={locale} />
       </main>

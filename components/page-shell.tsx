@@ -9,12 +9,14 @@ export function PageShell({
   eyebrow,
   title,
   description,
+  headerAside,
   children,
 }: {
   locale: Locale
   eyebrow: string
   title: string
   description: string
+  headerAside?: ReactNode
   children: ReactNode
 }) {
   return (
@@ -31,16 +33,20 @@ export function PageShell({
             </Link>
           </Button>
 
-          <div className="max-w-3xl">
-            <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
-              {eyebrow}
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance">
-              {title}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground text-pretty leading-relaxed">
-              {description}
-            </p>
+          <div className={`grid gap-10 ${headerAside ? "lg:grid-cols-[1.15fr_0.85fr] lg:items-start" : ""}`}>
+            <div className="max-w-3xl">
+              <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
+                {eyebrow}
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance">
+                {title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg text-muted-foreground text-pretty leading-relaxed">
+                {description}
+              </p>
+            </div>
+
+            {headerAside ? <div className="self-start">{headerAside}</div> : null}
           </div>
         </div>
       </header>

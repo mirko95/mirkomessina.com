@@ -1,5 +1,6 @@
 import { type Locale } from "@/lib/i18n"
 import { normalizeGermanData } from "@/lib/german"
+import { normalizeItalianData } from "@/lib/italian"
 
 export type HomeCopy = {
   navbar: {
@@ -191,7 +192,9 @@ const siteTitles: Record<Locale, { title: string; description: string }> = {
 }
 
 export function getSiteMeta(locale: Locale) {
-  return locale === "de" ? normalizeGermanData(siteTitles[locale]) : siteTitles[locale]
+  if (locale === "de") return normalizeGermanData(siteTitles[locale])
+  if (locale === "it") return normalizeItalianData(siteTitles[locale])
+  return siteTitles[locale]
 }
 
 const homeCopy: Record<Locale, HomeCopy> = {
@@ -1128,7 +1131,9 @@ const homeCopy: Record<Locale, HomeCopy> = {
 }
 
 export function getHomeCopy(locale: Locale) {
-  return locale === "de" ? normalizeGermanData(homeCopy[locale]) : homeCopy[locale]
+  if (locale === "de") return normalizeGermanData(homeCopy[locale])
+  if (locale === "it") return normalizeItalianData(homeCopy[locale])
+  return homeCopy[locale]
 }
 
 const exampleIndexCopy: Record<Locale, ExampleIndexCopy> = {
@@ -1159,7 +1164,9 @@ const exampleIndexCopy: Record<Locale, ExampleIndexCopy> = {
 }
 
 export function getExampleIndexCopy(locale: Locale) {
-  return locale === "de" ? normalizeGermanData(exampleIndexCopy[locale]) : exampleIndexCopy[locale]
+  if (locale === "de") return normalizeGermanData(exampleIndexCopy[locale])
+  if (locale === "it") return normalizeItalianData(exampleIndexCopy[locale])
+  return exampleIndexCopy[locale]
 }
 
 const legalCopy: Record<Locale, LegalPageCopy> = {
@@ -1382,7 +1389,9 @@ const legalCopy: Record<Locale, LegalPageCopy> = {
 }
 
 export function getLegalCopy(locale: Locale) {
-  return locale === "de" ? normalizeGermanData(legalCopy[locale]) : legalCopy[locale]
+  if (locale === "de") return normalizeGermanData(legalCopy[locale])
+  if (locale === "it") return normalizeItalianData(legalCopy[locale])
+  return legalCopy[locale]
 }
 
 export const localeLabels: Record<Locale, string> = {

@@ -84,48 +84,82 @@ export function ContactSection({ locale = "en" }: { locale?: Locale }) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.04),transparent_42%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.03),transparent_44%)]" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          <div>
-            <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
-              {copy.contact.eyebrow}
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-              {copy.contact.title}
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10 text-pretty">
-              {copy.contact.description}
-            </p>
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 items-start">
+          <div className="space-y-10">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
 
-            <div className="space-y-6">
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-card border border-border/50 flex items-center justify-center group-hover:border-primary/30 transition-colors">
-                  <Mail className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">{copy.contact.labels.email}</p>
-                  <p className="font-medium text-foreground">{siteConfig.email}</p>
-                </div>
-              </a>
+              <div className="relative rounded-2xl border border-border/50 bg-card/80 p-8 backdrop-blur-xl">
+                <p className="text-xs font-semibold tracking-[0.18em] uppercase text-primary">
+                  {locale === "it" ? "Prima di scrivermi" : locale === "de" ? "Bevor du schreibst" : "Before you write"}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {locale === "it"
+                    ? "Per farmi capire bene il progetto, mi aiutano tre cose semplici:"
+                    : locale === "de"
+                      ? "Damit ich das Projekt gut einordnen kann, helfen mir drei einfache Dinge:"
+                      : "To understand your project well, these three things help a lot:"}
+                </p>
 
-              {socialLinks.length > 0 && (
-                <div className="flex items-center gap-4 pt-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-xl bg-card border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-5 h-5" />
-                    </a>
+                <div className="mt-5 space-y-3">
+                  {[
+                    locale === "it" ? "Obiettivo del progetto" : locale === "de" ? "Projektziel" : "Project goal",
+                    locale === "it" ? "Pagine o funzioni necessarie" : locale === "de" ? "Benötigte Seiten oder Funktionen" : "Needed pages or features",
+                    locale === "it" ? "Tempistiche indicative" : locale === "de" ? "Ungefähre Timeline" : "Rough timeline",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm text-foreground">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/80" />
+                      {item}
+                    </div>
                   ))}
                 </div>
-              )}
+
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {locale === "it"
+                    ? "Se hai solo un'idea, va bene lo stesso: la possiamo chiarire insieme."
+                    : locale === "de"
+                      ? "Auch wenn du nur eine grobe Idee hast, können wir sie zusammen schärfen."
+                      : "If you only have a rough idea, that is fine too. We can shape it together."}
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
+
+              <div className="relative rounded-2xl border border-border/50 bg-card/80 p-8 backdrop-blur-xl">
+                <div className="space-y-6">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-card border border-border/50 flex items-center justify-center group-hover:border-primary/30 transition-colors">
+                      <Mail className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">{copy.contact.labels.email}</p>
+                      <p className="font-medium text-foreground">{siteConfig.email}</p>
+                    </div>
+                  </a>
+
+                  {socialLinks.length > 0 && (
+                    <div className="flex items-center gap-4 pt-4">
+                      {socialLinks.map((social) => (
+                        <a
+                          key={social.label}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 rounded-xl bg-card border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                          aria-label={social.label}
+                        >
+                          <social.icon className="w-5 h-5" />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -155,7 +189,7 @@ export function ContactSection({ locale = "en" }: { locale?: Locale }) {
                     try {
                       await onSubmit(values)
                     } catch (error) {
-        setSubmitError(error instanceof Error ? error.message : locale === "it" ? "Qualcosa e` andato storto." : locale === "de" ? "Etwas ist schiefgelaufen." : "Something went wrong.")
+                        setSubmitError(error instanceof Error ? error.message : locale === "it" ? "Qualcosa e` andato storto." : locale === "de" ? "Etwas ist schiefgelaufen." : "Something went wrong.")
                     }
                   })}
                   className="space-y-6"
