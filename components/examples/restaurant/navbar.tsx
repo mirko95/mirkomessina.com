@@ -14,7 +14,7 @@ export function RestaurantNavbar({ locale = "en" }: { locale?: Locale }) {
     { href: localizedPath(locale, "/harbor-kitchen#top"), label: locale === "de" ? "Start" : locale === "it" ? "Home" : "Home" },
     { href: localizedPath(locale, "/harbor-kitchen#menu"), label: locale === "de" ? "Menue" : locale === "it" ? "Menu" : "Menu" },
     { href: localizedPath(locale, "/harbor-kitchen#story"), label: locale === "de" ? "Erlebnis" : locale === "it" ? "Esperienza" : "Story" },
-    { href: localizedPath(locale, "/harbor-kitchen#contact"), label: locale === "de" ? "Kontakt" : locale === "it" ? "Contatti" : "Contact" },
+    { href: localizedPath(locale, "/harbor-kitchen/contact"), label: locale === "de" ? "Kontakt" : locale === "it" ? "Contatti" : "Contact" },
   ]
 
   return (

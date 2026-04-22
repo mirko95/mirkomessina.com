@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { ArrowRight, Compass } from "lucide-react"
 import { JsonLd } from "@/components/seo/json-ld"
+import { PageShell } from "@/components/page-shell"
 import { getExampleSites } from "@/lib/examples"
 import { absoluteUrl, createPageMetadata, getBreadcrumbJsonLd } from "@/lib/seo"
 import { getExampleIndexCopy } from "@/lib/site-copy"
@@ -25,46 +26,44 @@ export function ExamplesIndexPage({ locale = "en" }: { locale?: Locale }) {
   ])
 
   return (
-    <main className="min-h-screen bg-background">
+    <PageShell
+      locale={locale}
+      eyebrow={copy.eyebrow}
+      title={copy.title}
+      description={copy.description}
+    >
       <JsonLd data={breadcrumbJsonLd} />
-      <section className="relative overflow-hidden py-24 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
-              {copy.eyebrow}
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6">
-              {copy.title}
-            </h1>
-            <p className="text-lg text-muted-foreground text-pretty max-w-2xl">
-              {copy.description}
-            </p>
-          </div>
+      <section className="relative overflow-hidden py-12 sm:py-14 lg:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.08),transparent_38%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.06),transparent_34%),radial-gradient(circle_at_bottom,rgba(2,6,23,0.06),transparent_42%)]" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(3,7,18,0.02),transparent_100%)] sm:h-40" />
+        <div className="absolute inset-x-0 top-12 h-[18rem] bg-[linear-gradient(180deg,rgba(3,7,18,0.02),transparent_100%),radial-gradient(circle_at_top_left,rgba(59,130,246,0.06),transparent_38%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.04),transparent_34%),radial-gradient(circle_at_bottom,rgba(2,6,23,0.03),transparent_42%)] sm:top-16 sm:h-[22rem]" />
 
-          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mt-16">
+        <div className="mx-auto w-full max-w-7xl px-4 lg:px-8 relative z-10">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {exampleSites.map((site) => (
               <Link
                 key={site.slug}
                 href={localizedPath(locale, `/${site.slug}`)}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex h-full flex-col rounded-3xl border border-border/50 bg-card/60 backdrop-blur-sm overflow-hidden hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 sm:rounded-3xl"
               >
-                <div className={`h-48 bg-gradient-to-br ${site.colorClass} p-6 flex items-end`}>
-                  <div className="w-12 h-12 rounded-2xl bg-background/80 border border-border/50 flex items-center justify-center">
-                    <site.icon className={`w-6 h-6 ${site.accentClass}`} />
+                <div className={`h-36 bg-gradient-to-br ${site.colorClass} p-4 flex items-end sm:h-44 sm:p-6 lg:h-48`}>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-border/50 bg-background/80 sm:h-12 sm:w-12">
+                    <site.icon className={`h-5 w-5 ${site.accentClass} sm:h-6 sm:w-6`} />
                   </div>
                 </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">{site.category}</p>
-                  <h2 className="min-h-[3rem] text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
+                  <p className="mb-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:text-xs">
+                    {site.category}
+                  </p>
+                  <h2 className="mb-2 text-lg font-semibold leading-tight transition-colors group-hover:text-primary sm:min-h-[3rem] sm:text-xl">
                     {site.name}
                   </h2>
-                  <p className="min-h-[4.5rem] text-sm text-muted-foreground leading-relaxed mb-6">
+                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:min-h-[4.5rem] sm:mb-6">
                     {site.summary}
                   </p>
-                  <div className="mt-auto flex items-center text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                  <div className="mt-auto flex items-center text-sm font-medium text-foreground transition-colors group-hover:text-primary">
                     {copy.openLabel}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </div>
@@ -73,12 +72,12 @@ export function ExamplesIndexPage({ locale = "en" }: { locale?: Locale }) {
             ))}
           </div>
 
-          <div className="mt-12 flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="mt-8 flex items-start gap-3 text-sm text-muted-foreground">
             <Compass className="h-4 w-4 text-primary" />
-            <span>{copy.note}</span>
+            <span className="text-pretty">{copy.note}</span>
           </div>
         </div>
       </section>
-    </main>
+    </PageShell>
   )
 }

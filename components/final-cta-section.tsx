@@ -1,19 +1,14 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { getHomeCopy } from "@/lib/site-copy"
+import { localizedPath } from "@/lib/i18n"
 import type { Locale } from "@/lib/i18n"
 
 export function FinalCtaSection({ locale = "en" }: { locale?: Locale }) {
   const copy = getHomeCopy(locale)
-
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
@@ -33,11 +28,13 @@ export function FinalCtaSection({ locale = "en" }: { locale?: Locale }) {
 
           <Button
             size="lg"
-            onClick={scrollToContact}
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-7 text-lg font-medium group shadow-lg shadow-primary/20"
+            asChild
           >
-            {copy.finalCta.cta}
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Link href={localizedPath(locale, "/contact")}>
+              {copy.finalCta.cta}
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
         </div>
       </div>

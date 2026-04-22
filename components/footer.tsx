@@ -25,14 +25,6 @@ const socialLinks = [
 
 export function Footer({ locale = "en" }: { locale?: Locale }) {
   const copy = getHomeCopy(locale)
-  const scrollToSection = (href: string) => {
-    if (href.startsWith("#")) {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
-      }
-    }
-  }
 
   return (
     <footer className="relative py-12 lg:py-16 border-t border-border/50">
@@ -57,13 +49,13 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-6">
             {copy.footer.links.map((link) => (
-              <button
+              <Link
                 key={link.label}
-                onClick={() => scrollToSection(link.href)}
+                href={localizedPath(locale, link.href)}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
 

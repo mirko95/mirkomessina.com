@@ -185,7 +185,7 @@ export default async function ExampleSitePage({ params }: ExamplePageProps) {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href={localizedPath(locale, "/#contact")}
+                  href={localizedPath(locale, "/contact")}
                   className="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
                 >
                   {locale === "de" ? "Aehnliche Seite besprechen" : locale === "it" ? "Parliamo di una pagina simile" : "Discuss a similar site"}

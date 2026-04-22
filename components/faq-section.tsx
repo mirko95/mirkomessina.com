@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import {
   Accordion,
   AccordionContent,
@@ -7,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { getHomeCopy } from "@/lib/site-copy"
+import { localizedPath } from "@/lib/i18n"
 import type { Locale } from "@/lib/i18n"
 
 export function FaqSection({ locale = "en" }: { locale?: Locale }) {
@@ -53,9 +55,9 @@ export function FaqSection({ locale = "en" }: { locale?: Locale }) {
               : locale === "de"
                 ? "Hast du etwas Spezifischeres im Kopf? "
                 : "Have something more specific in mind? "}
-            <a href="#contact" className="text-primary hover:text-primary/80 transition-colors">
+            <Link href={localizedPath(locale, "/contact")} className="text-primary hover:text-primary/80 transition-colors">
               {copy.faq.cta}
-            </a>
+            </Link>
           </p>
         </div>
       </div>

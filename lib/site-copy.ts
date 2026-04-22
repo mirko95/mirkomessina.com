@@ -197,13 +197,10 @@ const homeCopy: Record<Locale, HomeCopy> = {
   en: {
     navbar: {
       links: [
-        { href: "#services", label: "Services" },
-        { href: "#process", label: "Process" },
-        { href: "#solutions", label: "Solutions" },
-        { href: "#examples", label: "Examples" },
-        { href: "#faq", label: "FAQ" },
-        { href: "#about", label: "About" },
-        { href: "#contact", label: "Contact" },
+        { href: "/examples", label: "Examples" },
+        { href: "/about", label: "About" },
+        { href: "/faq", label: "FAQ" },
+        { href: "/contact", label: "Contact" },
       ],
       cta: "Work with me",
       ariaLabel: "Toggle menu",
@@ -496,13 +493,10 @@ const homeCopy: Record<Locale, HomeCopy> = {
       copyright: "All rights reserved.",
       note: "Analytics only loads after consent. Contact forms are delivered through a server-side Gmail SMTP endpoint.",
       links: [
-        { label: "Services", href: "#services" },
-        { label: "Process", href: "#process" },
-        { label: "Examples", href: "#examples" },
-        { label: "FAQ", href: "#faq" },
-        { label: "Why Me", href: "#why-me" },
-        { label: "About", href: "#about" },
-        { label: "Contact", href: "#contact" },
+        { label: "Examples", href: "/examples" },
+        { label: "About", href: "/about" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Contact", href: "/contact" },
       ],
       legal: [
         { label: "Privacy & Cookies", href: "/privacy-policy" },
@@ -513,13 +507,10 @@ const homeCopy: Record<Locale, HomeCopy> = {
   it: {
     navbar: {
       links: [
-        { href: "#services", label: "Servizi" },
-        { href: "#process", label: "Processo" },
-        { href: "#solutions", label: "Soluzioni" },
-        { href: "#examples", label: "Esempi" },
-        { href: "#faq", label: "FAQ" },
-        { href: "#about", label: "Chi sono" },
-        { href: "#contact", label: "Contatto" },
+        { href: "/examples", label: "Esempi" },
+        { href: "/about", label: "Chi sono" },
+        { href: "/faq", label: "FAQ" },
+        { href: "/contact", label: "Contatto" },
       ],
       cta: "Lavora con me",
       ariaLabel: "Apri menu",
@@ -671,7 +662,7 @@ const homeCopy: Record<Locale, HomeCopy> = {
             "Landing page e siti business",
             "Layout responsive per mobile e desktop",
             "CTA chiare",
-            "Struttura pronta per l'SEO",
+            "Struttura pronta per la SEO",
           ],
           idealFor: "Freelance, aziende locali e piccoli team che hanno bisogno di piu` presenza online",
           cta: "Parla di questa soluzione",
@@ -812,13 +803,10 @@ const homeCopy: Record<Locale, HomeCopy> = {
       note:
         "L'analytics si carica solo dopo il consenso. I moduli di contatto vengono consegnati tramite un endpoint Gmail SMTP lato server.",
       links: [
-        { label: "Servizi", href: "#services" },
-        { label: "Processo", href: "#process" },
-        { label: "Esempi", href: "#examples" },
-        { label: "FAQ", href: "#faq" },
-        { label: "Perche` io", href: "#why-me" },
-        { label: "Chi sono", href: "#about" },
-        { label: "Contatto", href: "#contact" },
+        { label: "Esempi", href: "/examples" },
+        { label: "Chi sono", href: "/about" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Contatto", href: "/contact" },
       ],
       legal: [
         { label: "Privacy e Cookie", href: "/privacy-policy" },
@@ -829,13 +817,10 @@ const homeCopy: Record<Locale, HomeCopy> = {
   de: {
     navbar: {
       links: [
-        { href: "#services", label: "Leistungen" },
-        { href: "#process", label: "Ablauf" },
-        { href: "#solutions", label: "Loesungen" },
-        { href: "#examples", label: "Beispiele" },
-        { href: "#faq", label: "FAQ" },
-        { href: "#about", label: "Ueber mich" },
-        { href: "#contact", label: "Kontakt" },
+        { href: "/examples", label: "Beispiele" },
+        { href: "/about", label: "Ueber mich" },
+        { href: "/faq", label: "FAQ" },
+        { href: "/contact", label: "Kontakt" },
       ],
       cta: "Mit mir arbeiten",
       ariaLabel: "Menue oeffnen",
@@ -1128,13 +1113,10 @@ const homeCopy: Record<Locale, HomeCopy> = {
       note:
         "Analytics wird erst nach Zustimmung geladen. Kontaktformulare werden ueber einen serverseitigen Gmail-SMTP-Endpunkt zugestellt.",
       links: [
-        { label: "Leistungen", href: "#services" },
-        { label: "Ablauf", href: "#process" },
-        { label: "Beispiele", href: "#examples" },
-        { label: "FAQ", href: "#faq" },
-        { label: "Warum ich", href: "#why-me" },
-        { label: "Ueber mich", href: "#about" },
-        { label: "Kontakt", href: "#contact" },
+        { label: "Beispiele", href: "/examples" },
+        { label: "Ueber mich", href: "/about" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Kontakt", href: "/contact" },
       ],
       legal: [
         { label: "Datenschutz & Cookies", href: "/privacy-policy" },

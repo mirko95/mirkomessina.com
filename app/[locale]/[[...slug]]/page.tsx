@@ -4,8 +4,14 @@ import { HomePage } from "@/components/home-page"
 import { ExamplesIndexPage, createExamplesIndexMetadata } from "@/components/examples-index-page"
 import { PrivacyPolicyPage, createPrivacyMetadata } from "@/components/legal/privacy-page"
 import { ImpressumPage, createImpressumMetadata } from "@/components/legal/impressum-page"
+import { ServicesPage } from "@/components/pages/services-page"
+import { ProcessPage } from "@/components/pages/process-page"
+import { AboutPage } from "@/components/pages/about-page"
+import { FaqPage } from "@/components/pages/faq-page"
+import { ContactPage } from "@/components/pages/contact-page"
 import { SeoLandingPage } from "@/components/seo/landing-page"
 import { createPageMetadata } from "@/lib/seo"
+import { getHomeCopy } from "@/lib/site-copy"
 import { getSiteMeta } from "@/lib/site-copy"
 import { getSeoLandingPageCopy } from "@/lib/seo-pages"
 import { localizedPath, resolveLocale, type Locale } from "@/lib/i18n"
@@ -74,6 +80,51 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return createImpressumMetadata(locale)
   }
 
+  if (slug === "services") {
+    const copy = getHomeCopy(locale)
+    return createPageMetadata({
+      title: copy.services.title,
+      description: copy.services.description,
+      path: localizedPath(locale, "/services"),
+    })
+  }
+
+  if (slug === "process") {
+    const copy = getHomeCopy(locale)
+    return createPageMetadata({
+      title: copy.process.title,
+      description: copy.process.description,
+      path: localizedPath(locale, "/process"),
+    })
+  }
+
+  if (slug === "about") {
+    const copy = getHomeCopy(locale)
+    return createPageMetadata({
+      title: copy.about.title,
+      description: copy.about.description[0],
+      path: localizedPath(locale, "/about"),
+    })
+  }
+
+  if (slug === "faq") {
+    const copy = getHomeCopy(locale)
+    return createPageMetadata({
+      title: copy.faq.title,
+      description: copy.faq.description,
+      path: localizedPath(locale, "/faq"),
+    })
+  }
+
+  if (slug === "contact") {
+    const copy = getHomeCopy(locale)
+    return createPageMetadata({
+      title: copy.contact.title,
+      description: copy.contact.description,
+      path: localizedPath(locale, "/contact"),
+    })
+  }
+
   if (slug === "website-to-figma" || slug === "html-to-design" || slug === "extract-ui-from-website") {
     const page = getSeoLandingPageCopy(locale, slug)
     if (!page) notFound()
@@ -123,6 +174,26 @@ export default async function LocalizedRoute({ params }: { params: Params }) {
 
   if (slug === "impressum") {
     return <ImpressumPage locale={locale} />
+  }
+
+  if (slug === "services") {
+    return <ServicesPage locale={locale} />
+  }
+
+  if (slug === "process") {
+    return <ProcessPage locale={locale} />
+  }
+
+  if (slug === "about") {
+    return <AboutPage locale={locale} />
+  }
+
+  if (slug === "faq") {
+    return <FaqPage locale={locale} />
+  }
+
+  if (slug === "contact") {
+    return <ContactPage locale={locale} />
   }
 
   if (slug === "website-to-figma" || slug === "html-to-design" || slug === "extract-ui-from-website") {

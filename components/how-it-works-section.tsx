@@ -9,11 +9,11 @@ export function HowItWorksSection({ locale = "en" }: { locale?: Locale }) {
   const icons = [MessageSquare, FileSearch, Code2, Rocket]
 
   return (
-    <section id="process" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="process" className="relative py-16 lg:py-20 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.03),transparent_45%),radial-gradient(circle_at_bottom,rgba(168,85,247,0.03),transparent_46%)]" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
           <span className="text-primary text-sm font-semibold tracking-wider uppercase mb-4 block">
             {copy.process.eyebrow}
           </span>

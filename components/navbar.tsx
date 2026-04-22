@@ -32,14 +32,6 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-    setIsMobileMenuOpen(false)
-  }
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -63,14 +55,14 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {copy.navbar.links.map((link) => (
-              <button
+              <Link
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
+                href={localizedPath(locale, link.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -98,11 +90,8 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
                 </Link>
               ))}
             </div>
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-            >
-              {copy.navbar.cta}
+            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
+              <Link href={localizedPath(locale, "/contact")}>{copy.navbar.cta}</Link>
             </Button>
           </div>
 
@@ -144,20 +133,17 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           <div className="md:hidden bg-card/95 backdrop-blur-xl border-t border-border/50 py-4 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col gap-2">
               {copy.navbar.links.map((link) => (
-                <button
+                <Link
                   key={link.href}
-                  onClick={() => scrollToSection(link.href)}
+                  href={localizedPath(locale, link.href)}
                   className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium py-3 px-4 text-left hover:bg-secondary/50 rounded-lg"
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
               <div className="px-4 pt-2">
-                <Button
-                  onClick={() => scrollToSection("#contact")}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  {copy.navbar.cta}
+                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <Link href={localizedPath(locale, "/contact")}>{copy.navbar.cta}</Link>
                 </Button>
               </div>
             </div>

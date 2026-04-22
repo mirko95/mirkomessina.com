@@ -1,8 +1,10 @@
 "use client"
 
+import Link from "next/link"
 import { Globe, Cpu, Workflow, Wrench, ArrowRight, CheckCircle2, TrendingUp, Clock, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getHomeCopy } from "@/lib/site-copy"
+import { localizedPath } from "@/lib/i18n"
 import type { Locale } from "@/lib/i18n"
 
 export function SolutionsSection({ locale = "en" }: { locale?: Locale }) {
@@ -168,10 +170,10 @@ export function SolutionsSection({ locale = "en" }: { locale?: Locale }) {
                     className="group w-full border border-primary/30 shadow-sm shadow-primary/10"
                     asChild
                   >
-                    <a href="#contact">
+                    <Link href={localizedPath(locale, "/contact")}>
                       <span>{solution.cta}</span>
                       <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </div>

@@ -154,7 +154,7 @@ export function CookieConsent() {
         <button
           type="button"
           onClick={openPreferences}
-          className="fixed bottom-4 right-4 z-[59] inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/90 px-4 py-2 text-sm text-muted-foreground shadow-xl shadow-black/20 backdrop-blur-xl transition-colors hover:border-primary/30 hover:text-foreground"
+          className="fixed bottom-4 right-4 z-[59] hidden items-center gap-2 rounded-full border border-border/60 bg-card/90 px-4 py-2 text-sm text-muted-foreground shadow-xl shadow-black/20 backdrop-blur-xl transition-colors hover:border-primary/30 hover:text-foreground lg:inline-flex"
           aria-label="Open cookie preferences"
         >
           <ShieldCheck className="h-4 w-4 text-primary" />

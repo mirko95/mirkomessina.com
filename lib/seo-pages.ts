@@ -58,7 +58,7 @@ export const seoLandingPages: SeoLandingPageConfig[] = [
       },
     ],
     ctaLabel: "Discuss a website to Figma project",
-    ctaHref: "/#contact",
+    ctaHref: "/contact",
   },
   {
     slug: "html-to-design",
@@ -98,7 +98,7 @@ export const seoLandingPages: SeoLandingPageConfig[] = [
       },
     ],
     ctaLabel: "Ask about HTML to design",
-    ctaHref: "/#contact",
+    ctaHref: "/contact",
   },
   {
     slug: "extract-ui-from-website",
@@ -138,7 +138,7 @@ export const seoLandingPages: SeoLandingPageConfig[] = [
       },
     ],
     ctaLabel: "Request an extraction workflow",
-    ctaHref: "/#contact",
+    ctaHref: "/contact",
   },
 ]
 
