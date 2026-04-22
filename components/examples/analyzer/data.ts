@@ -63,7 +63,7 @@ const localized: Record<Locale, Partial<AnalyzerData>> = {
     featureCards: [
       { icon: ScanSearch, title: "Analisi URL", description: "Incolla un URL live e estrai titolo pagina, meta description, struttura H1/H2, testo visibile e una rapida sintesi dei contenuti." },
       { icon: Bot, title: "Suggerimenti OpenAI", description: "Invia i dati estratti a OpenAI e trasforma i risultati grezzi in note UX, correzioni SEO e miglioramenti di contenuto pronti per il cliente." },
-      { icon: Gauge, title: "Score a colpo d'occhio", description: "Restituisci punteggi chiari per UX, SEO e performance cosi` un'agenzia o un founder vede subito cosa va sistemato." },
+      { icon: Gauge, title: "Score a colpo d'occhio", description: "Restituisci punteggi chiari per UX, SEO e performance così un'agenzia o un founder vede subito cosa va sistemato." },
       { icon: TimerReset, title: "Elaborazione asincrona", description: "Mantieni il prodotto reattivo con loading state, timeout, retry ed errori gestiti con eleganza per siti bloccati o lenti." },
       { icon: ShieldCheck, title: "Mentalita` production", description: "La struttura sembra un prodotto reale: UI frontend, servizio backend, layer AI e storage opzionale dei report." },
       { icon: WandSparkles, title: "Report esportabili", description: "I report possono essere copiati, esportati e riutilizzati come deliverable commerciale o audit pre-lancio." },
@@ -81,8 +81,8 @@ const localized: Record<Locale, Partial<AnalyzerData>> = {
     ],
     recommendationGroups: [
       { title: "Suggerimenti SEO", icon: TrendingUp, items: ["Riscrivi la meta description citando il servizio, la localita` o il beneficio del prodotto nella prima frase.", "Mantieni un solo H1 chiaro e trasforma i titoli di sezione in H2 descrittivi.", "Aggiungi link interni contestuali a pricing, contatti o case study per rafforzare i percorsi di crawl."] },
-      { title: "Feedback UX", icon: CheckCircle2, items: ["Rendi l'azione principale piu` visibile above the fold e ripetila dopo il riepilogo.", "Riduci la distrazione nell'hero mantenendo un solo messaggio principale e una sola riga di supporto.", "Migliora gli spazi su mobile attorno alle card piu` dense cosi` i risultati restano facili da leggere."] },
-      { title: "Suggerimenti performance", icon: Lock, items: ["Comprimi gli screenshot grandi e carica in lazy loading tutto cio` che e` sotto la prima schermata.", "Rimanda script non critici, riduci il codice client inutilizzato e mantieni leggero il rendering del report.", "Memorizza gli audit ripetuti nella stessa sessione cosi` gli utenti possono confrontare i cambiamenti."] },
+      { title: "Feedback UX", icon: CheckCircle2, items: ["Rendi l'azione principale piu` visibile above the fold e ripetila dopo il riepilogo.", "Riduci la distrazione nell'hero mantenendo un solo messaggio principale e una sola riga di supporto.", "Migliora gli spazi su mobile attorno alle card piu` dense così i risultati restano facili da leggere."] },
+      { title: "Suggerimenti performance", icon: Lock, items: ["Comprimi gli screenshot grandi e carica in lazy loading tutto cio` che e` sotto la prima schermata.", "Rimanda script non critici, riduci il codice client inutilizzato e mantieni leggero il rendering del report.", "Memorizza gli audit ripetuti nella stessa sessione così gli utenti possono confrontare i cambiamenti."] },
     ],
     architectureBlocks: [
       { title: "Frontend", text: "Dashboard Next.js, form URL, loading state, card risultati, controlli confronto e azioni di export." },

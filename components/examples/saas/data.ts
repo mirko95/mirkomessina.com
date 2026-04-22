@@ -296,7 +296,7 @@ const localized: Record<Locale, Partial<SaasData>> = {
       badge: "Insight AI per team prodotto moderni",
       title: "Vedi la salute del prodotto in modo chiaro, senza costruire un intero team analytics.",
       description:
-        "AetherIQ trasforma dati di prodotto, ricavi e retention in riepiloghi settimanali leggibili, alert di anomalie e dashboard pronte per il team, cosi` da prendere decisioni piu` velocemente.",
+        "AetherIQ trasforma dati di prodotto, ricavi e retention in riepiloghi settimanali leggibili, alert di anomalie e dashboard pronte per il team, così da prendere decisioni piu` velocemente.",
       primaryCta: "Inizia la prova gratuita",
       secondaryCta: "Guarda il tour",
       dashboardTitle: "Dashboard AetherIQ",

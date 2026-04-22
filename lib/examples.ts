@@ -233,7 +233,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
           label: "Analisi",
           title: "Metriche aziendali, non rumore grezzo",
           description:
-            "La dashboard traduce i dati in una narrazione cosi` che un founder o un analyst capisca cosa e` cambiato e perche`.",
+            "La dashboard traduce i dati in una narrazione così che un founder o un analyst capisca cosa e` cambiato e perche`.",
         },
         {
           label: "Report",
@@ -260,7 +260,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
           label: "Hero",
           title: "Una lettura immediata",
           description:
-            "La prima sezione guida con una promessa semplice, un visual forte e una CTA diretta cosi` il visitatore capisce subito l'offerta.",
+            "La prima sezione guida con una promessa semplice, un visual forte e una CTA diretta così il visitatore capisce subito l'offerta.",
         },
         {
           label: "Prodotto",
@@ -272,7 +272,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
           label: "Controlli",
           title: "Costruita per l'azione",
           description:
-            "La pagina mantiene i controlli visibili, cosi` il racconto del prodotto porta naturalmente all'uso e non solo all'ammirazione.",
+            "La pagina mantiene i controlli visibili, così il racconto del prodotto porta naturalmente all'uso e non solo all'ammirazione.",
         },
       ],
     },
@@ -287,7 +287,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
           label: "Draft",
           title: "Prime risposte utili",
           description:
-            "L'assistente prepara una risposta chiara a partire dal contesto del cliente e dalla documentazione, cosi` il team parte da un buon draft invece che da zero.",
+            "L'assistente prepara una risposta chiara a partire dal contesto del cliente e dalla documentazione, così il team parte da un buon draft invece che da zero.",
         },
         {
           label: "Review",
@@ -374,13 +374,13 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
           label: "SEO locale",
           title: "Facile da trovare",
           description:
-            "Orari, indirizzo e contatti sono visibili presto cosi` la pagina supporta ricerca e traffico locale.",
+            "Orari, indirizzo e contatti sono visibili presto così la pagina supporta ricerca e traffico locale.",
         },
         {
           label: "Prenotazioni",
           title: "Un solo percorso chiaro",
           description:
-            "Il design mantiene l'azione di prenotazione sempre visibile cosi` l'utente non deve cercarla.",
+            "Il design mantiene l'azione di prenotazione sempre visibile così l'utente non deve cercarla.",
         },
       ],
     },

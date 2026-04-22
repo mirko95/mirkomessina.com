@@ -127,7 +127,7 @@ const localized: Record<Locale, Partial<BusyLandingData>> = {
     statusCards: [
       {
         title: "Stato Busy live",
-        description: "Task corrente, focus e prossimo passo restano visibili in un solo schermo, cosi` la pagina sembra operativa.",
+        description: "Task corrente, focus e prossimo passo restano visibili in un solo schermo, così la pagina sembra operativa.",
       },
       {
         title: "Spazio condiviso",
@@ -142,12 +142,12 @@ const localized: Record<Locale, Partial<BusyLandingData>> = {
       { title: "Start / Pausa", description: "Un comando unico che rende il timer tangibile e immediato." },
       { title: "Timer focus", description: "Un conto alla rovescia visibile che supporta il lavoro profondo." },
       { title: "Scorciatoie", description: "Azioni da tastiera per muoversi velocemente nei task ricorrenti." },
-      { title: "Notifiche", description: "Solo i promemoria importanti, cosi` l'esperienza resta calma." },
+      { title: "Notifiche", description: "Solo i promemoria importanti, così l'esperienza resta calma." },
     ],
     faqItems: [
       { q: "E` un concept reale o solo un mockup visivo?", a: "Funziona prima come concept di prodotto, ma la struttura e` abbastanza solida da diventare una landing page reale." },
-      { q: "Si puo` cambiare la palette bianca e arancio?", a: "Si`, il layout e` neutro abbastanza da poter essere ribrandizzato senza perdere il ritmo editoriale." },
-      { q: "Funziona bene su schermi piccoli?", a: "Si`, le sezioni si comprimono bene e il messaggio del hero resta leggibile." },
+      { q: "Si puo` cambiare la palette bianca e arancio?", a: "Sì, il layout e` neutro abbastanza da poter essere ribrandizzato senza perdere il ritmo editoriale." },
+      { q: "Funziona bene su schermi piccoli?", a: "Sì, le sezioni si comprimono bene e il messaggio del hero resta leggibile." },
     ],
     footerNote: "Busy e` una product page pensata per sembrare tattile, moderna e facile da presentare.",
   },

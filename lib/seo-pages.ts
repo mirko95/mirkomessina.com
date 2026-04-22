@@ -166,7 +166,7 @@ const localizedSeoPages: Record<Locale, Record<string, Partial<SeoLandingPageCon
         {
           title: "Struttura modificabile",
           description:
-            "Ottieni il layout suddiviso in sezioni riutilizzabili, cosi` i designer possono lavorare da un punto di partenza chiaro invece di ricostruire tutto da zero.",
+            "Ottieni il layout suddiviso in sezioni riutilizzabili, così i designer possono lavorare da un punto di partenza chiaro invece di ricostruire tutto da zero.",
         },
         {
           title: "Pianificazione redesign piu` rapida",
@@ -231,7 +231,7 @@ const localizedSeoPages: Record<Locale, Record<string, Partial<SeoLandingPageCon
         {
           title: "Rifiniamo il sistema visivo",
           description:
-            "Tipografia, spaziatura, colori e pulsanti vengono normalizzati cosi` il design appare coerente in Figma o in altri strumenti.",
+            "Tipografia, spaziatura, colori e pulsanti vengono normalizzati così il design appare coerente in Figma o in altri strumenti.",
         },
         {
           title: "Usalo per la pianificazione",
@@ -269,7 +269,7 @@ const localizedSeoPages: Record<Locale, Record<string, Partial<SeoLandingPageCon
         {
           title: "Scegli la pagina",
           description:
-            "La URL sorgente viene selezionata e analizzata cosi` le parti principali dell'interfaccia si possono separare dai contenuti secondari.",
+            "La URL sorgente viene selezionata e analizzata così le parti principali dell'interfaccia si possono separare dai contenuti secondari.",
         },
         {
           title: "Estrai la struttura",

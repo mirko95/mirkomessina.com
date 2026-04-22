@@ -162,7 +162,7 @@ const localized: Record<Locale, Partial<InsightBoardData>> = {
       { title: "Insight segmento", body: "Gli account mid-market generano la maggior parte della revenue espansiva e meritano priorita` nella prossima campagna." },
     ],
     reportSections: [
-      { label: "Analisi", title: "Metriche di business in italiano semplice", description: "Il prodotto trasforma i dashboard in una breve narrazione cosi` il team capisce cosa e` successo e cosa serve fare dopo." },
+      { label: "Analisi", title: "Metriche di business in italiano semplice", description: "Il prodotto trasforma i dashboard in una breve narrazione così il team capisce cosa e` successo e cosa serve fare dopo." },
       { label: "Visualizzazione", title: "Grafici che supportano la storia", description: "Pochi grafici scelti bene mostrano trend, segmenti e rischio senza sommergere gli utenti di grafici inutili." },
       { label: "Azione", title: "Raccomandazioni legate ai numeri", description: "Ogni report termina con suggerimenti operativi che founder, analyst o marketer possono davvero eseguire." },
     ],
@@ -175,8 +175,8 @@ const localized: Record<Locale, Partial<InsightBoardData>> = {
     faqItems: [
       { q: "Per chi e` pensato?", a: "Founder, analyst e growth team che hanno bisogno di leggere velocemente le performance di business senza aprire cinque strumenti diversi." },
       { q: "Sostituisce il BI software?", a: "No, si appoggia alle fonti dati esistenti e le trasforma in una vista report piu` chiara e business-friendly." },
-      { q: "I report si possono esportare?", a: "Si`, il concept supporta copy, export e review workflow, cosi` puo` essere usato in meeting o handoff al cliente." },
-      { q: "La dashboard e` personalizzabile?", a: "Si`, il layout puo` essere adattato per finance, prodotto, sales o reportistica clienti con KPI e label diverse." },
+      { q: "I report si possono esportare?", a: "Sì, il concept supporta copy, export e review workflow, così puo` essere usato in meeting o handoff al cliente." },
+      { q: "La dashboard e` personalizzabile?", a: "Sì, il layout puo` essere adattato per finance, prodotto, sales o reportistica clienti con KPI e label diverse." },
     ],
   },
   de: {

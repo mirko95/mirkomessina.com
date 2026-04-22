@@ -166,7 +166,7 @@ const localized: Record<Locale, Partial<AssistantData>> = {
         icon: BookOpenText,
         title: "Basato sulla conoscenza",
         description:
-          "Prende le risposte da documentazione prodotto, note di policy o knowledge interne cosi` le risposte restano coerenti.",
+          "Prende le risposte da documentazione prodotto, note di policy o knowledge interne così le risposte restano coerenti.",
       },
       {
         icon: Sparkles,
@@ -178,7 +178,7 @@ const localized: Record<Locale, Partial<AssistantData>> = {
         icon: BellRing,
         title: "Segnali di escalation",
         description:
-          "Evidenzia richieste sensibili, rischio di rimborso o linguaggio legale cosi` una persona puo` intervenire prima dell'invio.",
+          "Evidenzia richieste sensibili, rischio di rimborso o linguaggio legale così una persona puo` intervenire prima dell'invio.",
       },
       {
         icon: ShieldCheck,
@@ -198,7 +198,7 @@ const localized: Record<Locale, Partial<AssistantData>> = {
         number: "01",
         title: "Collega le fonti",
         description:
-          "Carica documenti prodotto, pagine FAQ e note di supporto cosi` l'assistente ha il contesto giusto prima di scrivere.",
+          "Carica documenti prodotto, pagine FAQ e note di supporto così l'assistente ha il contesto giusto prima di scrivere.",
       },
       {
         number: "02",
@@ -244,16 +244,16 @@ const localized: Record<Locale, Partial<AssistantData>> = {
     securityPoints: [
       "Le regole di risposta impediscono promesse non sicure e linguaggio fuori brand.",
       "Solo le fonti approvate possono essere usate per risposte rivolte ai clienti.",
-      "Ogni suggerimento viene salvato cosi` il team puo` verificare cio` che ha proposto l'assistente.",
+      "Ogni suggerimento viene salvato così il team puo` verificare cio` che ha proposto l'assistente.",
     ],
     faqItems: [
       {
         q: "E` utile per team piccoli?",
-        a: "Si`, l'assistente funziona bene per founder solitari e piccoli team di supporto che hanno bisogno di risposte piu` veloci senza assumere subito.",
+        a: "Sì, l'assistente funziona bene per founder solitari e piccoli team di supporto che hanno bisogno di risposte piu` veloci senza assumere subito.",
       },
       {
         q: "Puo` usare la documentazione interna?",
-        a: "Si`, e` progettato per leggere FAQ, pagine Notion, documenti o altre fonti approvate prima di generare una risposta.",
+        a: "Sì, e` progettato per leggere FAQ, pagine Notion, documenti o altre fonti approvate prima di generare una risposta.",
       },
       {
         q: "Sostituisce le persone?",
@@ -261,7 +261,7 @@ const localized: Record<Locale, Partial<AssistantData>> = {
       },
       {
         q: "Si puo` cambiare il tono per brand diversi?",
-        a: "Si`, il prodotto e` strutturato attorno a preset di tono e regole di risposta cosi` puo` adattarsi a brand differenti.",
+        a: "Sì, il prodotto e` strutturato attorno a preset di tono e regole di risposta così puo` adattarsi a brand differenti.",
       },
     ],
   },

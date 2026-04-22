@@ -107,17 +107,17 @@ const localized: Record<Locale, Partial<AutomationData>> = {
     ],
     useCases: [
       { icon: Plug, title: "Acquisizione lead", description: "Instrada i nuovi lead dai form nel CRM giusto, aggiungi tag e avvisa il team subito." },
-      { icon: CalendarClock, title: "Follow-up automatici", description: "Attiva promemoria dopo call, meeting o no-show cosi` le opportunita` non vengono dimenticate." },
+      { icon: CalendarClock, title: "Follow-up automatici", description: "Attiva promemoria dopo call, meeting o no-show così le opportunita` non vengono dimenticate." },
       { icon: FileText, title: "Fatture e admin", description: "Automatizza lavori ripetitivi come promemoria pagamenti, richieste documenti e aggiornamenti di stato." },
       { icon: ArrowRightLeft, title: "Sincronizzazione tra tool", description: "Mantieni i dati allineati tra email, fogli, CRM, support tool e dashboard interne." },
-      { icon: ShieldCheck, title: "Step di approvazione", description: "Usa l'approvazione umana per automazioni sensibili cosi` il processo resta sicuro e controllato." },
+      { icon: ShieldCheck, title: "Step di approvazione", description: "Usa l'approvazione umana per automazioni sensibili così il processo resta sicuro e controllato." },
       { icon: RefreshCcw, title: "Workflow ricorrenti", description: "Esegui report settimanali, controlli di routine ed export programmati senza configurazione manuale ogni volta." },
     ],
     workflowSteps: [
       { number: "01", title: "Trigger", description: "Una submission di form, un pagamento, una nuova riga o un orario pianificato avvia il workflow." },
       { number: "02", title: "Validazione", description: "Il sistema controlla il payload, verifica i campi obbligatori e blocca le azioni incomplete." },
       { number: "03", title: "Instradamento", description: "I dati vengono inviati all'app, al team o alla coda di approvazione corretta in base a regole e condizioni." },
-      { number: "04", title: "Log", description: "Ogni esecuzione viene registrata cosi` il team puo` verificare cosa e` successo e migliorare il workflow." },
+      { number: "04", title: "Log", description: "Ogni esecuzione viene registrata così il team puo` verificare cosa e` successo e migliorare il workflow." },
     ],
     previewStats: [
       { label: "Ore risparmiate", value: "32/settimana" },
@@ -136,10 +136,10 @@ const localized: Record<Locale, Partial<AutomationData>> = {
       { title: "Sicurezza", text: "Gate di approvazione, audit log e controlli permessi per automazioni sensibili." },
     ],
     faqItems: [
-      { q: "E` pensato per piccole imprese?", a: "Si`, il concept funziona per team piccoli che hanno bisogno di automazioni pratiche senza costruire tool interni da zero." },
-      { q: "I workflow sono personalizzabili?", a: "Si`, l'interfaccia puo` essere adattata a lead gen, operations, finance, support o reportistica." },
+      { q: "E` pensato per piccole imprese?", a: "Sì, il concept funziona per team piccoli che hanno bisogno di automazioni pratiche senza costruire tool interni da zero." },
+      { q: "I workflow sono personalizzabili?", a: "Sì, l'interfaccia puo` essere adattata a lead gen, operations, finance, support o reportistica." },
       { q: "Serve programmare?", a: "Non necessariamente. L'idea e` presentare una logica di automazione semplice in modo comprensibile per clienti non tecnici." },
-      { q: "Si possono aggiungere approvazioni?", a: "Si`, i task sensibili possono fermarsi per una revisione umana prima di continuare." },
+      { q: "Si possono aggiungere approvazioni?", a: "Sì, i task sensibili possono fermarsi per una revisione umana prima di continuare." },
     ],
   },
   de: {

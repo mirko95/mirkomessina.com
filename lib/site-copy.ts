@@ -610,7 +610,7 @@ const homeCopy: Record<Locale, HomeCopy> = {
       eyebrow: "Processo",
       title: "Un percorso chiaro dall'idea al lancio",
       description:
-        "Preferisco un processo semplice e trasparente: capire il bisogno, costruire bene la prima versione e migliorare da li`.",
+        "Preferisco un processo semplice e trasparente: capire il bisogno, costruire bene la prima versione e migliorare da lì.",
       steps: [
         {
           number: "01",
@@ -628,7 +628,7 @@ const homeCopy: Record<Locale, HomeCopy> = {
           number: "03",
           title: "Sviluppo",
           description:
-            "Lavoro per piccoli step cosi` puoi rivedere i progressi presto. Questo tiene il lavoro concreto e rende piu` facili gli aggiustamenti.",
+            "Lavoro per piccoli step così puoi rivedere i progressi presto. Questo tiene il lavoro concreto e rende piu` facili gli aggiustamenti.",
         },
         {
           number: "04",
@@ -742,7 +742,7 @@ const homeCopy: Record<Locale, HomeCopy> = {
         {
           question: "Come lavori di solito con i clienti?",
           answer:
-            "Preferisco un processo chiaro e diretto. Prima definiamo l'obiettivo, poi costruisco la versione essenziale in piccoli step cosi` puoi rivedere presto i progressi. Il mio background nel supporto mi ha insegnato chiarezza, affidabilita` e comunicazione continua.",
+            "Preferisco un processo chiaro e diretto. Prima definiamo l'obiettivo, poi costruisco la versione essenziale in piccoli step così puoi rivedere presto i progressi. Il mio background nel supporto mi ha insegnato chiarezza, affidabilita` e comunicazione continua.",
         },
         {
           question: "Puoi aiutare anche se l'idea non e` ancora definita?",
