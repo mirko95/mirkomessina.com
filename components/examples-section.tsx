@@ -38,62 +38,54 @@ function Frame({
   )
 }
 
-function InsightBoardPreview() {
+function AureliaPreview() {
   return (
-    <Frame className="bg-white text-slate-900">
+    <Frame className="bg-[#f8f5f0] text-[#121212]">
       <div className="p-4">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
-              Editorial report
+        <div className="relative overflow-hidden rounded-[1.4rem] bg-[#121212]">
+          <img src="/images/aurelia/hero-interior.jpg" alt="" className="h-44 w-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center">
+            <p className="text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-[#c5a67c]">
+              Established 2012
             </p>
-            <p className="mt-1 text-sm text-slate-500">Weekly business review</p>
-          </div>
-          <div className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
-            PDF ready
-          </div>
-        </div>
-        <div className="mt-4 grid gap-3 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-2xl bg-slate-950 p-4 text-white">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-slate-400">Revenue snapshot</p>
-              <BarChart3 className="h-4 w-4 text-sky-300" />
-            </div>
-            <p className="mt-3 text-3xl font-semibold">$84k</p>
-            <div className="mt-4 h-24 rounded-2xl bg-[linear-gradient(180deg,rgba(56,189,248,0.18),rgba(255,255,255,0.03))] p-3">
-              <div className="flex h-full items-end gap-2">
-                {[38, 44, 52, 49, 65, 61, 72].map((height, index) => (
-                  <div
-                    key={index}
-                    className="flex-1 rounded-t-full bg-sky-300"
-                    style={{ height: `${height}%` }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="space-y-3">
-            {[
-              ["Retention", "92%", "text-emerald-600"],
-              ["Pipeline", "$31k", "text-violet-600"],
-              ["Support", "14 tickets", "text-amber-600"],
-            ].map(([label, value, color]) => (
-              <div key={label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{label}</p>
-                <p className={`mt-2 text-2xl font-semibold ${color}`}>{value}</p>
-              </div>
-            ))}
+            <p className="mt-3 font-serif text-3xl leading-tight text-white">
+              Calm, refined spaces
+            </p>
           </div>
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          {["Narrative summary", "Source breakdown", "Action list"].map((item) => (
-            <div
-              key={item}
-              className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-xs font-medium text-slate-600"
-            >
-              {item}
+        <div className="mt-4 flex items-center justify-between border-b border-[#c5a67c]/25 pb-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c5a67c]">
+              Interior studio
+            </p>
+            <p className="mt-1 text-sm text-[#121212]/55">Luxury portfolio website</p>
+          </div>
+          <div className="border border-[#c5a67c]/40 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#c5a67c]">
+            Inquire
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-3">
+          {[
+            ["/images/aurelia/belvedere-villa.jpg", "Como"],
+            ["/images/aurelia/hexagone-suite.jpg", "Paris"],
+            ["/images/aurelia/urban-sanctuary.jpg", "London"],
+          ].map(([image, label]) => (
+            <div key={label} className="space-y-2">
+              <img src={image} alt="" className="aspect-[4/5] w-full object-cover" />
+              <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[#c5a67c]">{label}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="bg-white p-3">
+            <p className="font-serif text-xl">Design Excellence</p>
+            <p className="mt-1 text-xs leading-5 text-[#121212]/50">Residential, hotel, styling, and furniture selection.</p>
+          </div>
+          <div className="bg-[#121212] p-3 text-white">
+            <p className="font-serif text-xl">Aurelia Journey</p>
+            <p className="mt-1 text-xs leading-5 text-white/50">Consultation, concept, design, delivery.</p>
+          </div>
         </div>
       </div>
     </Frame>
@@ -419,7 +411,7 @@ function HarborKitchenPreview() {
   )
 }
 
-function AnalyzerPreview() {
+function AffectSensePreview() {
   return (
     <Frame className="bg-[#040507] text-white">
       <div className="p-4">
@@ -435,24 +427,28 @@ function AnalyzerPreview() {
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div className="rounded-[1.2rem] border border-white/10 bg-black/30 p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-violet-200">UX score</p>
-              <p className="mt-2 text-3xl font-semibold">82</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-violet-200">Signal</p>
+              <p className="mt-2 text-3xl font-semibold">64%</p>
             </div>
             <div className="rounded-[1.2rem] border border-white/10 bg-black/30 p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-cyan-200">SEO score</p>
-              <p className="mt-2 text-3xl font-semibold">74</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-cyan-200">Latency</p>
+              <p className="mt-2 text-3xl font-semibold">86</p>
             </div>
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-[1.2rem] border border-white/10 bg-black/30 p-4">
-              <p className="text-xs text-slate-400">URL</p>
-              <p className="mt-2 text-sm text-slate-200">https://example.com</p>
-              <div className="mt-4 h-24 rounded-2xl bg-[linear-gradient(135deg,rgba(34,211,238,0.16),rgba(168,85,247,0.12))]" />
+              <p className="text-xs text-slate-400">Dominant</p>
+              <p className="mt-2 text-sm text-slate-200">Happy</p>
+              <div className="mt-4 flex h-24 items-end gap-2 rounded-2xl bg-[linear-gradient(135deg,rgba(34,211,238,0.16),rgba(168,85,247,0.12))] p-3">
+                {[42, 58, 76, 66, 84].map((height, index) => (
+                  <div key={index} className="flex-1 rounded-t-full bg-cyan-300" style={{ height: `${height}%` }} />
+                ))}
+              </div>
             </div>
             <div className="rounded-[1.2rem] border border-white/10 bg-black/30 p-4">
-              <p className="text-xs text-slate-400">Recommendations</p>
+              <p className="text-xs text-slate-400">Pipeline</p>
               <div className="mt-3 space-y-2">
-                {["Meta description", "Heading hierarchy", "Internal links"].map((item) => (
+                {["Webcam frame", "YuNet alignment", "ONNX scores"].map((item) => (
                   <div
                     key={item}
                     className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200"
@@ -487,8 +483,15 @@ function GenericPreview() {
   )
 }
 
-function ExamplePreview() {
-  return <AetherIqPreview />
+function ExamplePreview({ slug }: { slug: string }) {
+  if (slug === "affect-sense") return <AffectSensePreview />
+  if (slug === "aurelia") return <AureliaPreview />
+  if (slug === "modelwatch") return <ModelWatchPreview />
+  if (slug === "replypilot") return <ReplyPilotPreview />
+  if (slug === "flowforge") return <FlowForgePreview />
+  if (slug === "harbor-kitchen") return <HarborKitchenPreview />
+  if (slug === "aetheriq") return <AetherIqPreview />
+  return <GenericPreview />
 }
 
 const ExampleCard = forwardRef<
@@ -552,7 +555,7 @@ const ExampleCard = forwardRef<
           }`}
         >
           <div className={mobile ? "origin-top scale-[0.82] w-[122%]" : "h-full"}>
-            <ExamplePreview />
+            <ExamplePreview slug={site.slug} />
           </div>
         </div>
 

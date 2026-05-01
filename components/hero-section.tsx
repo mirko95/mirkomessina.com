@@ -87,7 +87,7 @@ export function HeroSection({ locale = "en" }: { locale?: Locale }) {
           </div>
 
           {/* Right Content - Abstract Tech Visual */}
-          <div className="relative flex justify-center lg:justify-end pt-2 lg:pt-8 lg:-translate-y-1">
+          <div className="relative flex justify-center lg:justify-end pt-2 lg:pt-20">
             <div className="relative w-full max-w-md">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-3xl blur-2xl" />
 

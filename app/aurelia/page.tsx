@@ -2,7 +2,7 @@ import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { localizedPath, resolveLocale } from "@/lib/i18n"
 
-export default async function WebsiteAnalyzerAiRoute() {
+export default async function AureliaRoute() {
   const locale = resolveLocale((await headers()).get("x-locale"))
-  redirect(localizedPath(locale, "/website-analyzer-ai"))
+  redirect(localizedPath(locale, "/aurelia"))
 }

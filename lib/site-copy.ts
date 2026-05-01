@@ -107,7 +107,6 @@ export type HomeCopy = {
   }
   footer: {
     copyright: string
-    note: string
     links: Array<{ label: string; href: string }>
     legal: Array<{ label: string; href: string }>
   }
@@ -495,7 +494,6 @@ const homeCopy: Record<Locale, HomeCopy> = {
     },
     footer: {
       copyright: "All rights reserved.",
-      note: "Analytics only loads after consent. Contact forms are delivered through a server-side Gmail SMTP endpoint.",
       links: [
         { label: "Examples", href: "/examples" },
         { label: "About", href: "/about" },
@@ -804,8 +802,6 @@ const homeCopy: Record<Locale, HomeCopy> = {
     },
     footer: {
       copyright: "Tutti i diritti riservati.",
-      note:
-        "L'analytics si carica solo dopo il consenso. I moduli di contatto vengono consegnati tramite un endpoint Gmail SMTP lato server.",
       links: [
         { label: "Esempi", href: "/examples" },
         { label: "Chi sono", href: "/about" },
@@ -1114,8 +1110,6 @@ const homeCopy: Record<Locale, HomeCopy> = {
     },
     footer: {
       copyright: "Alle Rechte vorbehalten.",
-      note:
-        "Analytics wird erst nach Zustimmung geladen. Kontaktformulare werden ueber einen serverseitigen Gmail-SMTP-Endpunkt zugestellt.",
       links: [
         { label: "Beispiele", href: "/examples" },
         { label: "Ueber mich", href: "/about" },
@@ -1399,4 +1393,3 @@ export const localeLabels: Record<Locale, string> = {
   it: "Italiano",
   de: "Deutsch",
 }
-

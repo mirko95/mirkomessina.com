@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
-import { siteConfig } from "@/lib/site"
 import { getHomeCopy } from "@/lib/site-copy"
 import { localizedPath } from "@/lib/i18n"
 import type { Locale } from "@/lib/i18n"
@@ -45,11 +45,18 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           {/* Logo */}
           <a
             href={localizedPath(locale, "/")}
-            className="whitespace-nowrap text-lg sm:text-xl font-semibold tracking-tight text-foreground hover:text-primary transition-colors shrink-0"
+            className="relative block h-12 w-12 shrink-0 transition-opacity hover:opacity-85 sm:h-14 sm:w-14"
+            aria-label="Mirko Messina"
           >
-            {siteConfig.firstName.toLowerCase()}
-            <span className="text-primary">.</span>
-            {siteConfig.name.split(" ")[1].toLowerCase()}
+            <Image
+              src="/images/home/logo.svg"
+              alt="Mirko Messina"
+              fill
+              unoptimized
+              priority
+              sizes="(max-width: 640px) 48px, 56px"
+              className="object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}

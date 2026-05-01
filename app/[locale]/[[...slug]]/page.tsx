@@ -19,9 +19,9 @@ import { getLocalizedExampleSite } from "@/lib/examples"
 import { AetherIqLandingPage } from "@/components/examples/saas/site-page"
 import { ReplyPilotPage } from "@/components/examples/assistant/site-page"
 import { FlowForgePage } from "@/components/examples/automation/site-page"
-import { InsightBoardPage } from "@/components/examples/insightboard/site-page"
+import { AureliaPage } from "@/components/examples/aurelia/site-page"
 import { ModelWatchPage } from "@/components/examples/modelwatch/site-page"
-import { WebsiteAnalyzerLandingPage } from "@/components/examples/analyzer/site-page"
+import { AffectSensePage } from "@/components/examples/affect-sense/site-page"
 import { RestaurantHomePage } from "@/components/examples/restaurant/home"
 import { RestaurantMenuPage } from "@/components/examples/restaurant/menu-page"
 import { RestaurantAboutPage } from "@/components/examples/restaurant/about-page"
@@ -139,9 +139,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     slug === "aetheriq" ||
     slug === "replypilot" ||
     slug === "flowforge" ||
-    slug === "insightboard" ||
+    slug === "aurelia" ||
     slug === "modelwatch" ||
-    slug === "website-analyzer-ai" ||
+    slug === "affect-sense" ||
     slug === "harbor-kitchen" ||
     slug.startsWith("harbor-kitchen/")
   ) {
@@ -214,16 +214,16 @@ export default async function LocalizedRoute({ params }: { params: Params }) {
     return <FlowForgePage locale={locale} />
   }
 
-  if (slug === "insightboard") {
-    return <InsightBoardPage locale={locale} />
+  if (slug === "aurelia") {
+    return <AureliaPage locale={locale} />
   }
 
   if (slug === "modelwatch") {
     return <ModelWatchPage locale={locale} />
   }
 
-  if (slug === "website-analyzer-ai") {
-    return <WebsiteAnalyzerLandingPage locale={locale} />
+  if (slug === "affect-sense") {
+    return <AffectSensePage locale={locale} />
   }
 
   if (slug === "harbor-kitchen") {

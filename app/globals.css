@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -77,6 +78,7 @@
 
 @theme inline {
   --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
   --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -114,6 +116,9 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-neutral-base: var(--neutral-base);
+  --color-neutral-dark: var(--neutral-dark);
+  --color-primary-light: var(--primary-light);
 }
 
 @layer base {
@@ -128,6 +133,26 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+.estetic-clinique {
+  --primary: #c5a059;
+  --primary-light: #e8dcc4;
+  --neutral-base: #f8f5f2;
+  --neutral-dark: #2a2a2a;
+  --accent: #d9b38c;
+}
+
+.estetic-clinique .glass {
+  background: rgb(255 255 255 / 70%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.estetic-clinique .text-gold-gradient {
+  background: linear-gradient(to right, #c5a059, #d9b38c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 a[href],

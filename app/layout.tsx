@@ -3,7 +3,6 @@ import { headers } from "next/headers"
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { siteConfig } from '@/lib/site'
 import { getOrganizationJsonLd, getSiteUrl } from '@/lib/seo'
-import { CookieConsent } from '@/components/cookie-consent'
 import { resolveLocale } from '@/lib/i18n'
 import './globals.css'
 
@@ -90,7 +89,6 @@ export default async function RootLayout({
         />
         {children}
         <SpeedInsights />
-        <CookieConsent />
       </body>
     </html>
   )

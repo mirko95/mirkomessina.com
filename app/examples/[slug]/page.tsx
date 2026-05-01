@@ -5,9 +5,9 @@ import { exampleSites, getExampleSite } from "@/lib/examples"
 import { AetherIqLandingPage } from "@/components/examples/saas/site-page"
 import { ReplyPilotPage } from "@/components/examples/assistant/site-page"
 import { FlowForgePage } from "@/components/examples/automation/site-page"
-import { InsightBoardPage } from "@/components/examples/insightboard/site-page"
+import { AureliaPage } from "@/components/examples/aurelia/site-page"
 import { ModelWatchPage } from "@/components/examples/modelwatch/site-page"
-import { WebsiteAnalyzerLandingPage } from "@/components/examples/analyzer/site-page"
+import { AffectSensePage } from "@/components/examples/affect-sense/site-page"
 import { RestaurantHomePage } from "@/components/examples/restaurant/home"
 import { createPageMetadata } from "@/lib/seo"
 import { headers } from "next/headers"
@@ -41,9 +41,9 @@ export async function generateMetadata({ params }: ExamplePageProps) {
 
   if (slug === "replypilot") {
     return createPageMetadata({
-      title: "ReplyPilot | AI Support Assistant",
+      title: "Estetic Clinique | Premium Aesthetic Clinic Website",
       description:
-        "An AI assistant that drafts support replies from approved sources with human review and guardrails.",
+        "A luxury aesthetic clinic website with treatment cards, pricing, gallery, FAQ, and appointment request flow.",
       path: localizedPath(locale, "/replypilot"),
     })
   }
@@ -57,12 +57,12 @@ export async function generateMetadata({ params }: ExamplePageProps) {
     })
   }
 
-  if (slug === "insightboard") {
+  if (slug === "aurelia") {
     return createPageMetadata({
-      title: "InsightBoard | Business Reporting Studio",
+      title: "Aurelia Interiors | Luxury Interior Design Studio",
       description:
-        "A business intelligence page that turns product and revenue data into clear reports.",
-      path: localizedPath(locale, "/insightboard"),
+        "A premium interior design studio website with luxury editorial styling, project galleries, services, process, testimonials, and contact section.",
+      path: localizedPath(locale, "/aurelia"),
     })
   }
 
@@ -75,12 +75,12 @@ export async function generateMetadata({ params }: ExamplePageProps) {
     })
   }
 
-  if (slug === "website-analyzer-ai") {
+  if (slug === "affect-sense") {
     return createPageMetadata({
-      title: "Website Analyzer AI | Website Audit Tool",
+      title: "AffectSense | Webcam Emotion Recognition",
       description:
-        "An AI website analysis product with scores, recommendations, and a dashboard-style report.",
-      path: localizedPath(locale, "/website-analyzer-ai"),
+        "A local webcam facial expression recognition prototype with React, FastAPI, OpenCV, and ONNX inference.",
+      path: localizedPath(locale, "/affect-sense"),
     })
   }
 
@@ -121,16 +121,16 @@ export default async function ExampleSitePage({ params }: ExamplePageProps) {
     return <FlowForgePage locale={locale} />
   }
 
-  if (slug === "insightboard") {
-    return <InsightBoardPage locale={locale} />
+  if (slug === "aurelia") {
+    return <AureliaPage locale={locale} />
   }
 
   if (slug === "modelwatch") {
     return <ModelWatchPage locale={locale} />
   }
 
-  if (slug === "website-analyzer-ai") {
-    return <WebsiteAnalyzerLandingPage locale={locale} />
+  if (slug === "affect-sense") {
+    return <AffectSensePage locale={locale} />
   }
 
   if (slug === "harbor-kitchen") {

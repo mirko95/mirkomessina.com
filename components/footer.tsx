@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Github, Linkedin, Mail } from "lucide-react"
 import { siteConfig } from "@/lib/site"
 import { getHomeCopy } from "@/lib/site-copy"
@@ -35,11 +36,17 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
           <div className="flex flex-col items-center lg:items-start gap-3">
             <a
               href={localizedPath(locale, "/")}
-              className="whitespace-nowrap text-xl font-semibold tracking-tight text-foreground hover:text-primary transition-colors"
+              className="relative block h-14 w-14 transition-opacity hover:opacity-85"
+              aria-label="Mirko Messina"
             >
-              {siteConfig.firstName.toLowerCase()}
-              <span className="text-primary">.</span>
-              {siteConfig.name.split(" ")[1].toLowerCase()}
+              <Image
+                src="/images/home/logo.svg"
+                alt="Mirko Messina"
+                fill
+                unoptimized
+                sizes="56px"
+                className="object-contain"
+              />
             </a>
             <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} {siteConfig.name}. {copy.footer.copyright}
@@ -91,10 +98,7 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
           </div>
         </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border/40 pt-6">
-            <p className="text-xs text-muted-foreground text-center sm:text-left">
-              {copy.footer.note}
-            </p>
+          <div className="flex items-center justify-end gap-4 border-t border-border/40 pt-6">
             <div className="flex items-center gap-4">
               {copy.footer.legal.map((link) => (
                 <Link
