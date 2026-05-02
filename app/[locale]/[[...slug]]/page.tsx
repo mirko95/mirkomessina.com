@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { HomePage } from "@/components/home-page"
 import { ExamplesIndexPage, createExamplesIndexMetadata } from "@/components/examples-index-page"
 import { PrivacyPolicyPage, createPrivacyMetadata } from "@/components/legal/privacy-page"
@@ -9,18 +9,15 @@ import { ProcessPage } from "@/components/pages/process-page"
 import { AboutPage } from "@/components/pages/about-page"
 import { FaqPage } from "@/components/pages/faq-page"
 import { ContactPage } from "@/components/pages/contact-page"
-import { SeoLandingPage } from "@/components/seo/landing-page"
 import { createPageMetadata } from "@/lib/seo"
 import { getHomeCopy } from "@/lib/site-copy"
 import { getSiteMeta } from "@/lib/site-copy"
-import { getSeoLandingPageCopy } from "@/lib/seo-pages"
 import { localizedPath, resolveLocale, type Locale } from "@/lib/i18n"
-import { getLocalizedExampleSite } from "@/lib/examples"
-import { AetherIqLandingPage } from "@/components/examples/saas/site-page"
-import { ReplyPilotPage } from "@/components/examples/assistant/site-page"
-import { FlowForgePage } from "@/components/examples/automation/site-page"
-import { AureliaPage } from "@/components/examples/aurelia/site-page"
-import { ModelWatchPage } from "@/components/examples/modelwatch/site-page"
+import { getLocalizedExampleSite, resolveExampleSlug } from "@/lib/examples"
+import { ReplyPilotPage } from "@/components/examples/eterna-aesthetic/site-page"
+import { FlowForgePage } from "@/components/examples/velora/site-page"
+import { AureliaPage } from "@/components/examples/aurelia-interiors/site-page"
+import { ModelWatchPage } from "@/components/examples/blog/site-page"
 import { AffectSensePage } from "@/components/examples/affect-sense/site-page"
 import { RestaurantHomePage } from "@/components/examples/restaurant/home"
 import { RestaurantMenuPage } from "@/components/examples/restaurant/menu-page"
@@ -37,7 +34,7 @@ function getPathSlug(slug?: string[]) {
 }
 
 function getLocalizedExampleMetadata(locale: Locale, slug: string): Metadata {
-  const normalizedSlug = slug.startsWith("harbor-kitchen/") ? "harbor-kitchen" : slug
+  const normalizedSlug = slug.startsWith("a-tavola/") ? "a-tavola" : resolveExampleSlug(slug)
   const site = getLocalizedExampleSite(locale, normalizedSlug)
   if (!site) {
     return createPageMetadata({
@@ -125,26 +122,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     })
   }
 
-  if (slug === "website-to-figma" || slug === "html-to-design" || slug === "extract-ui-from-website") {
-    const page = getSeoLandingPageCopy(locale, slug)
-    if (!page) notFound()
-    return createPageMetadata({
-      title: page.title,
-      description: page.description,
-      path: localizedPath(locale, `/${slug}`),
-    })
-  }
-
-  if (
-    slug === "aetheriq" ||
-    slug === "replypilot" ||
-    slug === "flowforge" ||
-    slug === "aurelia" ||
-    slug === "modelwatch" ||
-    slug === "affect-sense" ||
-    slug === "harbor-kitchen" ||
-    slug.startsWith("harbor-kitchen/")
-  ) {
+  if (getLocalizedExampleSite(locale, slug) || slug.startsWith("a-tavola/")) {
     return getLocalizedExampleMetadata(locale, slug)
   }
 
@@ -196,29 +174,19 @@ export default async function LocalizedRoute({ params }: { params: Params }) {
     return <ContactPage locale={locale} />
   }
 
-  if (slug === "website-to-figma" || slug === "html-to-design" || slug === "extract-ui-from-website") {
-    const page = getSeoLandingPageCopy(locale, slug)
-    if (!page) notFound()
-    return <SeoLandingPage page={page} locale={locale} />
-  }
-
-  if (slug === "aetheriq") {
-    return <AetherIqLandingPage locale={locale} />
-  }
-
-  if (slug === "replypilot") {
+  if (slug === "estetic-clinique") {
     return <ReplyPilotPage locale={locale} />
   }
 
-  if (slug === "flowforge") {
+  if (slug === "velora") {
     return <FlowForgePage locale={locale} />
   }
 
-  if (slug === "aurelia") {
+  if (slug === "lussolab") {
     return <AureliaPage locale={locale} />
   }
 
-  if (slug === "modelwatch") {
+  if (slug === "blog") {
     return <ModelWatchPage locale={locale} />
   }
 
@@ -226,22 +194,21 @@ export default async function LocalizedRoute({ params }: { params: Params }) {
     return <AffectSensePage locale={locale} />
   }
 
-  if (slug === "harbor-kitchen") {
+  if (slug === "a-tavola") {
     return <RestaurantHomePage locale={locale} />
   }
 
-  if (slug === "harbor-kitchen/menu") {
+  if (slug === "a-tavola/menu") {
     return <RestaurantMenuPage locale={locale} />
   }
 
-  if (slug === "harbor-kitchen/about") {
+  if (slug === "a-tavola/about") {
     return <RestaurantAboutPage locale={locale} />
   }
 
-  if (slug === "harbor-kitchen/contact") {
+  if (slug === "a-tavola/contact") {
     return <RestaurantContactPage locale={locale} />
   }
 
   notFound()
 }
-

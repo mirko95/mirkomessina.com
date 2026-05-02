@@ -20,6 +20,7 @@ import {
 import type { Locale } from "@/lib/i18n"
 import { localizedPath } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
+import { ExampleLocaleSwitcher } from "@/components/examples/example-locale-switcher"
 
 const FER2013_EMOTIONS = ["Anger", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"] as const
 const SMOOTHING_WINDOW = 7
@@ -144,7 +145,9 @@ function captureFrame(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
   return canvas.toDataURL("image/jpeg", 0.82)
 }
 
-function useWebcamEmotionDetection() {
+type AffectCopy = (typeof affectCopy)[Locale]
+
+function useWebcamEmotionDetection(copy: AffectCopy) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const overlayCanvasRef = useRef<HTMLCanvasElement>(null)
   const frameCanvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -246,7 +249,7 @@ function useWebcamEmotionDetection() {
 
       if (!response.ok) {
         const detail = await response.text()
-        throw new Error(detail || `OpenCV backend returned ${response.status}`)
+        throw new Error(detail || `${copy.backendReturned} ${response.status}`)
       }
 
       const prediction = stabilizePrediction((await response.json()) as BackendPrediction)
@@ -259,12 +262,12 @@ function useWebcamEmotionDetection() {
       drawOverlay(overlay, video, prediction.faceRect)
     } catch (predictError) {
       console.error(predictError)
-      setError("OpenCV backend inference failed. Is `npm run api:opencv` running in the Emotion Recognition project?")
+      setError(copy.inferenceFailed)
       drawOverlay(overlay, video)
     } finally {
       runningInferenceRef.current = false
     }
-  }, [stabilizePrediction])
+  }, [copy.backendReturned, copy.inferenceFailed, stabilizePrediction])
 
   const loop = useCallback(() => {
     void processFrame()
@@ -277,7 +280,7 @@ function useWebcamEmotionDetection() {
 
     try {
       if (!navigator.mediaDevices?.getUserMedia) {
-        throw new Error("Camera API is not available in this browser.")
+        throw new Error(copy.cameraUnavailable)
       }
 
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -305,9 +308,9 @@ function useWebcamEmotionDetection() {
     } catch (cameraError) {
       console.error(cameraError)
       setIsLoading(false)
-      setError(cameraError instanceof Error ? cameraError.message : "Camera access failed.")
+      setError(cameraError instanceof Error ? cameraError.message : copy.cameraFailed)
     }
-  }, [loop])
+  }, [copy.cameraFailed, copy.cameraUnavailable, loop])
 
   const toggleCamera = useCallback(() => {
     if (isCameraActive) {
@@ -348,10 +351,173 @@ function useWebcamEmotionDetection() {
   }
 }
 
-function confidenceLabel(confidence: number) {
-  if (confidence >= 0.7) return "High confidence"
-  if (confidence >= 0.48) return "Moderate confidence"
-  return "Uncertain signal"
+function confidenceLabel(confidence: number, copy: AffectCopy) {
+  if (confidence >= 0.7) return copy.highConfidence
+  if (confidence >= 0.48) return copy.moderateConfidence
+  return copy.uncertainSignal
+}
+
+const affectCopy = {
+  en: {
+    telemetry: "OpenCV emotion telemetry",
+    backend: "Backend check",
+    live: "System live",
+    ready: "Runtime ready",
+    reset: "Reset",
+    stop: "Stop",
+    loading: "Loading",
+    start: "Start",
+    preparing: "Preparing runtime",
+    offline: "Stream offline",
+    intro: "Start the camera to process webcam frames through YuNet face detection, landmark alignment, and MobileFaceNet expression inference.",
+    connect: "Connect sensor",
+    confidence: "confidence",
+    second: "2nd",
+    signal: "Signal",
+    frames: "Frames",
+    latency: "Latency",
+    summary: "Inference summary",
+    summaryText: "Webcam frames are analyzed by a local OpenCV backend using YuNet face detection, landmark alignment, and a FER2013 expression model.",
+    decision: "Decision",
+    smoothed: "Smoothed top-2",
+    api: "Check API",
+    highConfidence: "High confidence",
+    moderateConfidence: "Moderate confidence",
+    uncertainSignal: "Uncertain signal",
+    breakdown: "Emotion breakdown",
+    timeline: "Real-time mood timeline",
+    visibleSamples: "visible samples from",
+    totalSamples: "total",
+    current: "Current",
+    window: "Window",
+    awaiting: "Awaiting stream synchronization",
+    pipeline: "OpenCV full pipeline",
+    capture: "720P capture",
+    backendLabel: "Backend",
+    backendReturned: "OpenCV backend returned",
+    inferenceFailed: "OpenCV backend inference failed. Is `npm run api:opencv` running in the Emotion Recognition project?",
+    cameraUnavailable: "Camera API is not available in this browser.",
+    cameraFailed: "Camera access failed.",
+  },
+  it: {
+    telemetry: "Telemetria emozioni OpenCV",
+    backend: "Controlla backend",
+    live: "Sistema live",
+    ready: "Runtime pronto",
+    reset: "Reset",
+    stop: "Stop",
+    loading: "Caricamento",
+    start: "Avvia",
+    preparing: "Preparazione runtime",
+    offline: "Stream offline",
+    intro: "Avvia la camera per elaborare i frame webcam con face detection YuNet, allineamento landmark e inferenza espressioni MobileFaceNet.",
+    connect: "Connetti sensore",
+    confidence: "confidenza",
+    second: "2a",
+    signal: "Segnale",
+    frames: "Frame",
+    latency: "Latenza",
+    summary: "Riepilogo inferenza",
+    summaryText: "I frame webcam sono analizzati da un backend OpenCV locale con face detection YuNet, allineamento landmark e modello FER2013.",
+    decision: "Decisione",
+    smoothed: "Top-2 stabilizzata",
+    api: "Controlla API",
+    highConfidence: "Confidenza alta",
+    moderateConfidence: "Confidenza media",
+    uncertainSignal: "Segnale incerto",
+    breakdown: "Distribuzione emozioni",
+    timeline: "Timeline umore in tempo reale",
+    visibleSamples: "campioni visibili su",
+    totalSamples: "totali",
+    current: "Corrente",
+    window: "Finestra",
+    awaiting: "In attesa di sincronizzazione stream",
+    pipeline: "Pipeline OpenCV completa",
+    capture: "Acquisizione 720P",
+    backendLabel: "Backend",
+    backendReturned: "Il backend OpenCV ha restituito",
+    inferenceFailed: "Inferenza backend OpenCV non riuscita. Verifica che `npm run api:opencv` sia attivo nel progetto Emotion Recognition.",
+    cameraUnavailable: "L'API camera non e` disponibile in questo browser.",
+    cameraFailed: "Accesso alla camera non riuscito.",
+  },
+  de: {
+    telemetry: "OpenCV-Emotionstelemetrie",
+    backend: "Backend pruefen",
+    live: "System live",
+    ready: "Runtime bereit",
+    reset: "Zuruecksetzen",
+    stop: "Stop",
+    loading: "Laedt",
+    start: "Start",
+    preparing: "Runtime wird vorbereitet",
+    offline: "Stream offline",
+    intro: "Starte die Kamera, um Webcam-Frames mit YuNet-Gesichtserkennung, Landmark-Alignment und MobileFaceNet-Ausdruckserkennung zu verarbeiten.",
+    connect: "Sensor verbinden",
+    confidence: "Konfidenz",
+    second: "2.",
+    signal: "Signal",
+    frames: "Frames",
+    latency: "Latenz",
+    summary: "Inferenz-Zusammenfassung",
+    summaryText: "Webcam-Frames werden von einem lokalen OpenCV-Backend mit YuNet, Landmark-Alignment und FER2013-Modell analysiert.",
+    decision: "Entscheidung",
+    smoothed: "Geglaettete Top-2",
+    api: "API pruefen",
+    highConfidence: "Hohe Konfidenz",
+    moderateConfidence: "Mittlere Konfidenz",
+    uncertainSignal: "Unsicheres Signal",
+    breakdown: "Emotionsverteilung",
+    timeline: "Echtzeit-Stimmungsverlauf",
+    visibleSamples: "sichtbare Samples von",
+    totalSamples: "gesamt",
+    current: "Aktuell",
+    window: "Fenster",
+    awaiting: "Warte auf Stream-Synchronisierung",
+    pipeline: "Vollstaendige OpenCV-Pipeline",
+    capture: "720P-Erfassung",
+    backendLabel: "Backend",
+    backendReturned: "OpenCV-Backend meldete",
+    inferenceFailed: "OpenCV-Backend-Inferenz fehlgeschlagen. Laeuft `npm run api:opencv` im Emotion-Recognition-Projekt?",
+    cameraUnavailable: "Die Kamera-API ist in diesem Browser nicht verfuegbar.",
+    cameraFailed: "Kamerazugriff fehlgeschlagen.",
+  },
+} as const
+
+const emotionLabels: Record<Locale, Record<DisplayEmotion, string>> = {
+  en: {
+    Anger: "Anger",
+    Disgust: "Disgust",
+    Fear: "Fear",
+    Happy: "Happy",
+    Neutral: "Neutral",
+    Sad: "Sad",
+    Surprise: "Surprise",
+    Uncertain: "Uncertain",
+  },
+  it: {
+    Anger: "Rabbia",
+    Disgust: "Disgusto",
+    Fear: "Paura",
+    Happy: "Felicita`",
+    Neutral: "Neutro",
+    Sad: "Tristezza",
+    Surprise: "Sorpresa",
+    Uncertain: "Incerto",
+  },
+  de: {
+    Anger: "Wut",
+    Disgust: "Ekel",
+    Fear: "Angst",
+    Happy: "Freude",
+    Neutral: "Neutral",
+    Sad: "Trauer",
+    Surprise: "Ueberraschung",
+    Uncertain: "Unsicher",
+  },
+}
+
+function emotionLabel(locale: Locale, emotion: DisplayEmotion) {
+  return emotionLabels[locale]?.[emotion] ?? emotionLabels.en[emotion]
 }
 
 const emotionColors: Record<Emotion, string> = {
@@ -364,12 +530,12 @@ const emotionColors: Record<Emotion, string> = {
   Surprise: "from-cyan-400 to-cyan-200",
 }
 
-function EmotionDistribution({ detectionResult }: { detectionResult: DetectionResult | null }) {
+function EmotionDistribution({ detectionResult, copy, locale }: { detectionResult: DetectionResult | null; copy: AffectCopy; locale: Locale }) {
   return (
     <div className="rounded-lg border border-white/10 bg-slate-950/70 p-5 shadow-xl backdrop-blur">
       <div className="flex items-center justify-between gap-3">
         <h3 className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-          Emotion breakdown
+          {copy.breakdown}
         </h3>
         <span className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
           FER2013
@@ -386,7 +552,7 @@ function EmotionDistribution({ detectionResult }: { detectionResult: DetectionRe
           return (
             <div key={emotion} className="space-y-1.5">
               <div className="flex items-center justify-between gap-3 text-xs font-semibold">
-                <span className={isDominant ? "text-cyan-200" : "text-slate-400"}>{emotion}</span>
+                <span className={isDominant ? "text-cyan-200" : "text-slate-400"}>{emotionLabel(locale, emotion)}</span>
                 <span className={isDominant ? "font-mono text-cyan-200" : "font-mono text-slate-600"}>
                   {Math.round(score * 100)}%
                 </span>
@@ -434,7 +600,7 @@ const emotionDots: Record<DisplayEmotion, string> = {
   Uncertain: "bg-slate-600",
 }
 
-function TimelineChart({ history }: { history: DetectionResult[] }) {
+function TimelineChart({ history, copy, locale }: { history: DetectionResult[]; copy: AffectCopy; locale: Locale }) {
   const latest = history.at(-1)
   const currentEmotion = latest?.dominantEmotion ?? "Uncertain"
   const currentConfidence = latest ? Math.round(latest.confidence * 100) : 0
@@ -452,20 +618,20 @@ function TimelineChart({ history }: { history: DetectionResult[] }) {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-            Real-time mood timeline
+            {copy.timeline}
           </h3>
           <p className="mt-1 text-xs text-slate-600">
-            {visibleHistory.length} visible samples from {history.length} total
+            {visibleHistory.length} {copy.visibleSamples} {history.length} {copy.totalSamples}
           </p>
         </div>
         <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
           <span className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.8)]" />
-            Confidence
+            {copy.confidence}
           </span>
           <span className="flex items-center gap-1.5">
             <span className={cn("h-1.5 w-1.5 rounded-full", emotionDots[currentEmotion])} />
-            {currentEmotion}
+            {emotionLabel(locale, currentEmotion)}
           </span>
         </div>
       </div>
@@ -494,7 +660,7 @@ function TimelineChart({ history }: { history: DetectionResult[] }) {
                     height: `${Math.max(14, item.confidence * 100)}%`,
                     opacity: index === visibleHistory.length - 1 ? 1 : 0.72,
                   }}
-                  title={`${item.dominantEmotion}: ${Math.round(item.confidence * 100)}%`}
+                  title={`${emotionLabel(locale, item.dominantEmotion)}: ${Math.round(item.confidence * 100)}%`}
                   className={cn(
                     "min-w-[4px] flex-1 rounded-t-sm bg-gradient-to-t shadow-lg transition-opacity hover:opacity-100",
                     emotionStyles[item.dominantEmotion],
@@ -527,7 +693,7 @@ function TimelineChart({ history }: { history: DetectionResult[] }) {
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-700">
             <div className="h-px w-full bg-white/5" />
-            <span>Awaiting stream synchronization</span>
+            <span>{copy.awaiting}</span>
           </div>
         )}
       </div>
@@ -535,19 +701,19 @@ function TimelineChart({ history }: { history: DetectionResult[] }) {
       <div className="mt-4 grid grid-cols-3 gap-3">
         <div className="rounded-md border border-white/5 bg-white/[0.03] px-3 py-2">
           <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-slate-600">
-            Current
+            {copy.current}
           </span>
-          <span className="mt-1 block truncate text-sm font-bold text-slate-200">{currentEmotion}</span>
+          <span className="mt-1 block truncate text-sm font-bold text-slate-200">{emotionLabel(locale, currentEmotion)}</span>
         </div>
         <div className="rounded-md border border-white/5 bg-white/[0.03] px-3 py-2">
           <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-slate-600">
-            Confidence
+            {copy.confidence}
           </span>
           <span className="mt-1 block text-sm font-bold text-cyan-200">{currentConfidence}%</span>
         </div>
         <div className="rounded-md border border-white/5 bg-white/[0.03] px-3 py-2">
           <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-slate-600">
-            Window
+            {copy.window}
           </span>
           <span className="mt-1 block text-sm font-bold text-slate-200">{visibleHistory.length}</span>
         </div>
@@ -557,6 +723,7 @@ function TimelineChart({ history }: { history: DetectionResult[] }) {
 }
 
 export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
+  const copy = affectCopy[locale] ?? affectCopy.en
   const {
     videoRef,
     overlayCanvasRef,
@@ -569,13 +736,14 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
     latencyMs,
     toggleCamera,
     resetSession,
-  } = useWebcamEmotionDetection()
+  } = useWebcamEmotionDetection(copy)
 
   const confidencePercent = Math.round(detectionResult.confidence * 100)
   const secondEmotion = detectionResult.topEmotions?.[1]
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#02040a] text-slate-100">
+      <ExampleLocaleSwitcher locale={locale} path="/affect-sense" />
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:32px_32px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,0.17),transparent_34%),linear-gradient(135deg,rgba(16,185,129,0.08),transparent_35%),linear-gradient(225deg,rgba(147,51,234,0.10),transparent_38%)]" />
@@ -596,7 +764,7 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
             <div className="min-w-0">
               <h1 className="truncate text-lg font-bold tracking-tight text-white">AffectSense</h1>
               <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                OpenCV emotion telemetry
+                {copy.telemetry}
               </p>
             </div>
           </div>
@@ -617,7 +785,7 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
                 }`}
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                {error ? "Backend check" : isCameraActive ? "System live" : "Runtime ready"}
+                {error ? copy.backend : isCameraActive ? copy.live : copy.ready}
               </motion.div>
             </AnimatePresence>
 
@@ -626,7 +794,7 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
               className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 text-xs font-bold text-slate-300 transition hover:border-white/20 hover:bg-white/[0.08]"
             >
               <RotateCcw className="h-4 w-4" />
-              <span className="hidden sm:inline">Reset</span>
+              <span className="hidden sm:inline">{copy.reset}</span>
             </button>
             <button
               onClick={toggleCamera}
@@ -634,7 +802,7 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
               className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-white px-4 text-xs font-black uppercase tracking-[0.14em] text-black shadow-[0_16px_40px_rgba(34,211,238,0.16)] transition hover:bg-cyan-50 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isCameraActive ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-              {isCameraActive ? "Stop" : isLoading ? "Loading" : "Start"}
+              {isCameraActive ? copy.stop : isLoading ? copy.loading : copy.start}
             </button>
           </div>
         </div>
@@ -661,8 +829,8 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
               />
 
               <div className="absolute left-4 top-4 z-10 flex flex-wrap gap-2">
-                <span className="rounded-md border border-cyan-300/30 bg-black/50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-200 backdrop-blur-md">720P capture</span>
-                <span className="rounded-md border border-white/10 bg-black/50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-white/70 backdrop-blur-md">OpenCV full pipeline</span>
+                <span className="rounded-md border border-cyan-300/30 bg-black/50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-200 backdrop-blur-md">{copy.capture}</span>
+                <span className="rounded-md border border-white/10 bg-black/50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-white/70 backdrop-blur-md">{copy.pipeline}</span>
               </div>
 
               {!isCameraActive && (
@@ -672,11 +840,11 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
                     <CameraOff className="h-10 w-10 text-slate-500" />
                   </div>
                   <h2 className="text-2xl font-bold tracking-tight text-white">
-                    {isLoading ? "Preparing runtime" : "Stream offline"}
+                    {isLoading ? copy.preparing : copy.offline}
                   </h2>
                   <p className="mt-3 max-w-md text-sm leading-6 text-slate-400">
                     {error ??
-                      "Start the camera to process webcam frames through YuNet face detection, landmark alignment, and MobileFaceNet expression inference."}
+                      copy.intro}
                   </p>
                   <button
                     onClick={toggleCamera}
@@ -684,7 +852,7 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
                     className="mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-md bg-white px-7 text-xs font-black uppercase tracking-[0.18em] text-black transition hover:bg-cyan-50 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     <Play className="h-4 w-4" />
-                    {isLoading ? "Loading" : "Connect sensor"}
+                    {isLoading ? copy.loading : copy.connect}
                   </button>
                 </div>
               )}
@@ -701,14 +869,14 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
                 className="absolute right-4 top-4 z-10 rounded-lg border border-white/10 bg-black/45 p-4 text-right shadow-2xl backdrop-blur-md"
               >
                 <span className="block text-3xl font-black uppercase leading-none tracking-tight text-cyan-300">
-                  {detectionResult.dominantEmotion}
+                  {emotionLabel(locale, detectionResult.dominantEmotion)}
                 </span>
                 <span className="mt-2 block font-mono text-xs font-semibold text-cyan-200/80">
-                  {confidencePercent}% confidence
+                  {confidencePercent}% {copy.confidence}
                 </span>
                 {secondEmotion && (
                   <span className="mt-2 block text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
-                    2nd {secondEmotion.emotion} {Math.round(secondEmotion.score * 100)}%
+                    {copy.second} {emotionLabel(locale, secondEmotion.emotion)} {Math.round(secondEmotion.score * 100)}%
                   </span>
                 )}
               </motion.div>
@@ -718,23 +886,23 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
               <div className="bg-black/45 px-5 py-4 backdrop-blur">
                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
                   <Gauge className="h-4 w-4" />
-                  Signal
+                  {copy.signal}
                 </div>
                 <div className="mt-2 text-lg font-bold text-white">
-                  {confidenceLabel(detectionResult.confidence)}
+                  {confidenceLabel(detectionResult.confidence, copy)}
                 </div>
               </div>
               <div className="bg-black/45 px-5 py-4 backdrop-blur">
                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
                   <Activity className="h-4 w-4" />
-                  Frames
+                  {copy.frames}
                 </div>
                 <div className="mt-2 text-lg font-bold text-white">{framesAnalyzed.toLocaleString()}</div>
               </div>
               <div className="bg-black/45 px-5 py-4 backdrop-blur">
                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
                   <Timer className="h-4 w-4" />
-                  Latency
+                  {copy.latency}
                 </div>
                 <div className="mt-2 text-lg font-bold text-white">
                   {latencyMs === null ? "--" : latencyMs.toFixed(0)}
@@ -744,38 +912,37 @@ export function AffectSensePage({ locale = "en" }: { locale?: Locale }) {
             </div>
           </div>
 
-          <TimelineChart history={history} />
+          <TimelineChart history={history} copy={copy} locale={locale} />
         </section>
 
         <aside className="space-y-6 lg:col-span-4">
-          <EmotionDistribution detectionResult={detectionResult} />
+          <EmotionDistribution detectionResult={detectionResult} copy={copy} locale={locale} />
 
           <div className="rounded-lg border border-white/10 bg-slate-950/70 p-5 shadow-xl backdrop-blur">
             <div className="mb-5 flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-cyan-300" />
               <h3 className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-                Inference summary
+                {copy.summary}
               </h3>
             </div>
             <p className="border-l-2 border-cyan-300/30 py-1 pl-4 text-sm leading-6 text-slate-300">
-              Webcam frames are analyzed by a local OpenCV backend using YuNet face detection,
-              landmark alignment, and a FER2013 expression model.
+              {copy.summaryText}
             </p>
             <div className="mt-5 grid grid-cols-2 gap-3">
               <div className="rounded-md border border-cyan-300/20 bg-cyan-300/5 p-3">
                 <Cpu className="mb-3 h-4 w-4 text-cyan-300" />
                 <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                  Decision
+                  {copy.decision}
                 </span>
-                <span className="mt-1 block text-sm font-bold text-cyan-200">Smoothed top-2</span>
+                <span className="mt-1 block text-sm font-bold text-cyan-200">{copy.smoothed}</span>
               </div>
               <div className="rounded-md border border-emerald-300/20 bg-emerald-300/5 p-3">
                 <Server className="mb-3 h-4 w-4 text-emerald-300" />
                 <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
-                  Backend
+                  {copy.backendLabel}
                 </span>
                 <span className="mt-1 block text-sm font-bold text-emerald-200">
-                  {error ? "Check API" : "Ready"}
+                  {error ? copy.api : copy.ready}
                 </span>
               </div>
             </div>

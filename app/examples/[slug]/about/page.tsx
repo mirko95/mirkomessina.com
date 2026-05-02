@@ -9,19 +9,19 @@ type ExamplePageProps = {
 }
 
 export function generateStaticParams() {
-  return [{ slug: "harbor-kitchen" }]
+  return [{ slug: "a-tavola" }]
 }
 
 export async function generateMetadata({ params }: ExamplePageProps): Promise<Metadata> {
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
 
-  if (slug !== "harbor-kitchen") {
+  if (slug !== "a-tavola") {
     return {}
   }
 
   return {
-    title: locale === "de" ? "Ueber uns | Harbor Kitchen" : locale === "it" ? "Chi siamo | Harbor Kitchen" : "About | Harbor Kitchen",
+    title: locale === "de" ? "Ueber uns | A Tavola" : locale === "it" ? "Chi siamo | A Tavola" : "About | A Tavola",
     description:
       locale === "de"
         ? "Ueber-uns-Seite fuer eine Premium-Restaurant-Website mit saisonaler Beschaffung und warmer Gastfreundschaft."
@@ -35,7 +35,7 @@ export default async function RestaurantAboutRoute({ params }: ExamplePageProps)
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
 
-  if (slug !== "harbor-kitchen") {
+  if (slug !== "a-tavola") {
     notFound()
   }
 

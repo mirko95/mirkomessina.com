@@ -1,4 +1,4 @@
-import { Globe, Building2, BarChart3, Bot, Workflow, Clock3, BrainCircuit } from "lucide-react"
+import { Armchair, Globe, Newspaper, ScanFace, ShoppingBag, Syringe, UtensilsCrossed } from "lucide-react"
 import type { Locale } from "@/lib/i18n"
 import { normalizeGermanData } from "@/lib/german"
 import { normalizeItalianData } from "@/lib/italian"
@@ -29,7 +29,7 @@ export const exampleSites: ExampleSite[] = [
       "A local webcam facial expression recognition prototype with a React/Vite interface, FastAPI backend, OpenCV YuNet face alignment, and MobileFaceNet ONNX inference.",
     colorClass: "from-cyan-400/20 via-background to-background",
     accentClass: "text-cyan-300",
-    icon: BrainCircuit,
+    icon: ScanFace,
     heroStat: "Webcam emotion telemetry",
     highlights: ["OpenCV backend", "YuNet face detection", "ONNX expression model"],
     sections: [
@@ -54,78 +54,78 @@ export const exampleSites: ExampleSite[] = [
     ],
   },
   {
-    slug: "aurelia",
-    name: "Aurelia Interiors",
-    category: "Luxury interior design website",
+    slug: "lussolab",
+    name: "LussoLab",
+    category: "Premium e-commerce website",
     summary:
-      "A premium design studio website with a cinematic image hero, editorial project gallery, services, process, testimonials, and luxury cream-gold styling.",
-    colorClass: "from-amber-400/20 via-background to-background",
-    accentClass: "text-amber-300",
-    icon: Building2,
-    heroStat: "Luxury editorial brand experience",
-    highlights: ["Full-screen image hero", "Project gallery", "Premium service sections"],
+      "A high-end minimalist e-commerce experience for leather goods and lifestyle accessories with local product photography, product detail pages, cart drawer, and checkout flow.",
+    colorClass: "from-neutral-300/25 via-background to-background",
+    accentClass: "text-neutral-300",
+    icon: ShoppingBag,
+    heroStat: "Luxury e-commerce experience",
+    highlights: ["Image-led storefront", "Product detail pages", "Cart and checkout flow"],
     sections: [
       {
-        label: "Hero",
-        title: "Strong first impression",
+        label: "Storefront",
+        title: "Minimal luxury first impression",
         description:
-          "The page opens with a full-screen interior image, refined serif typography, and calm gold accents that immediately set the premium tone.",
+          "The page opens with a full-screen lifestyle image, restrained typography, and direct shopping paths that fit a premium product brand.",
       },
       {
-        label: "Projects",
-        title: "Visual portfolio first",
+        label: "Products",
+        title: "Product discovery and detail",
         description:
-          "Selected interiors are presented through large image cards, location details, and quiet transitions that suit a design studio.",
+          "Featured products use local photography, color selectors, quantity controls, specifications, and editorial craft details.",
       },
       {
-        label: "Brand",
-        title: "Editorial luxury throughout",
+        label: "Commerce",
+        title: "Cart and checkout workflow",
         description:
-          "Services, process, testimonials, and contact sections keep the same restrained cream, charcoal, and gold visual language.",
+          "The example preserves working navigation, a slide-out cart, quantity updates, checkout form, and confirmation state.",
       },
     ],
   },
   {
-    slug: "modelwatch",
-    name: "Busy",
-    category: "Productivity multi-tool",
+    slug: "blog",
+    name: "Signal",
+    category: "Editorial blog website",
     summary:
-      "A bright productivity product page with a bold hero, live status, manual controls, and a calm editorial layout.",
-    colorClass: "from-orange-300/25 via-background to-background",
-    accentClass: "text-orange-500",
-    icon: Clock3,
-    heroStat: "Product page with a physical feel",
-    highlights: ["Live status", "Manual controls", "Monochrome UI"],
+      "A refined editorial publication with featured articles, topic browsing, search, carousel navigation, article pages, newsletter signup, and dark mode.",
+    colorClass: "from-neutral-300/25 via-background to-background",
+    accentClass: "text-neutral-300",
+    icon: Newspaper,
+    heroStat: "Editorial reading experience",
+    highlights: ["Article search", "Topic filters", "Dark mode"],
     sections: [
       {
         label: "Hero",
-        title: "A clear first read",
+        title: "Featured story first",
         description:
-          "The top section leads with a simple promise, a strong product visual, and a direct CTA so visitors understand the offer immediately.",
+          "The page opens with a strong featured article, large editorial typography, and a clear path into the full story.",
       },
       {
-        label: "Product",
-        title: "Readable and practical",
+        label: "Topics",
+        title: "Browse by focus",
         description:
-          "Feature blocks and dashboard-style cards make the product feel tangible, practical, and easy to trust.",
+          "Topic tiles and article filters help readers move through AI, startups, engineering, and design without friction.",
       },
       {
-        label: "Controls",
-        title: "Built around action",
+        label: "Reading",
+        title: "Article pages and newsletter",
         description:
-          "The page keeps the controls visible so the product story naturally moves toward use, not just admiration.",
+          "Article detail views, progress feedback, search, and newsletter signup preserve the publication workflow.",
       },
     ],
   },
   {
-    slug: "replypilot",
+    slug: "estetic-clinique",
     name: "Estetic Clinique",
     category: "Premium aesthetic clinic website",
     summary:
       "A luxury medical aesthetics website with a cinematic clinic hero, treatment cards, pricing, gallery, FAQ, and appointment request flow.",
     colorClass: "from-amber-400/20 via-background to-background",
     accentClass: "text-amber-300",
-    icon: Bot,
+    icon: Syringe,
     heroStat: "Luxury clinic experience",
     highlights: ["Treatment gallery", "Pricing cards", "Appointment form"],
     sections: [
@@ -150,92 +150,60 @@ export const exampleSites: ExampleSite[] = [
     ],
   },
   {
-    slug: "flowforge",
-    name: "FlowForge",
-    category: "Workflow automation dashboard",
+    slug: "velora",
+    name: "Velora Interiors",
+    category: "Luxury interior design website",
     summary:
-      "A workflow automation product concept for teams that want to remove repetitive admin work, sync data between tools, and keep operations visible.",
-    colorClass: "from-emerald-400/20 via-background to-background",
-    accentClass: "text-emerald-300",
-    icon: Workflow,
-    heroStat: "Automation for operations teams",
-    highlights: ["Lead routing", "Approval steps", "Activity logs"],
-    sections: [
-      {
-        label: "Trigger",
-        title: "Simple start points",
-        description:
-          "A form submission, CRM update, or schedule can kick off the workflow without extra manual setup.",
-      },
-      {
-        label: "Controls",
-        title: "Safe automation",
-        description:
-          "Validation, approvals, and logging make the product feel like something a business could trust in daily use.",
-      },
-      {
-        label: "Outcome",
-        title: "Less repetitive work",
-        description:
-          "The product is framed around time saved, fewer mistakes, and cleaner handoffs between tools and teams.",
-      },
-    ],
-  },
-  {
-    slug: "aetheriq",
-    name: "AetherIQ",
-    category: "Premium AI SaaS landing page",
-    summary:
-      "A polished landing page for an AI analytics platform that helps teams understand product behavior, summarize usage, and spot revenue risk early.",
-    colorClass: "from-sky-400/20 via-background to-background",
-    accentClass: "text-sky-300",
-    icon: BarChart3,
-    heroStat: "AI analytics for product teams",
-    highlights: ["Dashboard view", "Pricing tiers", "FAQ and testimonials"],
+      "A refined interior design website with cinematic imagery, selected projects, service cards, studio philosophy, process, testimonials, and contact CTA.",
+    colorClass: "from-amber-300/20 via-background to-background",
+    accentClass: "text-amber-300",
+    icon: Armchair,
+    heroStat: "Luxury interiors portfolio",
+    highlights: ["Image-led hero", "Project gallery", "Inquiry CTA"],
     sections: [
       {
         label: "Hero",
-        title: "Clear promise, strong CTA",
+        title: "Cinematic luxury first impression",
         description:
-          "The top section explains the product in one sentence and points users toward the primary action without distraction.",
+          "The page opens with a full-screen interior image, elegant serif typography, and calm gold accents.",
       },
       {
-        label: "Features",
-        title: "Useful, believable capability",
+        label: "Projects",
+        title: "Selected masterpieces",
         description:
-          "Feature blocks focus on real outcomes like retention insights, automated summaries, and team reporting.",
+          "Project cards use real interiors, location details, and restrained motion to show the studio's portfolio.",
       },
       {
-        label: "Pricing",
-        title: "Simple decision path",
+        label: "Inquiry",
+        title: "Clear path to consultation",
         description:
-          "Three plans make the value ladder obvious and keep the page easy to scan for both startups and growing teams.",
+          "Services, process, testimonials, and footer CTA guide visitors toward a premium project inquiry.",
       },
     ],
   },
   {
-    slug: "harbor-kitchen",
-    name: "Harbor Kitchen",
+    slug: "a-tavola",
+    name: "A Tavola",
     category: "Restaurant / hospitality site",
     summary:
-      "A warm, mobile-friendly website for a restaurant that wants reservations, menu highlights, and local discovery to feel effortless.",
-    colorClass: "from-amber-400/20 via-background to-background",
+      "A luxury Italian restaurant website with cinematic imagery, a dark gold editorial style, gallery, menu browsing, and reservation flow.",
+    colorClass: "from-amber-400/20 via-black/20 to-background",
     accentClass: "text-amber-300",
-    icon: Building2,
-    heroStat: "Reservation-ready structure",
-    highlights: ["Menu highlights", "Location details", "Reservation CTA"],
+    icon: UtensilsCrossed,
+    heroStat: "Cinematic fine-dining experience",
+    highlights: ["Image-led hero", "La Carta menu", "Reservation CTA"],
     sections: [
       {
         label: "Menu",
-        title: "Quick browsing on mobile",
+        title: "La Carta with filters",
         description:
-          "The menu is organized so guests can scan quickly on a phone without zooming or scrolling through noise.",
+          "The menu keeps Atavola's Italian categories while preserving quick browsing and clear prices on mobile.",
       },
       {
         label: "Local SEO",
-        title: "Easy to find",
+        title: "Image-led atmosphere",
         description:
-          "Opening hours, address, and contact details are surfaced early so the page supports search and walk-in traffic.",
+          "Cinematic food, dining room, terrace, and candlelit images carry the premium restaurant mood throughout.",
       },
       {
         label: "Reservations",
@@ -247,8 +215,15 @@ export const exampleSites: ExampleSite[] = [
   },
 ]
 
+export const exampleSlugAliases: Record<string, string> = {}
+
+export function resolveExampleSlug(slug: string) {
+  return exampleSlugAliases[slug] ?? slug
+}
+
 export function getExampleSite(slug: string) {
-  return exampleSites.find((site) => site.slug === slug)
+  const resolvedSlug = resolveExampleSlug(slug)
+  return exampleSites.find((site) => site.slug === resolvedSlug)
 }
 
 const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
@@ -281,7 +256,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    aurelia: {
+    "aurelia-interiors": {
       category: "Sito luxury interior design",
       summary:
         "Un sito premium per studio di interior design con hero fotografica cinematografica, galleria editoriale, servizi, processo, testimonianze e stile crema-oro.",
@@ -308,12 +283,40 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    modelwatch: {
-      category: "Multi-tool per produttivita`",
+    lussolab: {
+      category: "Sito e-commerce premium",
       summary:
-        "Una pagina prodotto chiara e luminosa con hero forte, stato live, controlli manuali e un layout editoriale facile da leggere.",
-      heroStat: "Pagina prodotto con feeling fisico",
-      highlights: ["Stato live", "Controlli manuali", "UI monocromatica"],
+        "Un'esperienza e-commerce minimalista per accessori lifestyle e pelletteria, con fotografie locali, schede prodotto, carrello laterale e checkout.",
+      heroStat: "Esperienza e-commerce luxury",
+      highlights: ["Storefront fotografico", "Schede prodotto", "Carrello e checkout"],
+      sections: [
+        {
+          label: "Storefront",
+          title: "Prima impressione luxury minimale",
+          description:
+            "La pagina apre con una fotografia lifestyle full-screen, tipografia sobria e percorsi d'acquisto immediati.",
+        },
+        {
+          label: "Prodotti",
+          title: "Scoperta e dettaglio prodotto",
+          description:
+            "Le card e le pagine prodotto usano immagini locali, selettori colore, quantita`, specifiche e dettagli artigianali.",
+        },
+        {
+          label: "Commerce",
+          title: "Workflow carrello e checkout",
+          description:
+            "Navigazione, carrello laterale, aggiornamento quantita`, form checkout e conferma ordine restano funzionanti.",
+        },
+      ],
+    },
+    blog: {
+      name: "Signal",
+      category: "Sito blog editoriale",
+      summary:
+        "Una pubblicazione editoriale con articoli in evidenza, topic, ricerca, carousel, dettaglio articolo, newsletter e dark mode.",
+      heroStat: "Esperienza di lettura editoriale",
+      highlights: ["Ricerca articoli", "Filtri topic", "Dark mode"],
       sections: [
         {
           label: "Hero",
@@ -335,7 +338,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    replypilot: {
+    "estetic-clinique": {
       category: "Sito premium per clinica estetica",
       summary:
         "Un sito luxury per medicina estetica con hero fotografica, trattamenti, prezzi, gallery, FAQ e richiesta appuntamento.",
@@ -362,61 +365,35 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    flowforge: {
-      category: "Dashboard di automazione workflow",
+    velora: {
+      name: "Velora Interiors",
+      category: "Sito luxury interior design",
       summary:
-        "Un concept di automazione per team che vogliono eliminare lavoro amministrativo ripetitivo, sincronizzare dati tra strumenti e rendere visibili le operations.",
-      heroStat: "Automazione per team operations",
-      highlights: ["Instradamento lead", "Step di approvazione", "Log attivita`"],
-      sections: [
-        {
-          label: "Trigger",
-          title: "Punti di partenza semplici",
-          description:
-            "Una submission di form, un update CRM o una pianificazione possono avviare il workflow senza configurazioni manuali aggiuntive.",
-        },
-        {
-          label: "Controlli",
-          title: "Automazione sicura",
-          description:
-            "Validazione, approvazioni e logging rendono il prodotto affidabile per l'uso quotidiano di un'azienda.",
-        },
-        {
-          label: "Risultato",
-          title: "Meno lavoro ripetitivo",
-          description:
-            "Il prodotto e` costruito attorno a tempo risparmiato, meno errori e passaggi piu` puliti tra strumenti e team.",
-        },
-      ],
-    },
-    aetheriq: {
-      category: "Landing page SaaS AI premium",
-      summary:
-        "Una landing page curata per una piattaforma di AI analytics che aiuta i team a capire il comportamento del prodotto, riassumere l'uso e vedere per tempo il rischio revenue.",
-      heroStat: "AI analytics per team prodotto",
-      highlights: ["Vista dashboard", "Prezzi a livelli", "FAQ e testimonianze"],
+        "Un sito raffinato per interior design con hero cinematografica, progetti selezionati, servizi, filosofia, processo, testimonianze e CTA contatto.",
+      heroStat: "Portfolio luxury interiors",
+      highlights: ["Hero fotografica", "Galleria progetti", "CTA inquiry"],
       sections: [
         {
           label: "Hero",
-          title: "Promessa chiara, CTA forte",
+          title: "Prima impressione luxury",
           description:
-            "La sezione iniziale spiega il prodotto in una frase e porta l'utente verso l'azione principale senza distrazioni.",
+            "La pagina apre con una fotografia full-screen, tipografia serif elegante e accenti oro calmi.",
         },
         {
-          label: "Features",
-          title: "Funzionalita` credibili e utili",
+          label: "Progetti",
+          title: "Masterpiece selezionati",
           description:
-            "I blocchi feature puntano su outcome reali come insight di retention, summary automatici e reporting per il team.",
+            "Le card progetto usano interni reali, location e motion discreto per presentare il portfolio dello studio.",
         },
         {
-          label: "Pricing",
-          title: "Percorso decisionale semplice",
+          label: "Inquiry",
+          title: "Percorso chiaro alla consulenza",
           description:
-            "Tre piani rendono chiara la progressione di valore e mantengono la pagina facile da leggere per startup e team in crescita.",
+            "Servizi, processo, testimonianze e footer CTA guidano verso una richiesta premium.",
         },
       ],
     },
-    "harbor-kitchen": {
+    "a-tavola": {
       category: "Sito ristorante / hospitality",
       summary:
         "Un sito caldo e mobile-friendly per un ristorante che vuole rendere semplici prenotazioni, punti salienti del menu e scoperta locale.",
@@ -472,7 +449,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    aurelia: {
+    "aurelia-interiors": {
       category: "Luxury-Interior-Design-Website",
       summary:
         "Eine Premium-Website fuer ein Interior-Design-Studio mit filmischem Bild-Hero, editorialer Projektgalerie, Services, Prozess, Testimonials und Creme-Gold-Stil.",
@@ -499,12 +476,40 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    modelwatch: {
-      category: "Produktivitaets-Multitool",
+    lussolab: {
+      category: "Premium-E-Commerce-Website",
       summary:
-        "Eine klare, helle Produktseite mit starkem Hero, Live-Status, manuellen Controls und einem editorischen Layout, das leicht lesbar ist.",
-      heroStat: "Produktseite mit physischem Gefuehl",
-      highlights: ["Live-Status", "Manuelle Controls", "Monochrome UI"],
+        "Eine minimalistische E-Commerce-Erfahrung fuer Lederwaren und Lifestyle-Accessoires mit lokalen Produktbildern, Produktseiten, Warenkorb und Checkout.",
+      heroStat: "Luxurioese E-Commerce-Erfahrung",
+      highlights: ["Bildgefuehrter Storefront", "Produktdetailseiten", "Warenkorb und Checkout"],
+      sections: [
+        {
+          label: "Storefront",
+          title: "Minimaler Luxury-Eindruck",
+          description:
+            "Die Seite startet mit einem Full-Screen-Lifestyle-Bild, ruhiger Typografie und direkten Shopping-Pfaden.",
+        },
+        {
+          label: "Produkte",
+          title: "Produktentdeckung und Detail",
+          description:
+            "Produktkarten und Detailseiten nutzen lokale Bilder, Farbauswahl, Mengensteuerung, Spezifikationen und Craft-Details.",
+        },
+        {
+          label: "Commerce",
+          title: "Warenkorb- und Checkout-Flow",
+          description:
+            "Navigation, Warenkorb, Mengenupdates, Checkout-Formular und Bestellbestaetigung bleiben funktionsfaehig.",
+        },
+      ],
+    },
+    blog: {
+      name: "Signal",
+      category: "Editoriale Blog-Website",
+      summary:
+        "Eine raffinierte Editorial-Publikation mit Featured Articles, Topics, Suche, Carousel, Artikelseiten, Newsletter und Dark Mode.",
+      heroStat: "Editoriale Leseerfahrung",
+      highlights: ["Artikelsuche", "Topic-Filter", "Dark Mode"],
       sections: [
         {
           label: "Hero",
@@ -526,7 +531,7 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    replypilot: {
+    "estetic-clinique": {
       category: "Premium-Website fuer Aesthetic Clinic",
       summary:
         "Eine Luxury-Website fuer medizinische Aesthetik mit Bild-Hero, Treatments, Preisen, Galerie, FAQ und Terminformular.",
@@ -553,61 +558,35 @@ const exampleCopy: Record<Locale, Record<string, Partial<ExampleSite>>> = {
         },
       ],
     },
-    flowforge: {
-      category: "Workflow-Automation-Dashboard",
+    velora: {
+      name: "Velora Interiors",
+      category: "Luxury-Interior-Design-Website",
       summary:
-        "Ein Automationsprodukt fuer Teams, die wiederholte Verwaltungsarbeit entfernen, Daten zwischen Tools synchronisieren und Operations sichtbar machen wollen.",
-      heroStat: "Automatisierung fuer Ops-Teams",
-      highlights: ["Lead-Routing", "Freigabeschritte", "Aktivitaetsprotokolle"],
-      sections: [
-        {
-          label: "Trigger",
-          title: "Einfache Startpunkte",
-          description:
-            "Ein Formular-Submit, CRM-Update oder Zeitplan kann den Workflow ohne zusaetzliche manuelle Einrichtung starten.",
-        },
-        {
-          label: "Kontrollen",
-          title: "Sichere Automatisierung",
-          description:
-            "Validierung, Freigaben und Logging machen das Produkt fuer den taeglichen Einsatz vertrauenswuerdig.",
-        },
-        {
-          label: "Ergebnis",
-          title: "Weniger Wiederholungsarbeit",
-          description:
-            "Das Produkt ist auf gesparte Zeit, weniger Fehler und sauberere Uebergaben zwischen Tools und Teams ausgelegt.",
-        },
-      ],
-    },
-    aetheriq: {
-      category: "Premium-KI-SaaS-Landingpage",
-      summary:
-        "Eine polierte Landingpage fuer eine AI-Analytics-Plattform, die Teams hilft, Produktverhalten zu verstehen, Nutzung zusammenzufassen und Revenue-Risiken frueh zu sehen.",
-      heroStat: "KI-Analytics fuer Produktteams",
-      highlights: ["Dashboard-Ansicht", "Preisstufen", "FAQ und Testimonials"],
+        "Eine raffinierte Interior-Design-Website mit filmischem Hero, Projektgalerie, Services, Philosophie, Prozess, Testimonials und Kontakt-CTA.",
+      heroStat: "Luxury Interiors Portfolio",
+      highlights: ["Bildhero", "Projektgalerie", "Inquiry CTA"],
       sections: [
         {
           label: "Hero",
-          title: "Klare Zusage, starke CTA",
+          title: "Luxurioeser erster Eindruck",
           description:
-            "Der obere Bereich erklaert das Produkt in einem Satz und fuehrt ohne Ablenkung zur Hauptaktion.",
+            "Die Seite startet mit einem Full-Screen-Interior-Bild, eleganter Serifentypografie und ruhigen Goldakzenten.",
         },
         {
-          label: "Features",
-          title: "Nuetzliche, glaubwuerdige Funktionen",
+          label: "Projekte",
+          title: "Ausgewaehlte Masterpieces",
           description:
-            "Die Feature-Bloecke fokussieren sich auf echte Ergebnisse wie Retention-Insights, automatische Zusammenfassungen und Team-Reporting.",
+            "Projektkarten nutzen echte Interiors, Locations und dezente Bewegung fuer ein hochwertiges Portfolio.",
         },
         {
-          label: "Pricing",
-          title: "Einfacher Entscheidungsweg",
+          label: "Inquiry",
+          title: "Klarer Weg zur Beratung",
           description:
-            "Drei Plaene machen die Wertleiter klar und halten die Seite fuer Startups und wachsende Teams leicht scanbar.",
+            "Services, Prozess, Testimonials und Footer-CTA fuehren Besucher zur Premium-Anfrage.",
         },
       ],
     },
-    "harbor-kitchen": {
+    "a-tavola": {
       category: "Restaurant-/Hospitality-Website",
       summary:
         "Eine warme, mobilefreundliche Website fuer ein Restaurant, bei dem Reservierungen, Menue-Highlights und lokale Auffindbarkeit leicht fallen sollen.",
@@ -649,5 +628,6 @@ export function getExampleSites(locale: Locale) {
 }
 
 export function getLocalizedExampleSite(locale: Locale, slug: string) {
-  return getExampleSites(locale).find((site) => site.slug === slug)
+  const resolvedSlug = resolveExampleSlug(slug)
+  return getExampleSites(locale).find((site) => site.slug === resolvedSlug)
 }

@@ -1,16 +1,8 @@
 import type { LucideIcon } from "lucide-react"
-import {
-  ChefHat,
-  Clock3,
-  Heart,
-  MapPinned,
-  MenuSquare,
-  Sparkles,
-  Wine,
-} from "lucide-react"
+import { ChefHat, Clock3, Heart, MapPinned, MenuSquare, Sparkles, Wine } from "lucide-react"
 import type { Locale } from "@/lib/i18n"
 
-export type MenuCategory = "starters" | "seafood" | "mains" | "desserts" | "drinks"
+export type MenuCategory = "antipasti" | "primi" | "secondi" | "dolci" | "wine"
 
 export type MenuItem = {
   name: string
@@ -33,6 +25,17 @@ type RestaurantData = {
   openingHours: Array<{ day: string; hours: string }>
   storyPoints: string[]
   highlights: { icon: LucideIcon; title: string; description: string }[]
+  images: {
+    hero: string
+    interior: string
+    risotto: string
+    salmon: string
+    table: string
+    steak: string
+    chef: string
+    window: string
+    terrace: string
+  }
 }
 
 type RestaurantMenuData = {
@@ -41,175 +44,136 @@ type RestaurantMenuData = {
   contactHighlights: { icon: LucideIcon; title: string; lines: string[] }[]
 }
 
+const images = {
+  hero: "/images/a-tavola-restaurant-interior-hero.jpg",
+  interior: "/images/a-tavola-dining-room-interior.png",
+  risotto: "/images/wild-mushroom-risotto.png",
+  salmon: "/images/salmon-signature-dish.png",
+  table: "/images/romantic-candlelit-table-detail.png",
+  steak: "/images/grilled-steak-plated-dish.png",
+  chef: "/images/chef-plating-green-dish.png",
+  window: "/images/candlelit-window-detail.png",
+  terrace: "/images/a-tavola-evening-terrace.png",
+}
+
 const baseRestaurant: RestaurantData = {
-  name: "Harbor Kitchen",
-  slogan: "Seasonal coastal dining with a modern European touch",
+  name: "A Tavola",
+  slogan: "Since 1982 - Milano",
   description:
-    "Harbor Kitchen is a premium neighborhood restaurant focused on clean flavors, seasonal ingredients, and warm service. The website is designed to feel refined, local, and easy to use on any device.",
-  address: "Schiffgasse 18, 1020 Vienna, Austria",
-  phone: "+43 1 555 0188",
-  email: "hello@harborkitchen.example",
-  mapsQuery: "Harbor Kitchen Vienna",
-  heroPills: ["Seasonal menu", "Local sourcing", "Chef curated"],
+    "A Tavola is a contemporary Italian fine-dining restaurant where tradition meets architectural elegance, seasonal ingredients, and warm candlelit hospitality.",
+  address: "12 Via della Tavola, Roma, Italia",
+  phone: "+39 06 123 4567",
+  email: "reservations@atavola.example",
+  mapsQuery: "Via della Tavola Roma Italia",
+  heroPills: ["Modern Italian", "Seasonal tasting", "Candlelit dining"],
   heroStats: [
-    { value: "Lunch + Dinner", label: "Daily service" },
-    { value: "Seasonal", label: "Menu changes" },
+    { value: "1982", label: "Established" },
+    { value: "18:00-00:00", label: "Dinner service" },
     { value: "4.9/5", label: "Guest rating" },
   ],
   openingHours: [
-    { day: "Mon", hours: "Closed" },
-    { day: "Tue-Thu", hours: "11:30 - 22:00" },
-    { day: "Fri-Sat", hours: "11:30 - 23:00" },
-    { day: "Sun", hours: "12:00 - 21:00" },
+    { day: "Mon-Sun", hours: "18:00 - 00:00" },
+    { day: "Kitchen", hours: "18:30 - 22:45" },
+    { day: "Private dining", hours: "On request" },
   ],
   storyPoints: [
-    "Seasonal menus built around fresh fish, local produce, and handcrafted desserts.",
-    "A calm dining room designed for long lunches, date nights, and private celebrations.",
-    "Friendly, polished service with reservation support and clear contact details.",
+    "Contemporary Italian plates rooted in seasonality, precise technique, and quiet drama.",
+    "A candlelit dining room designed for long evenings, private celebrations, and city-center occasions.",
+    "Chef Marco De Luca brings a Milan and Florence fine-dining background to a warm Roman table.",
   ],
   highlights: [
-    { icon: ChefHat, title: "Chef-led kitchen", description: "Refined plates with a coastal identity and consistent execution." },
-    { icon: Heart, title: "Warm hospitality", description: "A front-of-house experience that feels personal without being formal." },
-    { icon: Sparkles, title: "Elegant branding", description: "Premium visuals, soft contrast, and calm typography." },
-    { icon: MapPinned, title: "Local discoverability", description: "Opening hours, location, and navigation are always easy to find." },
+    { icon: ChefHat, title: "Chef Marco De Luca", description: "Thirty years of Italian fine-dining craft with a modern seasonal hand." },
+    { icon: Heart, title: "Candlelit hospitality", description: "A polished dining room built for generous pacing and intimate evenings." },
+    { icon: Sparkles, title: "Architectural elegance", description: "Dark charcoal, warm gold, and editorial imagery create a luxury first impression." },
+    { icon: MapPinned, title: "Central Roma", description: "Contact, hours, and booking details stay clear from first visit to reservation." },
   ],
+  images,
 }
 
 const baseMenu: RestaurantMenuData = {
   menuCategories: [
     { label: "All dishes", value: "all" },
-    { label: "Starters", value: "starters" },
-    { label: "Seafood", value: "seafood" },
-    { label: "Mains", value: "mains" },
-    { label: "Desserts", value: "desserts" },
-    { label: "Drinks", value: "drinks" },
+    { label: "Antipasti", value: "antipasti" },
+    { label: "Primi", value: "primi" },
+    { label: "Secondi", value: "secondi" },
+    { label: "Dolci", value: "dolci" },
+    { label: "Wine", value: "wine" },
   ],
   menuItems: [
-    { name: "Charred Octopus", description: "Celeriac purée, preserved lemon, herbs, and fennel oil.", price: "18", category: "starters", label: "Chef favorite" },
-    { name: "Burrata & Citrus", description: "Blood orange, olive crumble, basil oil, and toasted sourdough.", price: "16", category: "starters" },
-    { name: "Catch of the Day", description: "Pan-seared fish, mussel broth, baby leeks, and charred potatoes.", price: "29", category: "seafood", label: "Signature dish" },
-    { name: "Seared Scallops", description: "Pea velouté, smoked bacon, lemon zest, and sea herbs.", price: "26", category: "seafood" },
-    { name: "Ribeye with Herb Butter", description: "28-day aged beef, green peppercorn jus, and roasted root vegetables.", price: "34", category: "mains" },
-    { name: "Lemon Risotto", description: "Asparagus, parmesan, crispy shallots, and garden herbs.", price: "24", category: "mains" },
-    { name: "Dark Chocolate Tart", description: "Candied hazelnuts, sea salt caramel, and vanilla cream.", price: "12", category: "desserts", label: "House dessert" },
-    { name: "Poached Pear", description: "White chocolate mousse, poached wine syrup, and almond crumb.", price: "11", category: "desserts" },
-    { name: "House Spritz", description: "Bitter aperitif, citrus, sparkling wine, and rosemary.", price: "13", category: "drinks" },
-    { name: "Zero-Proof Garden Tonic", description: "Cucumber, elderflower, tonic, and mint.", price: "9", category: "drinks" },
+    { name: "Burrata Pugliese", price: "24", description: "Heirloom tomatoes, basil oil, aged balsamic caviar.", category: "antipasti" },
+    { name: "Carpaccio di Manzo", price: "28", description: "Wagyu beef, truffle emulsion, parmigiano reggiano.", category: "antipasti", label: "Chef favorite" },
+    { name: "Fiori di Zucca", price: "22", description: "Stuffed zucchini flowers, ricotta, honey-infused chili.", category: "antipasti" },
+    { name: "Tagliolini al Tartufo", price: "38", description: "Handmade pasta, seasonal black truffle, butter emulsion.", category: "primi", label: "Signature" },
+    { name: "Ravioli d'Aragosta", price: "42", description: "Lobster ravioli, bisque base, fresh chervil.", category: "primi" },
+    { name: "Risotto ai Porcini", price: "36", description: "Acquerello rice, wild mushrooms, thyme.", category: "primi" },
+    { name: "Costolette di Agnello", price: "48", description: "Herb-crusted lamb racks, potato puree, mint reduction.", category: "secondi" },
+    { name: "Branzino al Sale", price: "46", description: "Sicilian sea bass, roasted Mediterranean vegetables.", category: "secondi" },
+    { name: "Filetto alla Rossini", price: "52", description: "Prime beef fillet, foie gras, madeira wine sauce.", category: "secondi", label: "Limited" },
+    { name: "Tiramisu Moderno", price: "18", description: "Espresso soak, mascarpone mousse, cocoa soil.", category: "dolci" },
+    { name: "Panna Cotta al Limone", price: "16", description: "Amalfi lemon, macerated berries, honey tuile.", category: "dolci" },
+    { name: "Sommelier Pairing", price: "32", description: "Four-glass Italian pairing selected for the evening menu.", category: "wine" },
   ],
   contactHighlights: [
-    { icon: Clock3, title: "Opening hours", lines: ["Tue-Thu 11:30 - 22:00", "Fri-Sat 11:30 - 23:00", "Sun 12:00 - 21:00"] },
-    { icon: MenuSquare, title: "Reservations", lines: ["Reserve online", "Private dining available", "Walk-ins welcome at lunch"] },
-    { icon: Wine, title: "Events", lines: ["Birthday dinners", "Wine pairings", "Corporate tables"] },
+    { icon: Clock3, title: "Opening hours", lines: ["Mon-Sun 18:00 - 00:00", "Kitchen 18:30 - 22:45", "Bookings recommended"] },
+    { icon: MenuSquare, title: "Reservations", lines: ["Tables held for 15 minutes", "Parties larger than six by phone", "Private dining available"] },
+    { icon: Wine, title: "Experience", lines: ["Wine pairings", "Seasonal tasting menu", "Celebration dinners"] },
   ],
 }
 
 const localized: Record<Locale, Partial<RestaurantData> & Partial<RestaurantMenuData>> = {
   en: {},
   it: {
-    slogan: "Ristorazione costiera stagionale con un tocco europeo moderno",
-    heroPills: ["Menu stagionale", "Prodotti locali", "Curato dallo chef"],
+    slogan: "Dal 1982 - Milano",
     description:
-      "Harbor Kitchen e` un ristorante di quartiere premium focalizzato su sapori puliti, ingredienti stagionali e un servizio accogliente. Il sito e` progettato per sembrare raffinato, locale e facile da usare su qualsiasi dispositivo.",
+      "A Tavola e` un ristorante italiano contemporaneo dove tradizione, eleganza architettonica, ingredienti stagionali e ospitalita` a lume di candela si incontrano.",
+    heroPills: ["Italiano moderno", "Menu stagionale", "Cena a lume di candela"],
+    heroStats: [
+      { value: "1982", label: "Fondazione" },
+      { value: "18:00-00:00", label: "Servizio cena" },
+      { value: "4.9/5", label: "Valutazione ospiti" },
+    ],
     openingHours: [
-      { day: "Lun", hours: "Chiuso" },
-      { day: "Mar-Gio", hours: "11:30 - 22:00" },
-      { day: "Ven-Sab", hours: "11:30 - 23:00" },
-      { day: "Dom", hours: "12:00 - 21:00" },
+      { day: "Lun-Dom", hours: "18:00 - 00:00" },
+      { day: "Cucina", hours: "18:30 - 22:45" },
+      { day: "Dining privato", hours: "Su richiesta" },
     ],
     storyPoints: [
-      "Menu stagionali basati su pesce fresco, prodotti locali e dessert artigianali.",
-      "Una sala calma pensata per pranzi lunghi, cene romantiche e celebrazioni private.",
-      "Servizio cortese e curato con supporto prenotazioni e contatti chiari.",
+      "Piatti italiani contemporanei radicati in stagionalita`, tecnica precisa e quieto senso scenico.",
+      "Una sala a lume di candela pensata per serate lente, celebrazioni private e occasioni in centro citta`.",
+      "Lo chef Marco De Luca porta al tavolo romano un percorso fine-dining tra Milano e Firenze.",
     ],
     highlights: [
-      { icon: ChefHat, title: "Cucina guidata dallo chef", description: "Piatti curati con identita` costiera ed esecuzione costante." },
-      { icon: Heart, title: "Ospitalita` calorosa", description: "Un'esperienza di sala personale senza essere formale." },
-      { icon: Sparkles, title: "Branding elegante", description: "Visual premium, contrasto morbido e tipografia calma." },
-      { icon: MapPinned, title: "Visibilita` locale", description: "Orari, posizione e navigazione sono sempre facili da trovare." },
+      { icon: ChefHat, title: "Chef Marco De Luca", description: "Trent'anni di cucina italiana fine dining con mano moderna e stagionale." },
+      { icon: Heart, title: "Ospitalita` a lume di candela", description: "Una sala elegante per ritmo generoso e serate intime." },
+      { icon: Sparkles, title: "Eleganza architettonica", description: "Charcoal, oro caldo e immagini editoriali creano una prima impressione luxury." },
+      { icon: MapPinned, title: "Roma centro", description: "Contatti, orari e prenotazioni restano chiari dal primo arrivo al booking." },
     ],
     menuCategories: [
       { label: "Tutti i piatti", value: "all" },
-      { label: "Antipasti", value: "starters" },
-      { label: "Pesce", value: "seafood" },
-      { label: "Portate principali", value: "mains" },
-      { label: "Dessert", value: "desserts" },
-      { label: "Bevande", value: "drinks" },
-    ],
-    menuItems: baseMenu.menuItems.map((item) => ({
-      ...item,
-      name:
-        {
-          "Charred Octopus": "Polpo grigliato",
-          "Burrata & Citrus": "Burrata e agrumi",
-          "Catch of the Day": "Pesce del giorno",
-          "Seared Scallops": "Capesante scottate",
-          "Ribeye with Herb Butter": "Ribeye con burro alle erbe",
-          "Lemon Risotto": "Risotto al limone",
-          "Dark Chocolate Tart": "Tarte al cioccolato fondente",
-          "Poached Pear": "Pera pochè",
-          "House Spritz": "Spritz della casa",
-          "Zero-Proof Garden Tonic": "Garden tonic analcolico",
-        }[item.name] ?? item.name,
-      description:
-        {
-          "Celeriac purée, preserved lemon, herbs, and fennel oil.": "Purea di sedano rapa, limone conservato, erbe e olio di finocchio.",
-          "Blood orange, olive crumble, basil oil, and toasted sourdough.": "Arancia rossa, crumble di olive, olio al basilico e pane tostato.",
-          "Pan-seared fish, mussel broth, baby leeks, and charred potatoes.": "Pesce scottato, brodo di cozze, porri baby e patate arrostite.",
-          "Pea velouté, smoked bacon, lemon zest, and sea herbs.": "Velouté di piselli, bacon affumicato, zest di limone ed erbe di mare.",
-          "28-day aged beef, green peppercorn jus, and roasted root vegetables.": "Manzo frollato 28 giorni, salsa al pepe verde e verdure radice arrosto.",
-          "Asparagus, parmesan, crispy shallots, and garden herbs.": "Asparagi, parmigiano, scalogni croccanti ed erbe dell'orto.",
-          "Candied hazelnuts, sea salt caramel, and vanilla cream.": "Nocciole candite, caramello al sale marino e crema alla vaniglia.",
-          "White chocolate mousse, poached wine syrup, and almond crumb.": "Mousse al cioccolato bianco, sciroppo al vino e crumble di mandorle.",
-          "Bitter aperitif, citrus, sparkling wine, and rosemary.": "Aperitivo amaro, agrumi, spumante e rosmarino.",
-          "Cucumber, elderflower, tonic, and mint.": "Cetriolo, fiori di sambuco, tonic e menta.",
-        }[item.description] ?? item.description,
-      label:
-        {
-          "Chef favorite": "Preferito dello chef",
-          "Signature dish": "Piatto signature",
-          "House dessert": "Dolce della casa",
-        }[item.label ?? ""] ?? item.label,
-    })),
-    contactHighlights: [
-      { icon: Clock3, title: "Orari di apertura", lines: ["Mar-Gio 11:30 - 22:00", "Ven-Sab 11:30 - 23:00", "Dom 12:00 - 21:00"] },
-      { icon: MenuSquare, title: "Prenotazioni", lines: ["Prenota online", "Sala privata disponibile", "Accesso senza prenotazione a pranzo"] },
-      { icon: Wine, title: "Eventi", lines: ["Cene di compleanno", "Abbinamenti vino", "Tavoli corporate"] },
+      { label: "Antipasti", value: "antipasti" },
+      { label: "Primi", value: "primi" },
+      { label: "Secondi", value: "secondi" },
+      { label: "Dolci", value: "dolci" },
+      { label: "Vini", value: "wine" },
     ],
   },
   de: {
-    slogan: "Saisonale Kuestenkueche mit modernem europaeischem Touch",
-    heroPills: ["Saisonales Menu", "Lokale Zutaten", "Chef kuratiert"],
+    slogan: "Seit 1982 - Milano",
     description:
-      "Harbor Kitchen ist ein Premium-Nachbarschaftsrestaurant mit klaren Aromen, saisonalen Zutaten und warmem Service. Die Website ist so gestaltet, dass sie raffiniert, lokal und auf jedem Geraet leicht bedienbar wirkt.",
+      "A Tavola ist ein zeitgenoessisches italienisches Fine-Dining-Restaurant, in dem Tradition, architektonische Eleganz, saisonale Zutaten und warme Gastfreundschaft zusammenkommen.",
+    heroPills: ["Modern italienisch", "Saisonales Tasting", "Dinner bei Kerzenlicht"],
     openingHours: [
-      { day: "Mo", hours: "Geschlossen" },
-      { day: "Di-Do", hours: "11:30 - 22:00" },
-      { day: "Fr-Sa", hours: "11:30 - 23:00" },
-      { day: "So", hours: "12:00 - 21:00" },
-    ],
-    storyPoints: [
-      "Saisonale Menus mit frischem Fisch, regionalen Produkten und hausgemachten Desserts.",
-      "Ein ruhiger Dining Room fuer lange Lunches, Date Nights und private Feiern.",
-      "Freundlicher, gepflegter Service mit Reservierungsunterstuetzung und klaren Kontaktdaten.",
-    ],
-    highlights: [
-      { icon: ChefHat, title: "Chef-gefuehrte Kueche", description: "Fein abgestimmte Teller mit Kuesten-Identitaet und konstanter Qualitaet." },
-      { icon: Heart, title: "Warme Gastfreundschaft", description: "Ein Front-of-House-Erlebnis, das persoenlich wirkt, ohne formell zu sein." },
-      { icon: Sparkles, title: "Elegantes Branding", description: "Premium-Visuals, sanfter Kontrast und ruhige Typografie." },
-      { icon: MapPinned, title: "Lokale Auffindbarkeit", description: "Oeffnungszeiten, Standort und Navigation sind leicht zu finden." },
+      { day: "Mo-So", hours: "18:00 - 00:00" },
+      { day: "Kueche", hours: "18:30 - 22:45" },
+      { day: "Private Dining", hours: "Auf Anfrage" },
     ],
     menuCategories: [
       { label: "Alle Gerichte", value: "all" },
-      { label: "Vorspeisen", value: "starters" },
-      { label: "Fisch", value: "seafood" },
-      { label: "Hauptgerichte", value: "mains" },
-      { label: "Desserts", value: "desserts" },
-      { label: "Getraenke", value: "drinks" },
-    ],
-    contactHighlights: [
-      { icon: Clock3, title: "Oeffnungszeiten", lines: ["Di-Do 11:30 - 22:00", "Fr-Sa 11:30 - 23:00", "So 12:00 - 21:00"] },
-      { icon: MenuSquare, title: "Reservierungen", lines: ["Online reservieren", "Private Dining verfuegbar", "Walk-ins zur Mittagszeit willkommen"] },
-      { icon: Wine, title: "Events", lines: ["Geburtstagsdinner", "Wine Pairings", "Firmentische"] },
+      { label: "Antipasti", value: "antipasti" },
+      { label: "Primi", value: "primi" },
+      { label: "Secondi", value: "secondi" },
+      { label: "Dolci", value: "dolci" },
+      { label: "Wein", value: "wine" },
     ],
   },
 }

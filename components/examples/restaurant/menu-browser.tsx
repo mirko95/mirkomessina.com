@@ -16,8 +16,8 @@ export function MenuBrowser({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[0.28fr_0.72fr]">
-      <aside className="rounded-[2rem] border border-stone-200 bg-[#fcfaf5] p-5 shadow-sm lg:sticky lg:top-24 lg:self-start">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700">
+      <aside className="border border-[#c5a059]/20 bg-[#141414] p-5 shadow-sm lg:sticky lg:top-24 lg:self-start">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#c5a059]">
           {locale === "de" ? "Kategorien" : locale === "it" ? "Categorie" : "Categories"}
         </p>
         <div className="mt-4 flex flex-wrap gap-3 lg:flex-col lg:gap-2">
@@ -26,10 +26,10 @@ export function MenuBrowser({ locale = "en" }: { locale?: Locale }) {
               key={category.value}
               type="button"
               onClick={() => setActive(category.value)}
-              className={`justify-start rounded-2xl px-4 py-3 text-left transition-colors ${
+              className={`justify-start rounded-none px-4 py-3 text-left transition-colors ${
                 active === category.value
-                  ? "bg-stone-950 text-white hover:bg-stone-800"
-                  : "border border-stone-200 bg-white text-stone-700 hover:bg-stone-100"
+                  ? "bg-[#c5a059] text-[#0a0a0a] hover:bg-[#d4b47a]"
+                  : "border border-[#c5a059]/20 bg-[#0d0d0d] text-[#e8e2d6]/70 hover:bg-[#c5a059]/10 hover:text-white"
               }`}
               variant={active === category.value ? "default" : "outline"}
             >
@@ -37,9 +37,9 @@ export function MenuBrowser({ locale = "en" }: { locale?: Locale }) {
             </Button>
           ))}
         </div>
-        <div className="mt-6 rounded-[1.5rem] border border-stone-200 bg-white p-4">
-          <p className="text-sm font-semibold text-stone-950">{locale === "de" ? "Hinweis" : locale === "it" ? "Nota" : "Note"}</p>
-          <p className="mt-2 text-sm leading-7 text-stone-600">
+        <div className="mt-6 border border-[#c5a059]/20 bg-[#0d0d0d] p-4">
+          <p className="text-sm font-semibold text-white">{locale === "de" ? "Hinweis" : locale === "it" ? "Nota" : "Note"}</p>
+          <p className="mt-2 text-sm leading-7 text-[#e8e2d6]/50">
             {locale === "de"
               ? "Die Auswahl ist so gestaltet, dass sie sich wie eine echte Speisekarte liest und nicht wie ein generischer Rasterblock."
               : locale === "it"
@@ -50,13 +50,13 @@ export function MenuBrowser({ locale = "en" }: { locale?: Locale }) {
       </aside>
 
       <div className="space-y-6">
-        <div className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-sm">
+        <div className="border border-[#c5a059]/20 bg-[#141414] p-6 shadow-sm">
           <div className="flex items-center justify-between gap-6">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-amber-700">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#c5a059]">
                 {locale === "de" ? "Saisonale Gerichte" : locale === "it" ? "Piatti stagionali" : "Seasonal dishes"}
               </p>
-              <h2 className="mt-3 text-2xl font-semibold text-stone-950">
+              <h2 className="mt-3 font-serif text-2xl font-light text-white">
                 {locale === "de"
                   ? "Eine Speisekarte mit klarem Rhythmus, Premium-Feeling und einfacher Navigation."
                   : locale === "it"
@@ -64,7 +64,7 @@ export function MenuBrowser({ locale = "en" }: { locale?: Locale }) {
                     : "A menu with clear rhythm, premium feel, and simple navigation."}
               </h2>
             </div>
-            <div className="hidden rounded-full border border-stone-200 bg-stone-50 px-4 py-2 text-sm text-stone-500 md:block">
+            <div className="hidden border border-[#c5a059]/20 bg-[#0d0d0d] px-4 py-2 text-sm text-[#e8e2d6]/50 md:block">
               {filtered.length} {locale === "de" ? "Gerichte" : locale === "it" ? "piatti" : "dishes"}
             </div>
           </div>
@@ -74,22 +74,22 @@ export function MenuBrowser({ locale = "en" }: { locale?: Locale }) {
           {filtered.map((item, index) => (
             <article
               key={`${item.category}-${item.name}`}
-              className={`rounded-[1.8rem] border p-5 shadow-sm ${index % 3 === 0 ? "border-amber-200 bg-[linear-gradient(180deg,#ffffff_0%,#fff8ef_100%)]" : index % 3 === 1 ? "border-stone-200 bg-white" : "border-stone-200 bg-stone-50"}`}
+              className={`border p-5 shadow-sm ${index % 3 === 0 ? "border-[#c5a059]/30 bg-[#141414]" : "border-[#c5a059]/15 bg-white/[0.03]"}`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="flex flex-wrap gap-2">
                     {item.label ? (
-                      <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-900">{item.label}</span>
+                      <span className="rounded-full bg-[#c5a059] px-3 py-1 text-xs font-medium text-[#0a0a0a]">{item.label}</span>
                     ) : null}
-                    <span className="rounded-full bg-stone-100 px-3 py-1 text-xs font-medium text-stone-600">
+                    <span className="rounded-full bg-[#e8e2d6]/10 px-3 py-1 text-xs font-medium text-[#e8e2d6]/60">
                       {menuCategories.find((category) => category.value === item.category)?.label}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-xl font-semibold text-stone-950">{item.name}</h3>
-                  <p className="mt-3 text-sm leading-7 text-stone-600">{item.description}</p>
+                  <h3 className="mt-4 font-serif text-xl font-light text-white">{item.name}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[#e8e2d6]/55">{item.description}</p>
                 </div>
-                <div className="rounded-2xl border border-stone-200 bg-white px-4 py-3 text-lg font-semibold text-stone-950 shadow-sm">
+                <div className="border border-[#c5a059]/20 bg-[#0a0a0a] px-4 py-3 text-lg font-semibold text-[#c5a059] shadow-sm">
                   €{item.price}
                 </div>
               </div>

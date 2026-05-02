@@ -58,11 +58,6 @@ export type HomeCopy = {
     description: string
     cta: string
   }
-  seoPages: {
-    eyebrow: string
-    title: string
-    description: string
-  }
   faq: {
     eyebrow: string
     title: string
@@ -124,19 +119,6 @@ export type ExampleSiteCopy = {
     title: string
     description: string
   }>
-}
-
-export type SeoLandingPageCopy = {
-  slug: string
-  keyword: string
-  title: string
-  description: string
-  h1: string
-  intro: string
-  benefits: Array<{ title: string; description: string }>
-  steps: Array<{ title: string; description: string }>
-  ctaLabel: string
-  ctaHref: string
 }
 
 export type ExampleIndexCopy = {
@@ -402,12 +384,6 @@ const homeCopy: Record<Locale, HomeCopy> = {
       description:
         "These pages show the kind of structure, polish, and clarity I can ship without spinning up separate hosting for each page.",
       cta: "View all pages",
-    },
-    seoPages: {
-      eyebrow: "SEO Landing Pages",
-      title: "Search landing pages built for crawlability and intent",
-      description:
-        "These pages use real text, unique titles, and crawlable internal links so Google can understand the service topics without needing JavaScript to interpret the content.",
     },
     faq: {
       eyebrow: "FAQ",
@@ -711,12 +687,6 @@ const homeCopy: Record<Locale, HomeCopy> = {
         "Queste pagine mostrano il tipo di struttura, rifinitura e chiarezza che posso consegnare senza dover pubblicare ogni pagina su un hosting separato.",
       cta: "Vedi tutte le pagine",
     },
-    seoPages: {
-      eyebrow: "Landing SEO",
-      title: "Pagine di atterraggio costruite per crawlability e intento",
-      description:
-        "Queste pagine usano testo reale, titoli unici e link interni crawlabili in modo che Google capisca gli argomenti dei servizi senza dover interpretare il contenuto via JavaScript.",
-    },
     faq: {
       eyebrow: "FAQ",
       title: "Domande frequenti",
@@ -1018,12 +988,6 @@ const homeCopy: Record<Locale, HomeCopy> = {
       description:
         "Das sind Projekt-Websites, die Sie im selben Deployment durchsehen können. Sie zeigen die Art von Struktur, Feinschliff und Klarheit, die ich ohne separate Hosting-Setups fuer jedes Beispiel liefern kann.",
       cta: "Alle Beispiele ansehen",
-    },
-    seoPages: {
-      eyebrow: "SEO-Landingpages",
-      title: "Landingpages fuer Crawlability und Suchintention",
-      description:
-        "Diese Seiten nutzen echten Text, eindeutige Titel und crawlbare interne Links, damit Google die Service-Themen versteht, ohne JavaScript zum Interpretieren des Inhalts zu brauchen.",
     },
     faq: {
       eyebrow: "FAQ",

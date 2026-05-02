@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -39,10 +39,10 @@ export function RestaurantAboutPage({ locale = "en" }: { locale?: Locale }) {
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Button className="rounded-full bg-stone-950 text-white hover:bg-stone-800" asChild>
-                  <Link href={localizedPath(locale, "/harbor-kitchen/contact")}>{locale === "de" ? "Tisch reservieren" : locale === "it" ? "Prenota un tavolo" : "Reserve a table"}</Link>
+                  <Link href={localizedPath(locale, "/a-tavola/contact")}>{locale === "de" ? "Tisch reservieren" : locale === "it" ? "Prenota un tavolo" : "Reserve a table"}</Link>
                 </Button>
                 <Button variant="outline" className="rounded-full border-stone-300 bg-white text-stone-900 hover:bg-stone-100" asChild>
-                  <Link href={localizedPath(locale, "/harbor-kitchen#menu")}>{locale === "de" ? "Menue ansehen" : locale === "it" ? "Vedi il menu" : "See the menu"}</Link>
+                  <Link href={localizedPath(locale, "/a-tavola#menu")}>{locale === "de" ? "Menue ansehen" : locale === "it" ? "Vedi il menu" : "See the menu"}</Link>
                 </Button>
               </div>
             </motion.div>

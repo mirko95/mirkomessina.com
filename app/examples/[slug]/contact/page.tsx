@@ -9,19 +9,19 @@ type ExamplePageProps = {
 }
 
 export function generateStaticParams() {
-  return [{ slug: "harbor-kitchen" }]
+  return [{ slug: "a-tavola" }]
 }
 
 export async function generateMetadata({ params }: ExamplePageProps): Promise<Metadata> {
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
 
-  if (slug !== "harbor-kitchen") {
+  if (slug !== "a-tavola") {
     return {}
   }
 
   return {
-    title: locale === "de" ? "Kontakt | Harbor Kitchen" : locale === "it" ? "Contatti | Harbor Kitchen" : "Contact | Harbor Kitchen",
+    title: locale === "de" ? "Kontakt | A Tavola" : locale === "it" ? "Contatti | A Tavola" : "Contact | A Tavola",
     description:
       locale === "de"
         ? "Kontaktseite mit validiertem Reservierungsformular, Oeffnungszeiten und Google-Maps-Einbettung."
@@ -35,7 +35,7 @@ export default async function RestaurantContactRoute({ params }: ExamplePageProp
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
 
-  if (slug !== "harbor-kitchen") {
+  if (slug !== "a-tavola") {
     notFound()
   }
 

@@ -6,7 +6,6 @@ import Link from "next/link"
 import { forwardRef, useEffect, useRef, useState, type ReactNode } from "react"
 import {
   ArrowRight,
-  BarChart3,
   Bot,
   Building2,
   ExternalLink,
@@ -38,53 +37,53 @@ function Frame({
   )
 }
 
-function AureliaPreview() {
+function LussoLabPreview() {
   return (
-    <Frame className="bg-[#f8f5f0] text-[#121212]">
+    <Frame className="bg-[#fdfbf7] text-[#121212]">
       <div className="p-4">
         <div className="relative overflow-hidden rounded-[1.4rem] bg-[#121212]">
-          <img src="/images/aurelia/hero-interior.jpg" alt="" className="h-44 w-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center">
-            <p className="text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-[#c5a67c]">
-              Established 2012
+          <img src="/images/lussolab/hero-image.png" alt="" className="h-44 w-full object-cover opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center p-5">
+            <p className="text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-white/70">
+              New Arrivals
             </p>
-            <p className="mt-3 font-serif text-3xl leading-tight text-white">
-              Calm, refined spaces
+            <p className="mt-3 text-3xl font-light leading-tight text-white">
+              Designed for simplicity.
             </p>
           </div>
         </div>
-        <div className="mt-4 flex items-center justify-between border-b border-[#c5a67c]/25 pb-4">
+        <div className="mt-4 flex items-center justify-between border-b border-[#121212]/10 pb-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c5a67c]">
-              Interior studio
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#121212]">
+              Premium shop
             </p>
-            <p className="mt-1 text-sm text-[#121212]/55">Luxury portfolio website</p>
+            <p className="mt-1 text-sm text-[#121212]/55">Minimal e-commerce experience</p>
           </div>
-          <div className="border border-[#c5a67c]/40 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#c5a67c]">
-            Inquire
+          <div className="bg-[#121212] px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">
+            Cart
           </div>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-3">
           {[
-            ["/images/aurelia/belvedere-villa.jpg", "Como"],
-            ["/images/aurelia/hexagone-suite.jpg", "Paris"],
-            ["/images/aurelia/urban-sanctuary.jpg", "London"],
+            ["/images/lussolab/luna-tote-image.png", "Luna Tote"],
+            ["/images/lussolab/folio-case-image.png", "Folio Case"],
+            ["/images/lussolab/horizon-wallet-image.png", "Wallet"],
           ].map(([image, label]) => (
             <div key={label} className="space-y-2">
-              <img src={image} alt="" className="aspect-[4/5] w-full object-cover" />
-              <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[#c5a67c]">{label}</p>
+              <img src={image} alt="" className="aspect-[4/5] w-full bg-[#f5f2ed] object-cover" />
+              <p className="text-[0.55rem] uppercase tracking-[0.14em] text-[#121212]/55">{label}</p>
             </div>
           ))}
         </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <div className="bg-white p-3">
-            <p className="font-serif text-xl">Design Excellence</p>
-            <p className="mt-1 text-xs leading-5 text-[#121212]/50">Residential, hotel, styling, and furniture selection.</p>
+            <p className="text-lg font-light">Product Detail</p>
+            <p className="mt-1 text-xs leading-5 text-[#121212]/50">Color selectors, specs, and add-to-bag flow.</p>
           </div>
           <div className="bg-[#121212] p-3 text-white">
-            <p className="font-serif text-xl">Aurelia Journey</p>
-            <p className="mt-1 text-xs leading-5 text-white/50">Consultation, concept, design, delivery.</p>
+            <p className="text-lg font-light">Checkout</p>
+            <p className="mt-1 text-xs leading-5 text-white/50">Cart drawer, summary, and order confirmation.</p>
           </div>
         </div>
       </div>
@@ -94,76 +93,36 @@ function AureliaPreview() {
 
 function ModelWatchPreview() {
   return (
-    <Frame className="bg-[#050816] text-white">
-      <div className="grid h-full grid-cols-[0.32fr_0.68fr] gap-4 p-4">
-        <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-3">
-          <div className="flex items-center gap-2 border-b border-white/10 pb-3">
-            <div className="h-2.5 w-2.5 rounded-full bg-violet-300" />
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Control room</p>
+    <Frame className="bg-[#f9f8f6] text-[#1a1a1a]">
+      <div className="p-4">
+        <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
+          <div>
+            <p className="font-serif text-2xl font-bold tracking-tight">SIGNAL</p>
+            <p className="mt-1 text-sm text-[#6b6b6b]">Editorial publication</p>
           </div>
-          <div className="mt-3 space-y-2">
-            {["Overview", "Monitoring", "Pipeline", "Governance"].map((item, index) => (
-              <div
-                key={item}
-                className={`rounded-xl px-3 py-2 text-sm ${
-                  index === 1
-                    ? "bg-violet-300 text-slate-950"
-                    : "bg-white/5 text-slate-300"
-                }`}
-              >
-                {item}
-              </div>
-            ))}
+          <div className="rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-semibold text-[#6b6b6b]">
+            Dark mode
           </div>
         </div>
-        <div className="space-y-3">
-          <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-slate-400">Model health</p>
-              <span className="rounded-full bg-violet-300/15 px-3 py-1 text-xs text-violet-200">
-                Release candidate
-              </span>
+
+        <div className="mt-4 grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="space-y-4">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6b6b]">Featured Article</p>
+              <p className="mt-2 font-serif text-3xl leading-tight">The Silent Shift: Why AI-First Design is the New Standard</p>
+              <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#6b6b6b]">Infrastructure is catching up to imagination. The next generation of products starts from intelligence.</p>
             </div>
-            <div className="mt-4 grid grid-cols-3 gap-3">
-              {[
-                ["AUC", "0.94"],
-                ["Drift", "Low"],
-                ["Latency", "148 ms"],
-              ].map(([label, value]) => (
-                <div key={label} className="rounded-2xl border border-white/10 bg-black/30 p-3">
-                  <p className="text-xs text-slate-400">{label}</p>
-                  <p className="mt-2 text-xl font-semibold">{value}</p>
-                </div>
+            <div className="grid grid-cols-2 gap-2 text-[10px] font-bold uppercase tracking-widest text-[#6b6b6b]">
+              {["AI", "Startups", "Engineering", "Design"].map((item) => (
+                <div key={item} className="border border-neutral-200 bg-white p-3">{item}</div>
               ))}
             </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
-              <p className="text-sm text-slate-400">Drift</p>
-              <div className="mt-4 h-24 rounded-2xl bg-gradient-to-br from-violet-400/20 to-transparent p-3">
-                <div className="flex h-full items-end gap-2">
-                  {[25, 32, 28, 46, 34, 40].map((height, index) => (
-                    <div
-                      key={index}
-                      className="flex-1 rounded-t-full bg-violet-300"
-                      style={{ height: `${height}%` }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-4">
-              <p className="text-sm text-slate-400">Alert stream</p>
-              <div className="mt-4 space-y-2">
-                {["Data lag", "Confidence drop", "Baseline check"].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-sm text-slate-200"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
+          <div className="space-y-3">
+            <img src="/images/ai-first-design-hero.png" alt="" className="aspect-[16/10] w-full object-cover grayscale-[0.2]" />
+            <div className="grid grid-cols-2 gap-3">
+              <img src="/images/modern-startups.png" alt="" className="aspect-[16/10] w-full object-cover grayscale-[0.2]" />
+              <img src="/images/digital-minimalism.png" alt="" className="aspect-[16/10] w-full object-cover grayscale-[0.2]" />
             </div>
           </div>
         </div>
@@ -220,134 +179,51 @@ function ReplyPilotPreview() {
 
 function FlowForgePreview() {
   return (
-    <Frame className="bg-[#05150f] text-white">
+    <Frame className="bg-[#f8f5f0] text-[#121212]">
       <div className="p-4">
-        <div className="flex items-center justify-between border-b border-emerald-400/10 pb-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              Automation canvas
+        <div className="relative overflow-hidden rounded-[1.4rem] bg-[#121212]">
+          <img src="/images/hero-interior.jpg" alt="" className="h-44 w-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 to-transparent" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center">
+            <p className="text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-[#c5a67c]">
+              Established 2012
             </p>
-            <p className="mt-1 text-sm text-emerald-100/70">Flow builder with approvals</p>
-          </div>
-          <div className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200">
-            12 runs today
-          </div>
-        </div>
-        <div className="mt-4 rounded-[1.4rem] border border-emerald-400/10 bg-black/30 p-4">
-          <div className="grid gap-3 sm:grid-cols-3">
-            {[
-              ["Trigger", "Form submit"],
-              ["Review", "Approve lead"],
-              ["Sync", "Update CRM"],
-            ].map(([label, detail], index) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-emerald-400/10 bg-emerald-400/5 p-3"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
-                  <span className="text-xs uppercase tracking-[0.2em] text-emerald-100/70">
-                    {label}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm text-white">{detail}</p>
-                <p className="mt-4 text-[0.65rem] uppercase tracking-[0.2em] text-emerald-100/40">
-                  Step 0{index + 1}
-                </p>
-              </div>
-            ))}
+            <p className="mt-3 font-serif text-3xl leading-tight text-white">
+              Calm, refined interiors
+            </p>
           </div>
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {["Lead flow", "Invoice flow", "Reporting flow", "Approval log"].map((item, index) => (
-            <div
-              key={item}
-              className={`rounded-2xl border border-emerald-400/10 p-3 ${
-                index % 2 === 0 ? "bg-emerald-400/8" : "bg-black/25"
-              }`}
-            >
-              <p className="text-xs uppercase tracking-[0.2em] text-emerald-100/60">
-                {item}
-              </p>
-              <p className="mt-2 text-sm text-slate-200">
-                {index === 0
-                  ? "Website form -> enrich lead -> create CRM record"
-                  : index === 1
-                    ? "Unpaid invoice -> reminder -> follow-up"
-                    : index === 2
-                      ? "Weekly trigger -> summary -> email"
-                      : "Logged, reviewed, and ready"}
-              </p>
+        <div className="mt-4 flex items-center justify-between border-b border-[#c5a67c]/25 pb-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c5a67c]">
+              Velora Interiors
+            </p>
+            <p className="mt-1 text-sm text-[#121212]/55">Luxury portfolio website</p>
+          </div>
+          <div className="border border-[#c5a67c]/40 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#c5a67c]">
+            Inquire
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-3">
+          {[
+            ["/images/belvedere-villa.jpg", "Como"],
+            ["/images/hexagone-suite.jpg", "Paris"],
+            ["/images/urban-sanctuary.jpg", "London"],
+          ].map(([image, label]) => (
+            <div key={label} className="space-y-2">
+              <img src={image} alt="" className="aspect-[4/5] w-full object-cover" />
+              <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[#c5a67c]">{label}</p>
             </div>
           ))}
         </div>
-      </div>
-    </Frame>
-  )
-}
-
-function AetherIqPreview() {
-  return (
-    <Frame className="border-cyan-400/25 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.08),transparent_34%),linear-gradient(180deg,rgba(15,23,42,0.98),rgba(2,6,23,0.94))] text-white shadow-[0_28px_90px_rgba(2,6,23,0.45)]">
-      <div className="p-4">
-        <div className="flex items-center justify-between px-1">
-          <div className="flex items-center gap-2">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_0_1px_rgba(34,211,238,0.08),0_16px_30px_rgba(34,211,238,0.12)]">
-              <BarChart3 className="h-5 w-5" />
-            </div>
-            <div className="h-2 w-14 rounded-full bg-white/8" />
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="bg-white p-3">
+            <p className="font-serif text-xl">Design Excellence</p>
+            <p className="mt-1 text-xs leading-5 text-[#121212]/50">Residential, hotel, styling, and furniture selection.</p>
           </div>
-          <div className="flex items-center gap-2 text-white/35">
-            <div className="h-2 w-2 rounded-full bg-white/35" />
-            <div className="h-2 w-2 rounded-full bg-white/20" />
-            <div className="h-2 w-2 rounded-full bg-white/12" />
-          </div>
-        </div>
-
-        <div className="relative mt-4 overflow-hidden rounded-[1.55rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-4">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.14),transparent_32%),radial-gradient(circle_at_70%_15%,_rgba(168,85,247,0.14),transparent_28%)]" />
-          <div className="relative grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.85),rgba(15,23,42,0.55))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <div className="h-2 w-10 rounded-full bg-cyan-300/70" />
-              <div className="mt-5 flex items-end gap-2">
-                <div className="h-14 flex-1 rounded-xl bg-[linear-gradient(180deg,rgba(56,189,248,0.28),rgba(56,189,248,0.08))]" />
-                <div className="h-[4.5rem] flex-1 rounded-xl bg-[linear-gradient(180deg,rgba(56,189,248,0.4),rgba(56,189,248,0.12))]" />
-                <div className="h-10 flex-1 rounded-xl bg-[linear-gradient(180deg,rgba(56,189,248,0.18),rgba(56,189,248,0.06))]" />
-              </div>
-            </div>
-            <div className="rounded-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(30,41,59,0.88),rgba(30,41,59,0.56))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <div className="h-2 w-12 rounded-full bg-violet-300/70" />
-              <div className="mt-5 flex items-end gap-2">
-                <div className="h-10 flex-1 rounded-xl bg-[linear-gradient(180deg,rgba(168,85,247,0.18),rgba(168,85,247,0.06))]" />
-                <div className="h-16 flex-1 rounded-xl bg-[linear-gradient(180deg,rgba(168,85,247,0.34),rgba(168,85,247,0.12))]" />
-                <div className="h-12 flex-1 rounded-xl bg-[linear-gradient(180deg,rgba(168,85,247,0.24),rgba(168,85,247,0.08))]" />
-              </div>
-            </div>
-          </div>
-
-          <div className="relative mt-3 rounded-[1.4rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),transparent_35%),linear-gradient(135deg,rgba(30,41,59,0.94),rgba(76,29,149,0.55))] p-4">
-            <div className="flex h-20 items-end gap-2">
-              {[34, 46, 42, 58, 53, 68, 61, 74].map((height, index) => (
-                <div
-                  key={index}
-                  className="flex-1 rounded-t-full bg-[linear-gradient(180deg,rgba(103,232,249,0.88),rgba(56,189,248,0.16))]"
-                  style={{ height: `${height}%` }}
-                />
-              ))}
-            </div>
-            <div className="absolute inset-x-4 bottom-4 h-px bg-white/10" />
-          </div>
-        </div>
-
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          <div className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-            <div className="h-2 w-16 rounded-full bg-cyan-300/40" />
-          </div>
-          <div className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-            <div className="h-2 w-12 rounded-full bg-violet-300/40" />
-          </div>
-          <div className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
-            <div className="h-2 w-14 rounded-full bg-white/20" />
+          <div className="bg-[#121212] p-3 text-white">
+            <p className="font-serif text-xl">Velora Journey</p>
+            <p className="mt-1 text-xs leading-5 text-white/50">Consultation, concept, design, delivery.</p>
           </div>
         </div>
       </div>
@@ -357,51 +233,46 @@ function AetherIqPreview() {
 
 function HarborKitchenPreview() {
   return (
-    <Frame className="border-amber-200/50 bg-[#fff8ef] text-stone-900 shadow-[0_24px_60px_rgba(120,53,15,0.08)]">
+    <Frame className="border-[#c5a059]/25 bg-[#0a0a0a] text-[#e8e2d6] shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
       <div className="p-4">
-        <div className="flex items-center justify-between border-b border-amber-200/70 pb-4">
+        <div className="flex items-center justify-between border-b border-[#c5a059]/20 pb-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-700">
-              Hospitality site
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c5a059]">
+              A Tavola
             </p>
-            <p className="mt-1 text-sm text-stone-500">Reservations and local discovery</p>
+            <p className="mt-1 text-sm text-[#e8e2d6]/55">Modern Italian fine dining</p>
           </div>
-          <div className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
-            Tonight 7:30 PM
+          <div className="bg-[#c5a059] px-3 py-1 text-xs font-semibold text-[#0a0a0a]">
+            Since 1982
           </div>
         </div>
         <div className="mt-4 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="overflow-hidden rounded-[1.4rem] bg-[linear-gradient(135deg,rgba(120,53,15,0.94),rgba(245,158,11,0.25))] p-4 text-white">
-            <p className="text-xs uppercase tracking-[0.2em] text-amber-100/80">Reserve a table</p>
-            <p className="mt-2 text-2xl font-semibold">Seasonal coastal dining</p>
-            <div className="mt-4 rounded-2xl border border-white/15 bg-white/10 p-3">
-              <p className="text-sm text-amber-50/80">Chef note</p>
-              <p className="mt-2 text-sm leading-7 text-white/90">
-                Catch of the Day with mussel broth, baby leeks, and charred potatoes.
-              </p>
+          <div className="relative min-h-52 overflow-hidden bg-[#141414] p-4 text-white">
+            <img src="/images/a-tavola-restaurant-interior-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover brightness-[0.35]" />
+            <div className="relative">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#c5a059]">Reserve a table</p>
+              <p className="mt-2 font-serif text-3xl italic leading-tight">A modern taste of Italy</p>
             </div>
           </div>
           <div className="space-y-3">
-            <div className="rounded-2xl border border-amber-200 bg-white p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-amber-700">Menu</p>
-              <p className="mt-2 text-sm text-stone-600">
-                Seasonal dishes, tasting notes, and dietary info.
+            <div className="border border-[#c5a059]/20 bg-[#141414] p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#c5a059]">La Carta</p>
+              <p className="mt-2 text-sm text-[#e8e2d6]/60">
+                Antipasti, primi, secondi, dolci.
               </p>
             </div>
-            <div className="rounded-2xl border border-amber-200 bg-white p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-amber-700">Opening hours</p>
-              <p className="mt-2 text-sm text-stone-600">
-                Tue-Sun open with clear service times.
+            <div className="border border-[#c5a059]/20 bg-[#141414] p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#c5a059]">Opening hours</p>
+              <p className="mt-2 text-sm text-[#e8e2d6]/60">
+                Mon-Sun, 18:00-00:00.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-amber-700">Location</p>
-                <p className="mt-2 text-sm text-stone-700">Vienna, Austria</p>
+              <div className="overflow-hidden">
+                <img src="/images/wild-mushroom-risotto.png" alt="" className="aspect-square w-full object-cover" />
               </div>
-              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-amber-700">Events</p>
-                <p className="mt-2 text-sm text-stone-700">Private dining</p>
+              <div className="overflow-hidden">
+                <img src="/images/romantic-candlelit-table-detail.png" alt="" className="aspect-square w-full object-cover" />
               </div>
             </div>
           </div>
@@ -485,12 +356,11 @@ function GenericPreview() {
 
 function ExamplePreview({ slug }: { slug: string }) {
   if (slug === "affect-sense") return <AffectSensePreview />
-  if (slug === "aurelia") return <AureliaPreview />
-  if (slug === "modelwatch") return <ModelWatchPreview />
-  if (slug === "replypilot") return <ReplyPilotPreview />
-  if (slug === "flowforge") return <FlowForgePreview />
-  if (slug === "harbor-kitchen") return <HarborKitchenPreview />
-  if (slug === "aetheriq") return <AetherIqPreview />
+  if (slug === "lussolab") return <LussoLabPreview />
+  if (slug === "blog") return <ModelWatchPreview />
+  if (slug === "estetic-clinique") return <ReplyPilotPreview />
+  if (slug === "velora") return <FlowForgePreview />
+  if (slug === "a-tavola") return <HarborKitchenPreview />
   return <GenericPreview />
 }
 

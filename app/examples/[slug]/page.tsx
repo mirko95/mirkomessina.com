@@ -1,12 +1,11 @@
 import Link from "next/link"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { ArrowLeft, ArrowRight, CheckCircle2, PanelTop, Sparkles } from "lucide-react"
-import { exampleSites, getExampleSite } from "@/lib/examples"
-import { AetherIqLandingPage } from "@/components/examples/saas/site-page"
-import { ReplyPilotPage } from "@/components/examples/assistant/site-page"
-import { FlowForgePage } from "@/components/examples/automation/site-page"
-import { AureliaPage } from "@/components/examples/aurelia/site-page"
-import { ModelWatchPage } from "@/components/examples/modelwatch/site-page"
+import { exampleSites, getExampleSite, resolveExampleSlug } from "@/lib/examples"
+import { ReplyPilotPage } from "@/components/examples/eterna-aesthetic/site-page"
+import { FlowForgePage } from "@/components/examples/velora/site-page"
+import { AureliaPage } from "@/components/examples/aurelia-interiors/site-page"
+import { ModelWatchPage } from "@/components/examples/blog/site-page"
 import { AffectSensePage } from "@/components/examples/affect-sense/site-page"
 import { RestaurantHomePage } from "@/components/examples/restaurant/home"
 import { createPageMetadata } from "@/lib/seo"
@@ -24,58 +23,50 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ExamplePageProps) {
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
-  const site = getExampleSite(slug)
+  const resolvedSlug = resolveExampleSlug(slug)
+  const site = getExampleSite(resolvedSlug)
 
   if (!site) {
     return {}
   }
 
-  if (slug === "aetheriq") {
-    return createPageMetadata({
-      title: "AetherIQ | Premium AI SaaS Landing Page",
-      description:
-        "A modern SaaS landing page with hero, features, dashboard area, pricing, testimonials, FAQ, and footer.",
-      path: localizedPath(locale, "/aetheriq"),
-    })
-  }
-
-  if (slug === "replypilot") {
+  if (resolvedSlug === "estetic-clinique") {
     return createPageMetadata({
       title: "Estetic Clinique | Premium Aesthetic Clinic Website",
       description:
         "A luxury aesthetic clinic website with treatment cards, pricing, gallery, FAQ, and appointment request flow.",
-      path: localizedPath(locale, "/replypilot"),
+      path: localizedPath(locale, "/estetic-clinique"),
     })
   }
 
-  if (slug === "flowforge") {
+  if (resolvedSlug === "velora") {
     return createPageMetadata({
-      title: "FlowForge | Workflow Automation",
+      title: "Velora Interiors | Luxury Interior Design Studio",
       description:
-        "A workflow automation page that removes repetitive admin work and keeps operations visible.",
-      path: localizedPath(locale, "/flowforge"),
+        "A luxury interior design website with cinematic hero imagery, project gallery, services, process, testimonials, and contact section.",
+      path: localizedPath(locale, "/velora"),
     })
   }
 
-  if (slug === "aurelia") {
+  if (resolvedSlug === "lussolab") {
     return createPageMetadata({
-      title: "Aurelia Interiors | Luxury Interior Design Studio",
+      title: "LussoLab | Premium Minimalist E-commerce",
       description:
-        "A premium interior design studio website with luxury editorial styling, project galleries, services, process, testimonials, and contact section.",
-      path: localizedPath(locale, "/aurelia"),
+        "A high-end e-commerce experience for minimalist leather goods and tech accessories with product pages, cart drawer, and checkout flow.",
+      path: localizedPath(locale, "/lussolab"),
     })
   }
 
-  if (slug === "modelwatch") {
+  if (resolvedSlug === "blog") {
     return createPageMetadata({
-      title: "Busy | Productivity Workspace",
+      title: "Signal | Editorial Blog Website",
       description:
-        "A bright productivity product page with live status, manual controls, and a calm editorial layout.",
-      path: localizedPath(locale, "/modelwatch"),
+        "A modern editorial blog with featured articles, topics, article search, carousel browsing, article detail pages, newsletter, and dark mode.",
+      path: localizedPath(locale, "/blog"),
     })
   }
 
-  if (slug === "affect-sense") {
+  if (resolvedSlug === "affect-sense") {
     return createPageMetadata({
       title: "AffectSense | Webcam Emotion Recognition",
       description:
@@ -84,12 +75,12 @@ export async function generateMetadata({ params }: ExamplePageProps) {
     })
   }
 
-  if (slug === "harbor-kitchen") {
+  if (resolvedSlug === "a-tavola") {
     return createPageMetadata({
-      title: "Harbor Kitchen | Restaurant Website",
+      title: "A Tavola | Italian Restaurant Website",
       description:
-        "A modern restaurant website with a premium home page, filterable menu, about page, contact form, hours, and map.",
-      path: localizedPath(locale, "/harbor-kitchen"),
+        "A luxury Italian restaurant website with cinematic imagery, dark gold styling, a filterable menu, contact form, hours, and map.",
+      path: localizedPath(locale, "/a-tavola"),
     })
   }
 
@@ -103,37 +94,38 @@ export async function generateMetadata({ params }: ExamplePageProps) {
 export default async function ExampleSitePage({ params }: ExamplePageProps) {
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
-  const site = getExampleSite(slug)
+  const resolvedSlug = resolveExampleSlug(slug)
+  const site = getExampleSite(resolvedSlug)
 
   if (!site) {
     notFound()
   }
 
-  if (slug === "aetheriq") {
-    return <AetherIqLandingPage locale={locale} />
+  if (slug !== resolvedSlug) {
+    redirect(localizedPath(locale, `/${resolvedSlug}`))
   }
 
-  if (slug === "replypilot") {
+  if (resolvedSlug === "estetic-clinique") {
     return <ReplyPilotPage locale={locale} />
   }
 
-  if (slug === "flowforge") {
+  if (resolvedSlug === "velora") {
     return <FlowForgePage locale={locale} />
   }
 
-  if (slug === "aurelia") {
+  if (resolvedSlug === "lussolab") {
     return <AureliaPage locale={locale} />
   }
 
-  if (slug === "modelwatch") {
+  if (resolvedSlug === "blog") {
     return <ModelWatchPage locale={locale} />
   }
 
-  if (slug === "affect-sense") {
+  if (resolvedSlug === "affect-sense") {
     return <AffectSensePage locale={locale} />
   }
 
-  if (slug === "harbor-kitchen") {
+  if (resolvedSlug === "a-tavola") {
     return <RestaurantHomePage locale={locale} />
   }
 

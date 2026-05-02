@@ -8,9 +8,9 @@ const staticRoutes = [
   "/examples",
   "/privacy-policy",
   "/impressum",
-  "/harbor-kitchen/menu",
-  "/harbor-kitchen/about",
-  "/harbor-kitchen/contact",
+  "/a-tavola/menu",
+  "/a-tavola/about",
+  "/a-tavola/contact",
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: absoluteUrl(path),
     lastModified: new Date(),
     changeFrequency: path === "/" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : path === "/examples" ? 0.8 : path.startsWith("/harbor-kitchen") ? 0.6 : 0.7,
+    priority: path === "/" ? 1 : path === "/examples" ? 0.8 : path.startsWith("/a-tavola") ? 0.6 : 0.7,
   })) satisfies MetadataRoute.Sitemap
 
   const localizedStaticEntries = supportedLocales
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: absoluteUrl(`/${locale}${path === "/" ? "" : path}`),
         lastModified: new Date(),
         changeFrequency: path === "/" ? "weekly" : "monthly",
-        priority: path === "/" ? 1 : path === "/examples" ? 0.8 : path.startsWith("/harbor-kitchen") ? 0.6 : 0.7,
+        priority: path === "/" ? 1 : path === "/examples" ? 0.8 : path.startsWith("/a-tavola") ? 0.6 : 0.7,
       })),
     ) satisfies MetadataRoute.Sitemap
 
