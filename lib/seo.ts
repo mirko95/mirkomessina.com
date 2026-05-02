@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { siteConfig } from "./site"
 import { localizedPath, resolveLocale, stripLocalePrefix } from "./i18n"
 
-const DEFAULT_SITE_URL = "http://localhost:3000"
+const DEFAULT_SITE_URL = "https://mirkomessina.com"
 
 export function getSiteUrl() {
   const rawUrl = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? DEFAULT_SITE_URL
@@ -31,7 +31,7 @@ export function createPageMetadata({
   title,
   description,
   path,
-  imagePath = "/og-image.svg",
+  imagePath = "/og-image.png",
 }: PageMetadataInput): Metadata {
   const canonical = absoluteUrl(path)
   const locale = resolveLocale(path.split("/").filter(Boolean)[0])
