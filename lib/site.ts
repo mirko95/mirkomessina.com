@@ -3,9 +3,9 @@ export const siteConfig = {
   firstName: "Mirko",
   initials: "MM",
   role: "Web Developer & AI Builder",
-  title: "Mirko Messina | Websites, AI Tools, and Automation",
+  title: "Mirko Messina | Web Developer for Websites, AI Tools & Automation",
   description:
-    "Web developer trained in PHP and currently studying Artificial Intelligence at JKU Linz. I build websites, GPT-powered tools, and practical automations.",
+    "Web developer in Austria building responsive websites, GPT-powered tools, and practical automations for freelancers, local businesses, and small teams.",
   email: "mirkomessina87@gmail.com",
   social: {
     linkedin: "https://www.linkedin.com/in/mirko-messina95/",

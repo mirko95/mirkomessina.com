@@ -1,16 +1,17 @@
 import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
 import { ArrowLeft, ArrowRight, CheckCircle2, PanelTop, Sparkles } from "lucide-react"
-import { exampleSites, getExampleSite, resolveExampleSlug } from "@/lib/examples"
+import { exampleSites, getExampleSite, getLocalizedExampleSite, resolveExampleSlug } from "@/lib/examples"
 import { ReplyPilotPage } from "@/components/examples/eterna-aesthetic/site-page"
 import { FlowForgePage } from "@/components/examples/velora/site-page"
 import { AureliaPage } from "@/components/examples/aurelia-interiors/site-page"
 import { ModelWatchPage } from "@/components/examples/blog/site-page"
 import { AffectSensePage } from "@/components/examples/affect-sense/site-page"
 import { RestaurantHomePage } from "@/components/examples/restaurant/home"
-import { createPageMetadata } from "@/lib/seo"
+import { JsonLd } from "@/components/seo/json-ld"
+import { createPageMetadata, getCreativeWorkJsonLd } from "@/lib/seo"
 import { headers } from "next/headers"
-import { resolveLocale, localizedPath } from "@/lib/i18n"
+import { resolveLocale, localizedPath, type Locale } from "@/lib/i18n"
 
 type ExamplePageProps = {
   params: Promise<{ slug: string }>
@@ -24,71 +25,37 @@ export async function generateMetadata({ params }: ExamplePageProps) {
   const { slug } = await params
   const locale = resolveLocale((await headers()).get("x-locale"))
   const resolvedSlug = resolveExampleSlug(slug)
-  const site = getExampleSite(resolvedSlug)
+  const site = getLocalizedExampleSite(locale, resolvedSlug)
 
   if (!site) {
     return {}
   }
 
-  if (resolvedSlug === "estetic-clinique") {
-    return createPageMetadata({
-      title: "Estetic Clinique | Premium Aesthetic Clinic Website",
-      description:
-        "A luxury aesthetic clinic website with treatment cards, pricing, gallery, FAQ, and appointment request flow.",
-      path: localizedPath(locale, "/estetic-clinique"),
-    })
-  }
-
-  if (resolvedSlug === "velora") {
-    return createPageMetadata({
-      title: "Velora Interiors | Luxury Interior Design Studio",
-      description:
-        "A luxury interior design website with cinematic hero imagery, project gallery, services, process, testimonials, and contact section.",
-      path: localizedPath(locale, "/velora"),
-    })
-  }
-
-  if (resolvedSlug === "lussolab") {
-    return createPageMetadata({
-      title: "LussoLab | Premium Minimalist E-commerce",
-      description:
-        "A high-end e-commerce experience for minimalist leather goods and tech accessories with product pages, cart drawer, and checkout flow.",
-      path: localizedPath(locale, "/lussolab"),
-    })
-  }
-
-  if (resolvedSlug === "blog") {
-    return createPageMetadata({
-      title: "Signal | Editorial Blog Website",
-      description:
-        "A modern editorial blog with featured articles, topics, article search, carousel browsing, article detail pages, newsletter, and dark mode.",
-      path: localizedPath(locale, "/blog"),
-    })
-  }
-
-  if (resolvedSlug === "affect-sense") {
-    return createPageMetadata({
-      title: "AffectSense | Webcam Emotion Recognition",
-      description:
-        "A local webcam facial expression recognition prototype with React, FastAPI, OpenCV, and ONNX inference.",
-      path: localizedPath(locale, "/affect-sense"),
-    })
-  }
-
-  if (resolvedSlug === "a-tavola") {
-    return createPageMetadata({
-      title: "A Tavola | Italian Restaurant Website",
-      description:
-        "A luxury Italian restaurant website with cinematic imagery, dark gold styling, a filterable menu, contact form, hours, and map.",
-      path: localizedPath(locale, "/a-tavola"),
-    })
-  }
-
   return createPageMetadata({
-    title: `${site.name} | Portfolio page`,
+    title: `${site.name} | ${site.category}`,
     description: site.summary,
-    path: localizedPath(locale, `/${site.slug}`),
+    path: localizedPath(locale, `/${resolvedSlug}`),
+    keywords: [site.name, site.category, ...site.highlights],
   })
+}
+
+function ExampleStructuredData({ locale, slug }: { locale: Locale; slug: string }) {
+  const site = getLocalizedExampleSite(locale, slug)
+
+  if (!site) return null
+
+  return (
+    <JsonLd
+      data={getCreativeWorkJsonLd({
+        locale,
+        path: localizedPath(locale, `/${slug}`),
+        name: site.name,
+        description: site.summary,
+        category: site.category,
+        keywords: site.highlights,
+      })}
+    />
+  )
 }
 
 export default async function ExampleSitePage({ params }: ExamplePageProps) {
@@ -106,27 +73,57 @@ export default async function ExampleSitePage({ params }: ExamplePageProps) {
   }
 
   if (resolvedSlug === "estetic-clinique") {
-    return <ReplyPilotPage locale={locale} />
+    return (
+      <>
+        <ExampleStructuredData locale={locale} slug={resolvedSlug} />
+        <ReplyPilotPage locale={locale} />
+      </>
+    )
   }
 
   if (resolvedSlug === "velora") {
-    return <FlowForgePage locale={locale} />
+    return (
+      <>
+        <ExampleStructuredData locale={locale} slug={resolvedSlug} />
+        <FlowForgePage locale={locale} />
+      </>
+    )
   }
 
   if (resolvedSlug === "lussolab") {
-    return <AureliaPage locale={locale} />
+    return (
+      <>
+        <ExampleStructuredData locale={locale} slug={resolvedSlug} />
+        <AureliaPage locale={locale} />
+      </>
+    )
   }
 
   if (resolvedSlug === "blog") {
-    return <ModelWatchPage locale={locale} />
+    return (
+      <>
+        <ExampleStructuredData locale={locale} slug={resolvedSlug} />
+        <ModelWatchPage locale={locale} />
+      </>
+    )
   }
 
   if (resolvedSlug === "affect-sense") {
-    return <AffectSensePage locale={locale} />
+    return (
+      <>
+        <ExampleStructuredData locale={locale} slug={resolvedSlug} />
+        <AffectSensePage locale={locale} />
+      </>
+    )
   }
 
   if (resolvedSlug === "a-tavola") {
-    return <RestaurantHomePage locale={locale} />
+    return (
+      <>
+        <ExampleStructuredData locale={locale} slug={resolvedSlug} />
+        <RestaurantHomePage locale={locale} />
+      </>
+    )
   }
 
   const Icon = site.icon

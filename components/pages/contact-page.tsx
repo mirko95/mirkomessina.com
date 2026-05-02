@@ -1,11 +1,26 @@
 import Image from "next/image"
 import { ContactSection } from "@/components/contact-section"
 import { PageShell } from "@/components/page-shell"
+import { JsonLd } from "@/components/seo/json-ld"
+import { getContactPageJsonLd, getWebPageJsonLd } from "@/lib/seo"
 import { getHomeCopy } from "@/lib/site-copy"
-import type { Locale } from "@/lib/i18n"
+import { localizedPath, type Locale } from "@/lib/i18n"
 
 export function ContactPage({ locale = "en" }: { locale?: Locale }) {
   const copy = getHomeCopy(locale)
+  const path = localizedPath(locale, "/contact")
+  const webPageJsonLd = getWebPageJsonLd({
+    locale,
+    path,
+    name: copy.contact.title,
+    description: copy.contact.description,
+  })
+  const contactJsonLd = getContactPageJsonLd({
+    locale,
+    path,
+    name: copy.contact.title,
+    description: copy.contact.description,
+  })
 
   return (
     <PageShell
@@ -27,6 +42,8 @@ export function ContactPage({ locale = "en" }: { locale?: Locale }) {
         </div>
       }
     >
+      <JsonLd data={webPageJsonLd} />
+      <JsonLd data={contactJsonLd} />
       <ContactSection locale={locale} />
     </PageShell>
   )

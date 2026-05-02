@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next"
+import type { ReactNode } from "react"
 import { notFound, redirect } from "next/navigation"
 import { HomePage } from "@/components/home-page"
 import { ExamplesIndexPage, createExamplesIndexMetadata } from "@/components/examples-index-page"
@@ -9,7 +10,8 @@ import { ProcessPage } from "@/components/pages/process-page"
 import { AboutPage } from "@/components/pages/about-page"
 import { FaqPage } from "@/components/pages/faq-page"
 import { ContactPage } from "@/components/pages/contact-page"
-import { createPageMetadata } from "@/lib/seo"
+import { JsonLd } from "@/components/seo/json-ld"
+import { createPageMetadata, getCreativeWorkJsonLd, getServiceJsonLd, getWebPageJsonLd } from "@/lib/seo"
 import { getHomeCopy } from "@/lib/site-copy"
 import { getSiteMeta } from "@/lib/site-copy"
 import { localizedPath, resolveLocale, type Locale } from "@/lib/i18n"
@@ -31,6 +33,52 @@ type Params = Promise<{
 
 function getPathSlug(slug?: string[]) {
   return slug?.join("/") ?? ""
+}
+
+function HomeStructuredData({ locale }: { locale: Locale }) {
+  const meta = getSiteMeta(locale)
+  const copy = getHomeCopy(locale)
+  const path = localizedPath(locale, "/")
+
+  return (
+    <>
+      <JsonLd data={getWebPageJsonLd({ locale, path, name: meta.title, description: meta.description })} />
+      <JsonLd
+        data={getServiceJsonLd({
+          locale,
+          path,
+          name: copy.services.title,
+          description: copy.services.description,
+          services: copy.services.items,
+        })}
+      />
+    </>
+  )
+}
+
+function withExampleStructuredData(locale: Locale, slug: string, children: ReactNode) {
+  const normalizedSlug = slug.startsWith("a-tavola/") ? "a-tavola" : resolveExampleSlug(slug)
+  const site = getLocalizedExampleSite(locale, normalizedSlug)
+
+  if (!site) {
+    return children
+  }
+
+  return (
+    <>
+      <JsonLd
+        data={getCreativeWorkJsonLd({
+          locale,
+          path: localizedPath(locale, `/${slug}`),
+          name: site.name,
+          description: site.summary,
+          category: site.category,
+          keywords: site.highlights,
+        })}
+      />
+      {children}
+    </>
+  )
 }
 
 function getLocalizedExampleMetadata(locale: Locale, slug: string): Metadata {
@@ -139,7 +187,12 @@ export default async function LocalizedRoute({ params }: { params: Params }) {
   const slug = getPathSlug(resolved.slug)
 
   if (!slug) {
-    return <HomePage locale={locale} />
+    return (
+      <>
+        <HomeStructuredData locale={locale} />
+        <HomePage locale={locale} />
+      </>
+    )
   }
 
   if (slug === "examples") {
@@ -175,39 +228,39 @@ export default async function LocalizedRoute({ params }: { params: Params }) {
   }
 
   if (slug === "estetic-clinique") {
-    return <ReplyPilotPage locale={locale} />
+    return withExampleStructuredData(locale, slug, <ReplyPilotPage locale={locale} />)
   }
 
   if (slug === "velora") {
-    return <FlowForgePage locale={locale} />
+    return withExampleStructuredData(locale, slug, <FlowForgePage locale={locale} />)
   }
 
   if (slug === "lussolab") {
-    return <AureliaPage locale={locale} />
+    return withExampleStructuredData(locale, slug, <AureliaPage locale={locale} />)
   }
 
   if (slug === "blog") {
-    return <ModelWatchPage locale={locale} />
+    return withExampleStructuredData(locale, slug, <ModelWatchPage locale={locale} />)
   }
 
   if (slug === "affect-sense") {
-    return <AffectSensePage locale={locale} />
+    return withExampleStructuredData(locale, slug, <AffectSensePage locale={locale} />)
   }
 
   if (slug === "a-tavola") {
-    return <RestaurantHomePage locale={locale} />
+    return withExampleStructuredData(locale, slug, <RestaurantHomePage locale={locale} />)
   }
 
   if (slug === "a-tavola/menu") {
-    return <RestaurantMenuPage locale={locale} />
+    return withExampleStructuredData(locale, slug, <RestaurantMenuPage locale={locale} />)
   }
 
   if (slug === "a-tavola/about") {
-    return <RestaurantAboutPage locale={locale} />
+    return withExampleStructuredData(locale, slug, <RestaurantAboutPage locale={locale} />)
   }
 
   if (slug === "a-tavola/contact") {
-    return <RestaurantContactPage locale={locale} />
+    return withExampleStructuredData(locale, slug, <RestaurantContactPage locale={locale} />)
   }
 
   notFound()

@@ -40,7 +40,6 @@ export function localizedPath(locale: Locale, path: string) {
 
 export function stripLocalePrefix(pathname: string) {
   for (const locale of supportedLocales) {
-    if (locale === "en") continue
     if (pathname === `/${locale}`) {
       return "/"
     }

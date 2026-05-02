@@ -156,19 +156,19 @@ export type LegalPageCopy = {
 
 const siteTitles: Record<Locale, { title: string; description: string }> = {
   en: {
-    title: "Mirko Messina | Websites, AI Tools, and Automation",
+    title: "Mirko Messina | Web Developer for Websites, AI Tools & Automation",
     description:
-      "Web developer trained in PHP and currently studying Artificial Intelligence at JKU Linz. I build websites, GPT-powered tools, and practical automations.",
+      "Web developer in Austria building responsive websites, GPT-powered tools, and practical automations for freelancers, local businesses, and small teams.",
   },
   it: {
-    title: "Mirko Messina | Siti web, strumenti AI e automazione",
+    title: "Mirko Messina | Siti web, strumenti AI e automazioni",
     description:
-      "Sviluppatore web formato in PHP e attualmente studente di Intelligenza Artificiale alla JKU Linz. Creo siti web, strumenti GPT e automazioni pratiche.",
+      "Sviluppatore web in Austria. Creo siti responsive, strumenti basati su GPT e automazioni pratiche per freelance, attivita` locali e piccoli team.",
   },
   de: {
     title: "Mirko Messina | Websites, KI-Tools und Automatisierung",
     description:
-      "Webentwickler mit PHP-Ausbildung und aktuell im Studium der Künstlichen Intelligenz an der JKU Linz. Ich baue Websites, GPT-gestützte Tools und praktische Automatisierungen.",
+      "Webentwickler in Oesterreich. Ich baue responsive Websites, GPT-gestuetzte Tools und praktische Automatisierungen fuer Freelancer, lokale Betriebe und kleine Teams.",
   },
 }
 

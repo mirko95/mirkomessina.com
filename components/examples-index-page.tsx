@@ -4,7 +4,7 @@ import { ArrowRight, Compass } from "lucide-react"
 import { JsonLd } from "@/components/seo/json-ld"
 import { PageShell } from "@/components/page-shell"
 import { getExampleSites } from "@/lib/examples"
-import { absoluteUrl, createPageMetadata, getBreadcrumbJsonLd } from "@/lib/seo"
+import { absoluteUrl, createPageMetadata, getBreadcrumbJsonLd, getItemListJsonLd } from "@/lib/seo"
 import { getExampleIndexCopy } from "@/lib/site-copy"
 import { localizedPath, type Locale } from "@/lib/i18n"
 
@@ -24,6 +24,15 @@ export function ExamplesIndexPage({ locale = "en" }: { locale?: Locale }) {
     { name: locale === "de" ? "Startseite" : "Home", url: absoluteUrl(localizedPath(locale, "/")) },
     { name: copy.eyebrow, url: absoluteUrl(localizedPath(locale, "/examples")) },
   ])
+  const itemListJsonLd = getItemListJsonLd({
+    name: copy.title,
+    description: copy.description,
+    items: exampleSites.map((site) => ({
+      name: site.name,
+      description: site.summary,
+      url: absoluteUrl(localizedPath(locale, `/${site.slug}`)),
+    })),
+  })
 
   return (
     <PageShell
@@ -33,6 +42,7 @@ export function ExamplesIndexPage({ locale = "en" }: { locale?: Locale }) {
       description={copy.description}
     >
       <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={itemListJsonLd} />
       <section className="relative overflow-hidden py-12 sm:py-14 lg:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.08),transparent_38%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.06),transparent_34%),radial-gradient(circle_at_bottom,rgba(2,6,23,0.06),transparent_42%)]" />
         <div className="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(3,7,18,0.02),transparent_100%)] sm:h-40" />
