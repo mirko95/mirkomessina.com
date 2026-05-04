@@ -264,10 +264,11 @@ function useWebcamEmotionDetection(copy: AffectCopy) {
       console.error(predictError)
       setError(copy.inferenceFailed)
       drawOverlay(overlay, video)
+      stopCamera()
     } finally {
       runningInferenceRef.current = false
     }
-  }, [copy.backendReturned, copy.inferenceFailed, stabilizePrediction])
+  }, [copy.backendReturned, copy.inferenceFailed, stabilizePrediction, stopCamera])
 
   const loop = useCallback(() => {
     void processFrame()
