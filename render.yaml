@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: affect-sense-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: AFFECT_SENSE_ALLOWED_ORIGINS
+        value: https://mirkomessina-com.vercel.app,http://localhost:3000,http://127.0.0.1:3000

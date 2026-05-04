@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "api:opencv": "python -m uvicorn backend.opencv_emotion_api:app --host 127.0.0.1 --port 8000",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "tsc --noEmit",
