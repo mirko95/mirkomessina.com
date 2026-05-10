@@ -215,7 +215,9 @@ export const exampleSites: ExampleSite[] = [
   },
 ]
 
-export const exampleSlugAliases: Record<string, string> = {}
+export const exampleSlugAliases: Record<string, string> = {
+  "estetic-cliniqu": "estetic-clinique",
+}
 
 export function resolveExampleSlug(slug: string) {
   return exampleSlugAliases[slug] ?? slug
